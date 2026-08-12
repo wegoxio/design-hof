@@ -1,0 +1,5 @@
+"use client";
+import { useInView } from "@/screens/home/hooks/use-in-view";
+import type { AboutContent } from "../types/about";
+
+export function AboutIntroduction({ content }: { content: AboutContent["introduction"] }) { const { ref, isInView } = useInView<HTMLElement>(); return <section ref={ref} className="px-[clamp(28px,5vw,72px)] py-[90px]"><div className={`mx-auto grid max-w-[1460px] grid-cols-[.85fr_1.15fr] gap-24 transition-[opacity,transform] duration-[900ms] max-[800px]:grid-cols-1 max-[800px]:gap-12 ${isInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}><div><h2 className="max-w-[540px] text-[25px] leading-[1.45] font-bold tracking-[-.8px]">{content.lead}</h2><a className="mt-10 inline-flex border border-black/60 px-7 py-4 text-[10px] font-medium tracking-[4px] uppercase transition duration-500 hover:bg-black hover:text-white" href={content.brochureHref}>Brochure Design Hof</a></div><div className="space-y-7 text-[15px] leading-[1.7] font-normal text-black/42">{content.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></div></section>; }

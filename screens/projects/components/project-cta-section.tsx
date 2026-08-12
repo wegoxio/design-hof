@@ -1,0 +1,3 @@
+import Link from "next/link";
+
+export function ProjectCtaSection() { return <section className="px-6 py-[100px] text-center"><p className="mb-7 text-[9px] tracking-[5px] text-black/25 uppercase">¿Tienes un proyecto?</p><h2 className="text-[42px] leading-none font-bold tracking-[-1.8px] max-[600px]:text-[32px]">Hablemos sobre tu espacio.</h2><Link className="group mt-10 inline-flex items-center gap-4 bg-[#090909] px-9 py-[18px] text-[9px] font-medium tracking-[3px] text-white uppercase transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_14px_35px_rgba(0,0,0,.2)]" href="/contacto"><span>Contactar por WhatsApp</span><span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span></Link></section>; }
