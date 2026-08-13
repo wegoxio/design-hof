@@ -88,7 +88,7 @@ export function PromotionalPopup({ content }: PromotionalPopupProps) {
       >
         <button
           ref={closeButtonRef}
-          className="absolute top-4 right-4 z-20 grid size-9 cursor-pointer place-items-center border-0 bg-transparent text-[#8f8f8a] transition duration-300 hover:rotate-90 hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-h1"
+          className="absolute top-4 right-4 z-20 grid size-9 cursor-pointer place-items-center border-0 bg-transparent text-[#8f8f8a] hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-h1"
           type="button"
           onClick={() => closePopup()}
           aria-label="Cerrar promoción"
@@ -125,7 +125,7 @@ export function PromotionalPopup({ content }: PromotionalPopupProps) {
 
         <div className="flex min-h-[454px] flex-col items-center justify-center px-[52px] py-12 text-center max-[740px]:min-h-0 max-[740px]:px-6 max-[740px]:py-9">
           <div className="mb-8 flex items-center gap-5 max-[740px]:mb-5">
-            <Image className="size-11" src="/designhof-logo.svg" alt="Design Hof" width={44} height={44} />
+            <Image className="size-11" src="/shared/brand/designhof-logo.svg" alt="Design Hof" width={44} height={44} />
             <span className="h-7 w-px bg-[#deded9]" aria-hidden="true" />
             <span className="text-[52px] leading-none font-medium tracking-[-3px] text-h1 max-[740px]:text-[42px]">H1</span>
           </div>

@@ -64,7 +64,7 @@ export function CategoriesSection({ rooms, categories }: CategoriesSectionProps)
   return (
     <section className="w-full bg-[#f8f8f7] text-[#151515]" aria-labelledby="categories-title">
       <nav className="overflow-x-auto border-b border-[#dfdfdc] px-[clamp(28px,5vw,76px)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" aria-label="Ambientes">
-        <div className="mx-auto flex w-full max-w-[1460px] min-w-max items-center gap-[clamp(32px,4.2vw,66px)]">
+        <div className="mx-auto flex w-full max-w-[1600px] min-w-max items-center gap-[clamp(32px,4.2vw,66px)]">
           {rooms.map((room) => {
             const isActive = activeRoom === room.id;
             return (
@@ -82,7 +82,7 @@ export function CategoriesSection({ rooms, categories }: CategoriesSectionProps)
         </div>
       </nav>
 
-      <div className="mx-auto w-[calc(100%-40px)] max-w-[1460px] border-b border-[#dfdfdc] pt-[72px] pb-[88px] max-[767px]:pt-11 max-[767px]:pb-14">
+      <div className="mx-auto w-[calc(100%-40px)] max-w-[1600px] border-b border-[#dfdfdc] pt-[72px] pb-[88px] max-[767px]:pt-11 max-[767px]:pb-14">
         <div className="mb-[46px] flex items-center justify-between max-[767px]:mb-8">
           <h2 id="categories-title" className="text-[24px] leading-[1.2] font-medium tracking-[-0.8px] max-[767px]:text-[20px]">
             Explorar por categoría

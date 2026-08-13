@@ -8,7 +8,8 @@ export type ProjectArea = {
 };
 
 export type ProjectStat = {
-  value: string;
+  value: number;
+  suffix?: string;
   label: string;
 };
 

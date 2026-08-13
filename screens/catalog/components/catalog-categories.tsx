@@ -4,7 +4,7 @@ import type { CatalogCategory } from "../mocks/catalog-data";
 export function CatalogCategories({ categories, activeId, onSelect }: { categories: CatalogCategory[]; activeId: string; onSelect: (id: string) => void }) {
   return (
     <section className="px-[clamp(24px,4vw,58px)] py-[68px] max-[767px]:py-11" aria-labelledby="catalog-categories-title">
-      <div className="mx-auto max-w-[1460px]">
+      <div className="mx-auto max-w-[1600px]">
         <p id="catalog-categories-title" className="mb-11 text-[9px] font-medium tracking-[5px] text-black/34 uppercase">Explorar por categoría</p>
         <div className="grid grid-cols-5 gap-x-6 gap-y-12 max-[1000px]:grid-cols-4 max-[767px]:grid-cols-3 max-[520px]:grid-cols-2">
           {categories.map((category) => {

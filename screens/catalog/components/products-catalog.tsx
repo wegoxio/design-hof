@@ -29,7 +29,7 @@ export function ProductsCatalog({ products, categoryId }: { products: CatalogPro
         <div className="flex shrink-0 items-center gap-5"><span className="text-[8px] font-normal text-black/35">{visibleProducts.length} piezas</span><select className="cursor-pointer border-0 bg-transparent text-[8px] font-medium tracking-[1px] uppercase outline-none" value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Ordenar productos"><option value="featured">Destacados</option><option value="price-asc">Precio: menor</option><option value="price-desc">Precio: mayor</option></select></div>
       </div>
       <div className="px-[clamp(22px,3vw,42px)] py-[60px]">
-        <div key={`${categoryId}-${filter}-${sort}`} className="mx-auto grid max-w-[1460px] grid-cols-4 gap-x-7 gap-y-14 max-[1000px]:grid-cols-3 max-[650px]:grid-cols-2 max-[450px]:grid-cols-1">
+        <div key={`${categoryId}-${filter}-${sort}`} className="mx-auto grid max-w-[1600px] grid-cols-4 gap-x-7 gap-y-14 max-[1000px]:grid-cols-3 max-[650px]:grid-cols-2 max-[450px]:grid-cols-1">
           {visibleProducts.map((product) => <ProductCard product={product} key={product.id} />)}
         </div>
         {visibleProducts.length === 0 && <p className="py-24 text-center text-[13px] font-normal text-black/40">No hay productos disponibles para este filtro.</p>}

@@ -13,7 +13,7 @@ export function FeaturedProductsSection({ products }: { products: FeaturedProduc
 
   return (
     <section ref={ref} className="bg-[#f8f8f7] px-5 py-[82px] max-[767px]:py-14" aria-labelledby="featured-title">
-      <div className="mx-auto max-w-[1460px]">
+      <div className="mx-auto max-w-[1600px]">
         <div className={`mb-12 flex items-end justify-between transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${isInView ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"}`}>
           <div><p className="mb-3 text-[9px] font-medium tracking-[4px] text-black/38 uppercase">Selección</p><h2 id="featured-title" className="text-[34px] leading-none font-bold tracking-[-1.4px] max-[767px]:text-[28px]">Destacados</h2></div>
           <div className="flex items-center gap-3"><Link className="mr-2 text-[9px] font-medium tracking-[1px] text-black/45 uppercase transition-colors hover:text-black" href="/mobiliario">Ver todo →</Link><button className="grid size-9 place-items-center border border-black/10 bg-transparent text-black/40 transition hover:border-black hover:bg-black hover:text-white max-[600px]:hidden" onClick={() => move(-1)} aria-label="Anteriores">‹</button><button className="grid size-9 place-items-center border border-black/10 bg-transparent text-black/40 transition hover:border-black hover:bg-black hover:text-white max-[600px]:hidden" onClick={() => move(1)} aria-label="Siguientes">›</button></div>

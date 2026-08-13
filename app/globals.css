@@ -3,3 +3,8 @@
 @theme {
   --color-h1: #e2f025;
 }
+
+@utility site-container {
+  width: 100%;
+  padding-inline: 32px;
+}

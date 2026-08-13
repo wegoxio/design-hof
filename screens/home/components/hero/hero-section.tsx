@@ -17,7 +17,7 @@ export function HeroSection({ slides }: HeroSectionProps) {
 
   return (
     <section
-      className="relative isolate min-h-[calc(100svh-100px)] w-full touch-pan-y overflow-hidden bg-[#3b3733] text-white opacity-100 outline-none transition-[opacity,transform] duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] starting:translate-y-[18px] starting:opacity-0 max-[930px]:h-[calc(100svh-76px)] max-[930px]:min-h-[680px] max-[930px]:max-h-[860px] motion-reduce:transition-none"
+      className="relative isolate min-h-[calc(100svh-60px)] w-full touch-pan-y overflow-hidden bg-[#3b3733] text-white opacity-100 outline-none transition-[opacity,transform] duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] starting:translate-y-[18px] starting:opacity-0 max-[930px]:h-[calc(100svh-36px)] max-[930px]:min-h-[720px] max-[930px]:max-h-[900px] motion-reduce:transition-none"
       aria-labelledby="hero-title"
       aria-roledescription="carrusel"
       aria-label="Colección destacada"

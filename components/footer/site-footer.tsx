@@ -20,7 +20,7 @@ function SocialIcon({ children, href, label }: { children: React.ReactNode; href
 export function SiteFooter() {
   return (
     <footer className="mt-auto bg-[#090909] px-[clamp(28px,4vw,58px)] pt-[88px] pb-10 text-white max-[767px]:pt-14">
-      <div className="mx-auto max-w-[1460px]">
+      <div className="mx-auto max-w-[1600px]">
         <div className="grid grid-cols-[1.1fr_1fr_1fr_0.95fr] gap-x-16 gap-y-14 max-[1050px]:grid-cols-2 max-[600px]:grid-cols-1">
           <div>
             <p className="mb-8 text-[15px] font-bold tracking-[5px] uppercase">Design Hof</p>
