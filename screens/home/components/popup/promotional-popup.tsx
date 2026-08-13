@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -125,7 +125,7 @@ export function PromotionalPopup({ content }: PromotionalPopupProps) {
 
         <div className="flex min-h-[454px] flex-col items-center justify-center px-[52px] py-12 text-center max-[740px]:min-h-0 max-[740px]:px-6 max-[740px]:py-9">
           <div className="mb-8 flex items-center gap-5 max-[740px]:mb-5">
-            <Image className="size-11" src="/shared/brand/designhof-logo.svg" alt="Design Hof" width={44} height={44} />
+            <Image className="size-11" src="/shared/brand/designhof-logo.svg" alt="Design HOF" width={44} height={44} />
             <span className="h-7 w-px bg-[#deded9]" aria-hidden="true" />
             <span className="text-[52px] leading-none font-medium tracking-[-3px] text-h1 max-[740px]:text-[42px]">H1</span>
           </div>
@@ -153,3 +153,4 @@ export function PromotionalPopup({ content }: PromotionalPopupProps) {
     </div>
   );
 }
+

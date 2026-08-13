@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { companyLinks, furnitureLinks, legalLinks, type FooterLink } from "./footer-data";
 import { NewsletterForm } from "./newsletter-form";
 
@@ -23,7 +23,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1600px]">
         <div className="grid grid-cols-[1.1fr_1fr_1fr_0.95fr] gap-x-16 gap-y-14 max-[1050px]:grid-cols-2 max-[600px]:grid-cols-1">
           <div>
-            <p className="mb-8 text-[15px] font-bold tracking-[5px] uppercase">Design Hof</p>
+            <p className="mb-8 text-[15px] font-bold tracking-[5px] uppercase">Design HOF</p>
             <address className="space-y-2 text-[13px] leading-[1.5] font-normal text-white/32 not-italic"><p>Las Mercedes, Avenida<br />Orinoco<br />Caracas 1060, Venezuela</p><p className="pt-1"><a className="transition-colors duration-400 hover:text-white/80" href="tel:+5802129935722">+58 0212 9935722</a></p><p><a className="transition-colors duration-400 hover:text-white/80" href="mailto:info@design-hof.com">info@design-hof.com</a></p></address>
             <div className="mt-8 flex gap-4">
               <SocialIcon href="https://instagram.com" label="Instagram"><svg viewBox="0 0 24 24" fill="none" className="size-[17px]"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" /><circle cx="12" cy="12" r="3.5" stroke="currentColor" /><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" /></svg></SocialIcon>
@@ -37,10 +37,11 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-[88px] flex items-center justify-between gap-8 border-t border-white/8 pt-9 text-[11px] font-normal text-white/18 max-[767px]:mt-14 max-[767px]:flex-col max-[767px]:items-start">
-          <p>© 2025 Design HOF. Todos los derechos reservados.</p>
+          <p>© 2026 Design HOF. Todos los derechos reservados.</p>
           <nav className="flex flex-wrap gap-x-10 gap-y-3" aria-label="Enlaces legales">{legalLinks.map((link) => <Link className="transition-colors duration-400 hover:text-white/70" href={link.href} key={link.href}>{link.label}</Link>)}</nav>
         </div>
       </div>
     </footer>
   );
 }
+

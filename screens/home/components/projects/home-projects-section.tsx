@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -41,9 +41,10 @@ function ProjectTile({ project, isInView, className, delay }: { project: Project
       <Image className="-z-20 object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.025]" src={project.imageUrl} alt={project.title} fill sizes="(max-width:900px) 100vw, 67vw" />
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,transparent_42%,rgba(3,3,3,.68)_100%)] transition-colors duration-700 group-hover:bg-[linear-gradient(180deg,rgba(0,0,0,.04)_30%,rgba(3,3,3,.76)_100%)]" />
       <div className="absolute right-7 bottom-7 left-7 translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
-        <p className="mb-3 text-[9px] font-medium tracking-[5px] text-white/45 uppercase">Design Hof</p>
+        <p className="mb-3 text-[9px] font-medium tracking-[5px] text-white/45 uppercase">Design HOF</p>
         <h3 className="text-[17px] font-bold tracking-[-.4px]">{project.title}</h3>
       </div>
     </Link>
   );
 }
+

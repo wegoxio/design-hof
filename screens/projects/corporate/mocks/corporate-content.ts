@@ -1,4 +1,4 @@
-import type { ProjectDetailContent } from "../../gran-scale/types/gran-scale";
+﻿import type { ProjectDetailContent } from "../../gran-scale/types/gran-scale";
 
 export const corporateContent: ProjectDetailContent = {
   breadcrumb: ["Inicio", "Proyectos", "Corporativo"],
@@ -10,7 +10,7 @@ export const corporateContent: ProjectDetailContent = {
   },
   introduction: {
     eyebrow: "Acerca de este servicio",
-    description: "Diseñamos y dotamos entornos de trabajo que elevan la cultura corporativa. Salas de reuniones, lobbies, áreas de descanso y zonas de colaboración —todo con la precisión de marcas europeas líderes en diseño de contract.",
+    description: "Diseñamos y dotamos entornos de trabajo que elevan la cultura corporativa. Salas de reuniones, lobbies, áreas de descanso y zonas de colaboración, todo con la precisión de marcas europeas líderes en mobiliario contract.",
     ctaLabel: "Consultar proyecto",
     ctaHref: "/contacto",
     stats: [
@@ -30,3 +30,4 @@ export const corporateContent: ProjectDetailContent = {
     ],
   },
 };
+

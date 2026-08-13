@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -62,8 +62,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 h-[80px] w-full border-b border-black/8 bg-white/96 backdrop-blur-2xl max-[930px]:h-[76px]">
       <div className="site-container grid h-full grid-cols-[1fr_auto_1fr] items-center py-4 max-[1179px]:grid-cols-[auto_1fr_auto] max-[930px]:py-3">
-        <Link className="grid shrink-0 justify-self-start rounded-xs transition duration-200 hover:-translate-y-0.5 hover:opacity-75" href="/" aria-label="Design Hof, inicio">
-          <Image className="h-[52px] w-[42px] object-contain max-[930px]:h-11 max-[930px]:w-[35px]" src="/shared/brand/designhof-logo.svg" alt="Design Hof" width={42} height={52} priority />
+        <Link className="grid shrink-0 justify-self-start rounded-xs transition duration-200 hover:-translate-y-0.5 hover:opacity-75" href="/" aria-label="Design HOF, inicio">
+          <Image className="h-[52px] w-[42px] object-contain max-[930px]:h-11 max-[930px]:w-[35px]" src="/shared/brand/designhof-logo.svg" alt="Design HOF" width={42} height={52} priority />
         </Link>
 
         <nav className="hidden h-full items-stretch justify-center gap-[clamp(14px,2vw,32px)] min-[1180px]:flex" aria-label="Navegación principal">
@@ -116,3 +116,4 @@ export function SiteHeader() {
     </header>
   );
 }
+

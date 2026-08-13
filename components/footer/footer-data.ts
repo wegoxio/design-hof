@@ -1,7 +1,4 @@
-export type FooterLink = {
-  label: string;
-  href: string;
-};
+export type FooterLink = { label: string; href: string };
 
 export const furnitureLinks: FooterLink[] = [
   { label: "Colección", href: "/mobiliario" },
@@ -16,7 +13,7 @@ export const companyLinks: FooterLink[] = [
   { label: "Diseño de Espacios", href: "/servicios" },
   { label: "Proyectos", href: "/proyectos" },
   { label: "Sobre Nosotros", href: "/nosotros" },
-  { label: "Nuestras Marcas", href: "/mobiliario" },
+  { label: "Nuestras Marcas", href: "/nuestras-marcas" },
   { label: "Contacto", href: "/contacto" },
 ];
 

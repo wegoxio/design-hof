@@ -2,16 +2,10 @@ import type { ProjectDetailContent } from "../types/gran-scale";
 
 export const granScaleContent: ProjectDetailContent = {
   breadcrumb: ["Inicio", "Proyectos", "Gran escala"],
-  hero: {
-    eyebrow: "Gran escala",
-    title: "Proyectos de Gran Escala",
-    description: "Espacios que definen el estándar.",
-    imageUrl: "/projects/gran-scale/hero/gran-scale-hero-01-v2.jpg",
-  },
+  hero: { eyebrow: "Gran escala", title: "Proyectos de Gran Escala", description: "Espacios que definen el estándar.", imageUrl: "/projects/gran-scale/hero/gran-scale-hero-01-v2.jpg" },
   introduction: {
     eyebrow: "Acerca de este servicio",
-    description:
-      "Intervenimos proyectos arquitectónicos de alta complejidad —centros comerciales, hoteles boutique, edificios de oficinas y desarrollos mixtos—. Cada espacio es tratado como una oportunidad para elevar el entorno con mobiliario europeo de alto diseño.",
+    description: "Intervenimos proyectos arquitectónicos de alta complejidad —centros comerciales, hoteles boutique, edificios de oficinas y desarrollos mixtos—. Cada espacio es tratado como una oportunidad para elevar el entorno con mobiliario europeo de alto diseño.",
     ctaLabel: "Consultar proyecto",
     ctaHref: "/contacto",
     stats: [
