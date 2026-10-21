@@ -9,7 +9,7 @@ type CategoryCardProps = {
 export function CategoryCard({ category }: CategoryCardProps) {
   return (
     <Link className="group block min-w-0 shrink-0 basis-[calc((100%-75px)/6)] text-[#151515] no-underline max-[1199px]:basis-[calc((100%-45px)/4)] max-[767px]:basis-[min(72vw,270px)]" href={category.href}>
-      <div className="relative aspect-square w-full overflow-hidden bg-[#f1f1f1]">
+      <div className="relative aspect-square w-full overflow-hidden bg-white">
         <Image
           className="object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.025]"
           src={category.imageUrl}
