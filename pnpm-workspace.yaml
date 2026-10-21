@@ -1,3 +1,6 @@
+managePackageManagerVersions: false
+verifyDepsBeforeRun: false
+
 allowBuilds:
   sharp: false
   unrs-resolver: false

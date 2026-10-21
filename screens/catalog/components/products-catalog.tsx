@@ -1,38 +1,53 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import type { CatalogProduct } from "../types/catalog";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import type { CatalogFilter, CatalogPageState, CatalogProduct, CatalogSort, CatalogVariant } from "../types/catalog";
 import { ProductCard } from "./product-card";
+import { CatalogSortMenu } from "./catalog-sort-menu";
+import { CatalogUnavailableNotice } from "./catalog-unavailable-notice";
 
-type Filter = "all" | "stock" | "new" | "collection" | "special";
-
-const filters: Array<{ id: Filter; label: string }> = [
+const filters: Array<{ id: Exclude<CatalogFilter, "all">; label: string }> = [
   { id: "stock", label: "Stock disponible" },
-  { id: "new", label: "New In" },
-  { id: "collection", label: "Colección" },
   { id: "special", label: "Special Prices" },
 ];
 
-export function ProductsCatalog({ products, categoryId }: { products: CatalogProduct[]; categoryId: string }) {
-  const [filter, setFilter] = useState<Filter>("all");
-  const [sort, setSort] = useState("featured");
+export function ProductsCatalog({ products, state, variant, unavailable = false }: { products: CatalogProduct[]; state: CatalogPageState; variant: CatalogVariant; unavailable?: boolean }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  const visibleProducts = useMemo(() => {
-    const filtered = products.filter((product) => (categoryId === "todas" || product.categoryId === categoryId) && (filter === "all" || product.tags.includes(filter)));
-    return [...filtered].sort((a, b) => sort === "price-asc" ? a.price - b.price : sort === "price-desc" ? b.price - a.price : Number(a.id) - Number(b.id));
-  }, [categoryId, filter, products, sort]);
+  const navigate = (updates: { filter?: CatalogFilter; sort?: CatalogSort; page?: number }) => {
+    const next = new URLSearchParams(searchParams.toString());
+    if (updates.filter !== undefined) {
+      if (updates.filter === "all") next.delete("filtro");
+      else next.set("filtro", updates.filter);
+    }
+    if (updates.sort !== undefined) {
+      if (updates.sort === "featured") next.delete("orden");
+      else next.set("orden", updates.sort);
+    }
+    if (updates.page !== undefined) {
+      if (updates.page <= 1) next.delete("pagina");
+      else next.set("pagina", String(updates.page));
+    }
+    if (updates.filter !== undefined || updates.sort !== undefined) next.delete("pagina");
+    router.push(`${pathname}${next.size ? `?${next}` : ""}`, { scroll: false });
+  };
 
   return (
-    <section className="border-t border-black/8 bg-white" aria-label="Productos">
-      <div className="sticky top-[100px] z-20 flex min-h-[58px] items-center justify-between gap-6 border-b border-black/8 bg-white/95 px-[clamp(24px,3vw,44px)] backdrop-blur-xl max-[930px]:top-[76px] max-[700px]:items-start max-[700px]:py-4">
-        <div className="flex flex-wrap gap-x-9 gap-y-3">{filters.map((item) => <button className={`cursor-pointer border-0 bg-transparent p-0 text-[8px] font-medium tracking-[1.4px] uppercase transition-colors duration-400 hover:text-black ${filter === item.id ? "text-black" : "text-black/35"}`} type="button" key={item.id} onClick={() => setFilter((current) => current === item.id ? "all" : item.id)}>{item.label}</button>)}</div>
-        <div className="flex shrink-0 items-center gap-5"><span className="text-[8px] font-normal text-black/35">{visibleProducts.length} piezas</span><select className="cursor-pointer border-0 bg-transparent text-[8px] font-medium tracking-[1px] uppercase outline-none" value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Ordenar productos"><option value="featured">Destacados</option><option value="price-asc">Precio: menor</option><option value="price-desc">Precio: mayor</option></select></div>
-      </div>
-      <div className="px-[clamp(22px,3vw,42px)] py-[60px]">
-        <div key={`${categoryId}-${filter}-${sort}`} className="mx-auto grid max-w-[1600px] grid-cols-4 gap-x-7 gap-y-14 max-[1000px]:grid-cols-3 max-[650px]:grid-cols-2 max-[450px]:grid-cols-1">
-          {visibleProducts.map((product) => <ProductCard product={product} key={product.id} />)}
+    <section className="border-t border-black/8 bg-[#fbfbf9]" aria-label="Productos">
+      <div className="sticky top-[100px] z-20 border-b border-black/8 bg-[#fbfbf9]/95 backdrop-blur-xl max-[930px]:top-[76px]">
+        <div className="mx-auto flex min-h-[88px] max-w-[1440px] items-center justify-between gap-8 px-[clamp(22px,4vw,56px)] py-4 max-[760px]:items-stretch max-[760px]:flex-col max-[760px]:gap-4">
+          <div className="flex items-center gap-3 max-[520px]:grid max-[520px]:min-w-0 max-[520px]:grid-cols-2">{filters.map((item) => <button className={`min-h-11 min-w-0 border px-5 text-[9px] font-semibold tracking-[1.3px] uppercase transition-[background-color,border-color,color,transform] duration-300 hover:-translate-y-px max-[520px]:px-2 max-[520px]:text-[8px] ${state.filter === item.id ? "border-black bg-black text-white" : "border-black/12 bg-transparent text-black/55 hover:border-black/35 hover:text-black"}`} type="button" aria-pressed={state.filter === item.id} key={item.id} onClick={() => navigate({ filter: state.filter === item.id ? "all" : item.id })}>{item.label}</button>)}</div>
+          <div className="flex shrink-0 items-center gap-6 max-[520px]:items-stretch max-[520px]:flex-col-reverse max-[520px]:gap-3"><span className="text-[10px] font-medium tracking-[1.2px] text-black/38 uppercase max-[520px]:text-center">{state.total} {state.total === 1 ? "pieza" : "piezas"}</span><CatalogSortMenu value={state.sort} onChange={(sort) => navigate({ sort })} /></div>
         </div>
-        {visibleProducts.length === 0 && <p className="py-24 text-center text-[13px] font-normal text-black/40">No hay productos disponibles para este filtro.</p>}
+      </div>
+      <div className="px-[clamp(22px,4vw,56px)] py-[clamp(48px,6vw,88px)]">
+        <div key={`${state.categoryId}-${state.filter}-${state.sort}-${state.page}`} className="mx-auto grid max-w-[1440px] grid-cols-4 gap-x-[clamp(18px,2.2vw,34px)] gap-y-[clamp(48px,5vw,76px)] max-[1050px]:grid-cols-3 max-[720px]:grid-cols-2 max-[460px]:grid-cols-1">
+          {products.map((product) => <ProductCard product={product} variant={variant} key={product.id} />)}
+        </div>
+        {unavailable ? <CatalogUnavailableNotice compact /> : products.length === 0 && <p className="py-24 text-center text-[13px] font-normal text-black/40">No hay productos disponibles para este filtro.</p>}
+        {state.totalPages > 1 && <nav className="mt-16 flex items-center justify-center gap-3" aria-label="Paginación del catálogo"><button type="button" disabled={state.page === 1} onClick={() => navigate({ page: state.page - 1 })} className="size-11 border border-black/10 bg-white text-lg transition-[background,color,opacity] duration-400 hover:bg-black hover:text-white disabled:pointer-events-none disabled:opacity-25" aria-label="Página anterior">‹</button><span className="min-w-20 text-center text-[9px] font-medium tracking-[1.5px] text-black/45 uppercase">{state.page} / {state.totalPages}</span><button type="button" disabled={state.page === state.totalPages} onClick={() => navigate({ page: state.page + 1 })} className="size-11 border border-black/10 bg-white text-lg transition-[background,color,opacity] duration-400 hover:bg-black hover:text-white disabled:pointer-events-none disabled:opacity-25" aria-label="Página siguiente">›</button></nav>}
       </div>
     </section>
   );

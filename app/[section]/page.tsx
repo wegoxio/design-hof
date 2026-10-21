@@ -1,9 +1,7 @@
 import { notFound } from "next/navigation";
 
 const sections: Record<string, string> = {
-  servicios: "Nuestros servicios",
   contacto: "Contacto",
-  allianz: "Allianz",
   "smart-modull": "Smart Modull",
   cuenta: "Mi cuenta",
 };

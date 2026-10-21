@@ -2,8 +2,8 @@ import { ProjectDetailGallery } from "../gran-scale/components/gran-scale-galler
 import { ProjectDetailHero } from "../gran-scale/components/gran-scale-hero";
 import { ProjectDetailIntroduction } from "../gran-scale/components/gran-scale-introduction";
 import { OtherProjectsSection } from "../gran-scale/components/other-projects-section";
-import { projectsContent } from "../mocks/projects-content";
-import { residentialContent } from "./mocks/residential-content";
+import { projectsContent } from "../content/projects-content";
+import { residentialContent } from "./content/residential-content";
 
 export function ResidentialScreen() {
   return (

@@ -1,6 +1,35 @@
 import { CatalogScreen } from "@/screens/catalog/catalog-screen";
-import { catalogCategories, catalogCopy, getProductsForVariant } from "@/screens/catalog/mocks/catalog-data";
+import { getCatalogCategories, getCatalogProductPage } from "@/services/cataloguer/catalog";
+import { catalogCopy } from "@/screens/catalog/content/catalog-copy";
+import type { CatalogFilter, CatalogSort } from "@/screens/catalog/types/catalog";
+import { CataloguerRequestError } from "@/services/cataloguer/client";
 
-export default function H1FurniturePage() {
-  return <CatalogScreen copy={catalogCopy.h1} categories={catalogCategories} products={getProductsForVariant("h1")} />;
+export const dynamic = "force-dynamic";
+
+export default async function H1FurniturePage({ searchParams }: PageProps<"/mobiliario-h1">) {
+  const query = await searchParams;
+  let categories = [] as Awaited<ReturnType<typeof getCatalogCategories>>;
+  let unavailable = false;
+  try {
+    categories = await getCatalogCategories("h1");
+  } catch (error) {
+    if (!(error instanceof CataloguerRequestError)) throw error;
+    unavailable = true;
+    console.error("Cataloguer unavailable while loading H1 categories", error);
+  }
+  const categoryId = typeof query.categoria === "string" && categories.some((category) => category.id === query.categoria) ? query.categoria : "todas";
+  const filter: CatalogFilter = query.filtro === "stock" || query.filtro === "special" ? query.filtro : "all";
+  const sort: CatalogSort = query.orden === "price-asc" || query.orden === "price-desc" ? query.orden : "featured";
+  const requestedPage = typeof query.pagina === "string" && /^\d+$/.test(query.pagina) ? Number(query.pagina) : 1;
+  let result = { items: [], total: 0, page: 1, totalPages: 0 } as Awaited<ReturnType<typeof getCatalogProductPage>>;
+  if (!unavailable) {
+    try {
+      result = await getCatalogProductPage("h1", { page: requestedPage, limit: 16, group: categoryId === "todas" ? undefined : categoryId, filter: filter === "all" ? undefined : filter, sort });
+    } catch (error) {
+      if (!(error instanceof CataloguerRequestError)) throw error;
+      unavailable = true;
+      console.error("Cataloguer unavailable while loading H1 products", error);
+    }
+  }
+  return <CatalogScreen copy={catalogCopy.h1} categories={categories} products={result.items} state={{ categoryId, filter, sort, page: result.page, total: result.total, totalPages: result.totalPages }} variant="h1" unavailable={unavailable} />;
 }

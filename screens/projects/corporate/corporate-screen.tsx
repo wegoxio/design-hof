@@ -2,8 +2,8 @@ import { ProjectDetailGallery } from "../gran-scale/components/gran-scale-galler
 import { ProjectDetailHero } from "../gran-scale/components/gran-scale-hero";
 import { ProjectDetailIntroduction } from "../gran-scale/components/gran-scale-introduction";
 import { OtherProjectsSection } from "../gran-scale/components/other-projects-section";
-import { projectsContent } from "../mocks/projects-content";
-import { corporateContent } from "./mocks/corporate-content";
+import { projectsContent } from "../content/projects-content";
+import { corporateContent } from "./content/corporate-content";
 
 export function CorporateScreen() {
   return (
