@@ -13,9 +13,3 @@ export type Brand = {
   logoUrl: string;
   href: string;
 };
-
-export type BrandsSummaryContent = {
-  total: number;
-  label: string;
-  countries: string[];
-};

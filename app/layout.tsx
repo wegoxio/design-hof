@@ -11,8 +11,31 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.design-hof.com"),
   title: "Design HOF",
   description: "Mobiliario y diseño de interiores.",
+  openGraph: {
+    type: "website",
+    url: "https://www.design-hof.com/",
+    siteName: "Design HOF",
+    locale: "es_VE",
+    title: "Design HOF",
+    description: "Mobiliario y diseño de interiores.",
+    images: [
+      {
+        url: "/about/hero/about-hero-01.png",
+        width: 1240,
+        height: 640,
+        alt: "Design HOF — mobiliario y diseño de interiores",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Design HOF",
+    description: "Mobiliario y diseño de interiores.",
+    images: ["/about/hero/about-hero-01.png"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -24,9 +24,6 @@ export function BrandsGrid({ brands }: { brands: Brand[] }) {
             <span className="relative block h-[clamp(62px,6.6vw,104px)] w-[clamp(112px,11vw,172px)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-3 group-hover:scale-[1.035]">
               <Image src={item.logoUrl} alt={item.name} fill sizes="(min-width: 1100px) 172px, 150px" className="mix-blend-multiply object-contain grayscale contrast-[250%] transition-[filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:contrast-[320%]" />
             </span>
-            <span className="absolute right-4 bottom-5 left-4 translate-y-3 text-center text-[8px] font-medium tracking-[4px] text-black/0 uppercase opacity-0 transition-[opacity,transform,color] duration-700 group-hover:translate-y-0 group-hover:text-black/38 group-hover:opacity-100">
-              {item.country}
-            </span>
           </Link>
         ))}
       </div>
