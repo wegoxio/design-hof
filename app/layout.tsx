@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     description: "Mobiliario y diseño de interiores.",
     images: [
       {
-        url: "/about/hero/about-hero-01.png",
-        width: 1240,
-        height: 640,
+        url: "/og-designhof.svg",
+        width: 1200,
+        height: 630,
         alt: "Design HOF — mobiliario y diseño de interiores",
       },
     ],
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Design HOF",
     description: "Mobiliario y diseño de interiores.",
-    images: ["/about/hero/about-hero-01.png"],
+    images: ["/og-designhof.svg"],
   },
 };
 

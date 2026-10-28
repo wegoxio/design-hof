@@ -124,10 +124,10 @@ export function PromotionalPopup({ content }: PromotionalPopupProps) {
         </div>
 
         <div className="flex min-h-[454px] flex-col items-center justify-center px-[52px] py-12 text-center max-[740px]:min-h-0 max-[740px]:px-6 max-[740px]:py-9">
-          <div className="mb-8 flex items-center gap-5 max-[740px]:mb-5">
-            <Image className="size-11" src="/shared/brand/designhof-logo.svg" alt="Design HOF" width={44} height={44} />
-            <span className="h-7 w-px bg-[#deded9]" aria-hidden="true" />
-            <span className="text-[52px] leading-none font-medium tracking-[-3px] text-h1 max-[740px]:text-[42px]">H1</span>
+          <div className="mb-8 flex items-center gap-6 max-[740px]:mb-5 max-[740px]:gap-4">
+            <Image className="size-14 max-[740px]:size-11" src="/shared/brand/designhof-logo.svg" alt="Design HOF" width={56} height={56} />
+            <span className="h-9 w-px bg-[#deded9] max-[740px]:h-7" aria-hidden="true" />
+            <Image className="size-28 max-[740px]:size-24" src="/shared/brand/LOGO_H1.png" alt="H1 brand logo" width={112} height={112} priority />
           </div>
 
           <h2 id="h1-popup-title" className="max-w-[330px] text-[29px] leading-[1.18] font-medium tracking-[-1px] max-[740px]:text-[25px]">

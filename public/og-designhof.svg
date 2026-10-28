@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Design HOF</title>
+  <desc id="desc">Mobiliario y diseño de interiores</desc>
+  <rect width="1200" height="630" fill="#0d0d0b"/>
+  <rect x="120" y="135" width="360" height="360" fill="#f7f7f5"/>
+  <text x="300" y="278" fill="#0d0d0b" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="14" text-anchor="middle">DESIGN</text>
+  <text x="300" y="370" fill="#0d0d0b" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="14" text-anchor="middle">HOF</text>
+  <text x="570" y="300" fill="#f7f7f5" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" letter-spacing="10">DESIGN HOF</text>
+  <text x="570" y="365" fill="#a3a3a0" font-family="Arial, Helvetica, sans-serif" font-size="25" letter-spacing="6">MOBILIARIO Y DISEÑO DE INTERIORES</text>
+</svg>
