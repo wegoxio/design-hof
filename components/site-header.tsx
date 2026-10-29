@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+type SearchResult = { id: string; name: string; slug: string; imageUrl: string | null; imageAlt: string };
+
 const navigation = [
   { label: "Mobiliario", href: "/mobiliario" },
   { label: "Mobiliario H1", href: "/mobiliario-h1" },
@@ -25,15 +27,34 @@ function UserIcon() {
   return <svg className="block size-[18px] shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.25" stroke="currentColor" strokeWidth="1.5" /><path d="M6.5 20c.35-4 2.2-6 5.5-6s5.15 2 5.5 6" stroke="currentColor" strokeWidth="1.5" /></svg>;
 }
 
-function HeaderActions({ mobile = false }: { mobile?: boolean }) {
+function HeaderActions({ mobile = false, onSearch }: { mobile?: boolean; onSearch?: () => void }) {
   const visibility = mobile ? "" : "max-[1179px]:hidden";
-  return <><button className={`${iconClass} ${visibility}`} type="button" aria-label="Buscar"><SearchIcon /></button><Link className={`${iconClass} ${visibility}`} href="/cuenta" aria-label="Mi cuenta"><UserIcon /></Link></>;
+  return <><button className={`${iconClass} ${visibility}`} type="button" aria-label="Buscar" onClick={onSearch}><SearchIcon /></button><Link className={`${iconClass} ${visibility}`} href="/cuenta" aria-label="Mi cuenta"><UserIcon /></Link></>;
+}
+
+function ProductSearch({ onClose }: { onClose: () => void }) {
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState<SearchResult[]>([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const controller = new AbortController();
+    const timer = window.setTimeout(async () => {
+      if (query.trim().length < 2) { setResults([]); setLoading(false); return; }
+      setLoading(true);
+      try { const response = await fetch(`/api/storefront?q=${encodeURIComponent(query)}`, { signal: controller.signal }); if (response.ok) setResults((await response.json()).items ?? []); }
+      catch (error) { if ((error as Error).name !== "AbortError") setResults([]); }
+      finally { if (!controller.signal.aborted) setLoading(false); }
+    }, 300);
+    return () => { window.clearTimeout(timer); controller.abort(); };
+  }, [query]);
+  return <div className="fixed inset-x-0 top-[80px] z-40 border-b border-black/10 bg-white px-5 py-5 shadow-[0_18px_35px_rgba(0,0,0,.08)] max-[930px]:top-[76px]"><div className="site-container"><div className="flex items-center gap-3 border-b border-black/15 pb-3"><SearchIcon /><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar productos" aria-label="Buscar productos" className="min-w-0 flex-1 border-0 bg-transparent text-base outline-none" /><button type="button" onClick={onClose} aria-label="Cerrar búsqueda" className="text-xl text-black/45">×</button></div>{query.length >= 2 && <div className="grid gap-1 pt-3">{loading && <p className="py-3 text-sm text-black/45">Buscando…</p>}{!loading && results.length === 0 && <p className="py-3 text-sm text-black/45">No encontramos productos.</p>}{results.map((product) => <Link key={product.id} href={`/mobiliario/${product.slug}`} onClick={onClose} className="flex items-center gap-3 px-2 py-2 no-underline hover:bg-[#f5f5f2]"><span className="relative size-12 shrink-0 overflow-hidden bg-[#f3f3f0]">{product.imageUrl && <Image src={product.imageUrl} alt={product.imageAlt} fill sizes="48px" className="object-contain" />}</span><span className="text-sm text-black">{product.name}</span></Link>)}</div>}</div></div>;
 }
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const aboutRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -97,7 +118,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center justify-end gap-[15px] justify-self-end">
-          <HeaderActions />
+          <HeaderActions onSearch={() => setIsSearchOpen(true)} />
           <button className={`${iconClass} hidden max-[1179px]:grid`} type="button" aria-label={isOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={isOpen} aria-controls="mobile-navigation" onClick={() => setIsOpen((open) => !open)}>
             {isOpen ? <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" strokeWidth="1.5" /></svg> : <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.5" /></svg>}
           </button>
@@ -110,9 +131,10 @@ export function SiteHeader() {
           <button type="button" className={`${linkClass(isAboutActive)} w-full border-0 bg-transparent p-0 text-left font-[inherit]`} aria-expanded={isAboutOpen} onClick={() => setIsAboutOpen((open) => !open)}>Nosotros</button>
           <div className={`grid overflow-hidden pl-5 transition-[grid-template-rows,opacity] duration-500 ${isAboutOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}><div className="min-h-0"><Link className="flex min-h-11 items-center border-b border-[#eeeeeb] text-[11px] tracking-[1.4px] uppercase" href="/nosotros" onClick={() => { setIsOpen(false); setIsAboutOpen(false); }}>Sobre nosotros</Link><Link className="flex min-h-11 items-center border-b border-[#eeeeeb] text-[11px] tracking-[1.4px] uppercase" href="/nuestras-marcas" onClick={() => { setIsOpen(false); setIsAboutOpen(false); }}>Nuestras marcas</Link></div></div>
           {links.slice(4)}
-          <div className="flex gap-2.5 pt-5"><HeaderActions mobile /></div>
+          <div className="flex gap-2.5 pt-5"><HeaderActions mobile onSearch={() => { setIsOpen(false); setIsSearchOpen(true); }} /></div>
         </nav>
       )}
+      {isSearchOpen && <ProductSearch onClose={() => setIsSearchOpen(false)} />}
     </header>
   );
 }
