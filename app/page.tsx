@@ -23,7 +23,7 @@ export default async function Home() {
     hoverDescription: product.description,
     imageUrl: product.imageUrl,
     href: `/mobiliario/${product.slug}`,
-    badge: product.tags.includes("special") ? "Special Price" : product.tags.includes("new") ? "New In" : undefined,
+    badge: product.tags.includes("new") ? "New In" : product.tags.includes("special") ? "Special Price" : undefined,
   }));
   return <HomeScreen catalogueCategories={navigation.categories} catalogueRooms={navigation.rooms} catalogueFeatured={featured} catalogueUnavailable={catalogueUnavailable} />;
 }

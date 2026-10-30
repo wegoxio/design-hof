@@ -5,12 +5,12 @@ import type { CatalogProduct, CatalogVariant } from "../types/catalog";
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 
 export function ProductCard({ product, variant = "general" }: { product: CatalogProduct; variant?: CatalogVariant }) {
-  const status = product.tags.includes("special")
-    ? { label: "Special Price", className: "bg-h1 text-black" }
-    : product.tags.includes("stock")
-      ? { label: "Stock", className: "bg-white text-black" }
-      : product.tags.includes("new")
-        ? { label: "New", className: "bg-[#111] text-white" }
+  const status = product.tags.includes("new")
+    ? { label: "New In", className: "bg-[#111] text-white" }
+    : product.tags.includes("special")
+      ? { label: "Special Price", className: "bg-h1 text-black" }
+      : product.tags.includes("stock")
+        ? { label: "Stock", className: "bg-white text-black" }
         : null;
 
   return (

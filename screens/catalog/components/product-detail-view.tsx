@@ -48,6 +48,7 @@ export function ProductDetailView({ product, related, variant }: { product: Prod
           </div>
           <div className="relative aspect-[.79] min-h-[520px] overflow-hidden bg-[#ececea] max-[600px]:min-h-[420px]">
             {gallery.map((image, index) => <Image unoptimized key={`${image.src}-main-${index}`} src={image.src} alt={image.alt} fill priority={index === 0} sizes="(max-width:900px) 100vw,60vw" className={`${image.displayMode === "cover" ? "object-cover" : "object-contain p-[5%]"} transition-[opacity,transform] duration-[850ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${activeImage === index ? "scale-100 opacity-100" : "pointer-events-none scale-[1.015] opacity-0"}`} />)}
+            {product.tags.includes("new") && <span className="absolute top-4 left-4 z-10 bg-[#111] px-3 py-2 text-[8px] font-bold tracking-[1px] text-white uppercase shadow-[0_4px_14px_rgba(0,0,0,.08)]">New In</span>}
           </div>
         </div>
 
