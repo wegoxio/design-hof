@@ -26,7 +26,7 @@ export function SiteFooter() {
             <p className="mb-8 text-[15px] font-bold tracking-[5px] uppercase">Design HOF</p>
             <address className="space-y-2 text-[13px] leading-[1.5] font-normal text-white/32 not-italic"><p>Las Mercedes, Avenida<br />Orinoco<br />Caracas 1060, Venezuela</p><p className="pt-1"><a className="transition-colors duration-400 hover:text-white/80" href="tel:+5802129935722">+58 0212 9935722</a></p><p><a className="transition-colors duration-400 hover:text-white/80" href="mailto:info@design-hof.com">info@design-hof.com</a></p></address>
             <div className="mt-8 flex gap-4">
-              <SocialIcon href="https://instagram.com" label="Instagram"><svg viewBox="0 0 24 24" fill="none" className="size-[17px]"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" /><circle cx="12" cy="12" r="3.5" stroke="currentColor" /><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" /></svg></SocialIcon>
+              <SocialIcon href="https://www.instagram.com/design_hof/" label="Instagram"><svg viewBox="0 0 24 24" fill="none" className="size-[17px]"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" /><circle cx="12" cy="12" r="3.5" stroke="currentColor" /><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" /></svg></SocialIcon>
               <SocialIcon href="https://facebook.com" label="Facebook"><span className="text-[16px]">f</span></SocialIcon>
               <SocialIcon href="https://linkedin.com" label="LinkedIn"><span className="text-[12px]">in</span></SocialIcon>
             </div>

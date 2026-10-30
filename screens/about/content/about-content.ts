@@ -15,7 +15,7 @@ export const aboutContent: AboutContent = {
   founders: {
     imageUrl: "/about/founders/about-founders-01.png",
     people: [{ name: "Klaus Koller", role: "Director" }, { name: "Karin Koller", role: "Codirectora" }],
-    stats: [{ value: "25", label: "Años de trayectoria" }, { value: "20+", label: "Años en diseño" }],
+    stats: [{ value: "30", label: "Años de trayectoria" }, { value: "20+", label: "Años en diseño" }],
     paragraphs: [
       "Design HOF está dirigida por Klaus Koller y su hermana Karin Koller, ambos amantes del diseño y apasionados por la belleza y los estándares de alta calidad.",
       "Tras 20 años de experiencia en el mundo del diseño de interiores y la decoración, y bajo la curaduría de los hermanos Koller, se ha desarrollado Design HOF: una selección exclusiva de mobiliario, accesorios e iluminación de marcas alemanas y europeas, ganadoras de prestigiosos premios de diseño internacional.",

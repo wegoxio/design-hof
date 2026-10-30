@@ -12,7 +12,7 @@ export function CatalogCategories({ categories, activeId, onSelect }: { categori
     <section className="overflow-hidden border-b border-black/8 bg-[#f5f5f2] px-[clamp(22px,4vw,56px)] py-[clamp(34px,4vw,54px)]" aria-labelledby="catalog-categories-title">
       <div className="mx-auto max-w-[1440px]">
         <div className="mb-7 flex items-end justify-between gap-6">
-          <div><p className="text-[8px] font-semibold tracking-[4px] text-black/35 uppercase">Colecciones</p><h2 id="catalog-categories-title" className="mt-2 text-[clamp(20px,2vw,28px)] font-semibold tracking-[-.7px]">Explorar por categoría</h2></div>
+          <div><h2 id="catalog-categories-title" className="mt-2 text-[clamp(20px,2vw,28px)] font-semibold tracking-[-.7px]">Explorar por categoría</h2></div>
           <div className="flex gap-2" aria-label="Controles de categorías"><button type="button" onClick={() => move(-1)} className="grid size-11 place-items-center border border-black/12 bg-transparent text-xl transition-colors hover:border-black hover:bg-black hover:text-white" aria-label="Categorías anteriores">‹</button><button type="button" onClick={() => move(1)} className="grid size-11 place-items-center border border-black/12 bg-transparent text-xl transition-colors hover:border-black hover:bg-black hover:text-white" aria-label="Categorías siguientes">›</button></div>
         </div>
         <div ref={railRef} className="flex min-w-0 max-w-full snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
