@@ -2,6 +2,8 @@
 import { Montserrat } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/footer/site-footer";
+import { getHeaderMerchandisingLinks } from "@/services/cataloguer/catalog";
+import { CataloguerRequestError } from "@/services/cataloguer/client";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -38,14 +40,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  let merchandisingLinks = [] as Awaited<ReturnType<typeof getHeaderMerchandisingLinks>>;
+  try {
+    merchandisingLinks = await getHeaderMerchandisingLinks();
+  } catch (error) {
+    if (!(error instanceof CataloguerRequestError)) throw error;
+    console.error("Cataloguer unavailable while loading header categories", error);
+  }
   return (
     <html
       lang="es"
       className={`${montserrat.className} h-full antialiased`}
     >
       <body className="m-0 flex min-h-full min-w-80 flex-col bg-[#f5f5f3] text-[#1d1d1b]">
-        <SiteHeader />
+        <SiteHeader merchandisingLinks={merchandisingLinks} />
         <main className="flex-1">{children}</main>
         <SiteFooter />
       </body>

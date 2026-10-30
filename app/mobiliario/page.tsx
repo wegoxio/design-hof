@@ -21,10 +21,11 @@ export default async function FurniturePage({ searchParams }: PageProps<"/mobili
   const filter: CatalogFilter = query.filtro === "stock" || query.filtro === "special" ? query.filtro : "all";
   const sort: CatalogSort = query.orden === "price-asc" || query.orden === "price-desc" ? query.orden : "featured";
   const requestedPage = typeof query.pagina === "string" && /^\d+$/.test(query.pagina) ? Number(query.pagina) : 1;
+  const categorySlug = typeof query.coleccion === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(query.coleccion) ? query.coleccion : undefined;
   let result = { items: [], total: 0, page: 1, totalPages: 0 } as Awaited<ReturnType<typeof getCatalogProductPage>>;
   if (!unavailable) {
     try {
-      result = await getCatalogProductPage("general", { page: requestedPage, limit: 16, group: categoryId === "todas" ? undefined : categoryId, filter: filter === "all" ? undefined : filter, sort });
+      result = await getCatalogProductPage("general", { page: requestedPage, limit: 16, group: categorySlug ? undefined : categoryId === "todas" ? undefined : categoryId, categorySlug, filter: filter === "all" ? undefined : filter, sort });
     } catch (error) {
       if (!(error instanceof CataloguerRequestError)) throw error;
       unavailable = true;

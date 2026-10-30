@@ -28,6 +28,14 @@ export type CataloguerCategory = {
   kind: string | null;
   ancestors: Array<{ id: string; name: string; slug: string; publicLabel: string | null }>;
   locale: string;
+  channelKey?: string | null;
+  productCount?: number;
+};
+
+export type HeaderMerchandisingLink = {
+  kind: "new" | "coming" | "special";
+  label: string;
+  href: string;
 };
 
 export type CataloguerChild = {

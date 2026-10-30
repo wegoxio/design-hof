@@ -3,7 +3,7 @@ import type { CatalogCategory, CatalogProduct, CatalogVariant, ProductDetail } f
 import type { ProductCategory, RoomCategory } from "@/screens/home/types/category";
 import { cataloguerFetch } from "./client";
 import { relatedToCatalogProduct, toCatalogProduct, toProductDetail } from "./adapters";
-import type { CataloguerGroup, CataloguerGroupList, CataloguerPage, CataloguerProduct } from "./types";
+import type { CataloguerCategory, CataloguerGroup, CataloguerGroupList, CataloguerPage, CataloguerProduct, HeaderMerchandisingLink } from "./types";
 
 function channelFor(variant: CatalogVariant) {
   return variant === "h1"
@@ -15,6 +15,7 @@ export type CatalogProductPageOptions = {
   page: number;
   limit: number;
   group?: string;
+  categorySlug?: string;
   filter?: 'stock' | 'special';
   sort?: 'featured' | 'price-asc' | 'price-desc';
 };
@@ -26,6 +27,7 @@ export async function getCatalogProductPage(variant: CatalogVariant, options: Ca
     limit: options.limit,
     channel: channelFor(variant),
     group: options.group,
+    categorySlug: options.categorySlug,
     inStock: options.filter === 'stock' ? true : undefined,
     hasSalePrice: options.filter === 'special' ? true : undefined,
     sortBy: sort === 'featured' ? 'createdAt' : 'price',
@@ -37,6 +39,7 @@ export async function getCatalogProductPage(variant: CatalogVariant, options: Ca
       limit: options.limit,
       channel: channelFor(variant),
       group: options.group,
+      categorySlug: options.categorySlug,
       inStock: options.filter === 'stock' ? true : undefined,
       hasSalePrice: options.filter === 'special' ? true : undefined,
       sortBy: sort === 'featured' ? 'createdAt' : 'price',
@@ -49,6 +52,41 @@ export async function getCatalogProductPage(variant: CatalogVariant, options: Ca
     page: response.page,
     totalPages: response.totalPages,
   };
+}
+
+/**
+ * Header merchandising is controlled by category publication in Cataloguer.
+ * Merely creating a category is not enough: it must be visible in the general
+ * storefront channel. NEW IN wins defensively if both seasonal categories are
+ * accidentally published at once.
+ */
+export async function getHeaderMerchandisingLinks(): Promise<HeaderMerchandisingLink[]> {
+  const response = await cataloguerFetch<CataloguerPage<CataloguerCategory>>("categories", {
+    page: 1,
+    limit: 100,
+    channel: channelFor("general"),
+    sortBy: "sortOrder",
+    sortDirection: "asc",
+  });
+  const bySlug = new Map(response.items.map((category) => [category.slug, category]));
+  const seasonal = bySlug.get("new-in") ?? bySlug.get("coming-soon");
+  const links: HeaderMerchandisingLink[] = [];
+  if (seasonal) {
+    links.push({
+      kind: seasonal.slug === "new-in" ? "new" : "coming",
+      label: seasonal.publicLabel || seasonal.name,
+      href: `/mobiliario?coleccion=${encodeURIComponent(seasonal.slug)}`,
+    });
+  }
+  const special = bySlug.get("special-prices");
+  if (special) {
+    links.push({
+      kind: "special",
+      label: special.publicLabel || special.name,
+      href: `/mobiliario?coleccion=${encodeURIComponent(special.slug)}`,
+    });
+  }
+  return links;
 }
 
 export async function getCatalogCategories(variant: CatalogVariant): Promise<CatalogCategory[]> {

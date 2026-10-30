@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import type { HeaderMerchandisingLink } from "@/services/cataloguer/types";
 
 type SearchResult = {
   id: string;
@@ -20,16 +21,6 @@ const money = new Intl.NumberFormat("en-US", {
   currency: "USD",
   maximumFractionDigits: 0,
 });
-
-const navigation = [
-  { label: "Mobiliario", href: "/mobiliario" },
-  { label: "Mobiliario H1", href: "/mobiliario-h1" },
-  { label: "Nuestros servicios", href: "/servicios" },
-  { label: "Proyectos", href: "/proyectos" },
-  { label: "Contacto", href: "/contacto" },
-  { label: "Allianz", href: "/allianz" },
-  { label: "Smart Modull", href: "/smart-modull" },
-];
 
 const iconClass = "grid size-[34px] cursor-pointer place-items-center rounded-full border-0 bg-transparent p-0 text-[#1d1d1b] transition duration-200 hover:-translate-y-0.5 hover:bg-[#1d1d1b] hover:text-white [&_svg]:size-[18px]";
 
@@ -68,7 +59,7 @@ function ProductSearch({ onClose }: { onClose: () => void }) {
       })}</div>}</div></div>;
 }
 
-export function SiteHeader() {
+export function SiteHeader({ merchandisingLinks }: { merchandisingLinks: HeaderMerchandisingLink[] }) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
@@ -92,9 +83,24 @@ export function SiteHeader() {
 
   const linkClass = (active: boolean) => `group relative flex min-h-13 items-center whitespace-nowrap text-[10.5px] leading-[15.75px] font-medium tracking-[1.05px] uppercase no-underline transition duration-200 after:absolute after:right-0 after:bottom-[19px] after:left-0 after:h-px after:origin-right after:scale-x-0 after:bg-current after:content-[''] after:transition-transform after:duration-300 hover:-translate-y-px hover:text-[#777772] hover:after:origin-left hover:after:scale-x-100 max-[1179px]:border-b max-[1179px]:border-[#eeeeeb] max-[1179px]:text-xs max-[1179px]:after:right-auto max-[1179px]:after:bottom-0 max-[1179px]:after:w-12 ${active ? "text-[#1d1d1b] after:scale-x-100" : "text-[#1d1d1b]"}`;
 
-  const links = navigation.map(({ label, href }) => (
+  const seasonalLink = merchandisingLinks.find((link) => link.kind === "new" || link.kind === "coming");
+  const specialLink = merchandisingLinks.find((link) => link.kind === "special");
+  const primaryNavigation = [
+    ...(seasonalLink ? [seasonalLink] : []),
+    { label: "Mobiliario", href: "/mobiliario" },
+    { label: "Mobiliario H1", href: "/mobiliario-h1" },
+    ...(specialLink ? [specialLink] : []),
+    { label: "Colección", href: "/mobiliario?coleccion=collection" },
+    { label: "Proyectos", href: "/proyectos" },
+  ];
+  const secondaryNavigation = [
+    { label: "Allianz", href: "/allianz" },
+    { label: "Smart Modull", href: "/smart-modull" },
+    { label: "Contacto", href: "/contacto" },
+  ];
+  const renderLink = ({ label, href }: { label: string; href: string }) => (
     <Link className={linkClass(pathname === href)} href={href} key={href} aria-current={pathname === href ? "page" : undefined} onClick={() => setIsOpen(false)}>{label}</Link>
-  ));
+  );
 
   const isAboutActive = pathname === "/nosotros" || pathname === "/nuestras-marcas";
 
@@ -106,7 +112,7 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden h-full items-stretch justify-center gap-[clamp(14px,2vw,32px)] min-[1180px]:flex" aria-label="Navegación principal">
-          {links.slice(0, 4)}
+          {primaryNavigation.map(renderLink)}
           <div
             ref={aboutRef}
             className="relative flex h-full items-stretch"
@@ -132,7 +138,7 @@ export function SiteHeader() {
               <Link role="menuitem" href="/nuestras-marcas" onClick={() => setIsAboutOpen(false)} className="flex min-h-[61px] items-center px-7 text-[12px] font-medium tracking-[1.3px] text-black uppercase transition-[background-color,padding] duration-500 hover:bg-black/[.025] hover:pl-8">Nuestras marcas</Link>
             </div>
           </div>
-          {links.slice(4)}
+          {secondaryNavigation.map(renderLink)}
         </nav>
 
         <div className="flex items-center justify-end gap-[15px] justify-self-end">
@@ -145,10 +151,10 @@ export function SiteHeader() {
 
       {isOpen && (
         <nav id="mobile-navigation" className="fixed inset-x-0 top-[80px] hidden max-h-[calc(100svh-80px)] flex-col overflow-y-auto border-b border-[#d8d8d4] bg-white px-5 py-[18px] opacity-100 transition-opacity duration-300 starting:opacity-0 max-[1179px]:flex max-[930px]:top-[76px] max-[930px]:max-h-[calc(100svh-76px)]" aria-label="Navegación móvil">
-          {links.slice(0, 4)}
+          {primaryNavigation.map(renderLink)}
           <button type="button" className={`${linkClass(isAboutActive)} w-full border-0 bg-transparent p-0 text-left font-[inherit]`} aria-expanded={isAboutOpen} onClick={() => setIsAboutOpen((open) => !open)}>Nosotros</button>
           <div className={`grid overflow-hidden pl-5 transition-[grid-template-rows,opacity] duration-500 ${isAboutOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}><div className="min-h-0"><Link className="flex min-h-11 items-center border-b border-[#eeeeeb] text-[11px] tracking-[1.4px] uppercase" href="/nosotros" onClick={() => { setIsOpen(false); setIsAboutOpen(false); }}>Sobre nosotros</Link><Link className="flex min-h-11 items-center border-b border-[#eeeeeb] text-[11px] tracking-[1.4px] uppercase" href="/nuestras-marcas" onClick={() => { setIsOpen(false); setIsAboutOpen(false); }}>Nuestras marcas</Link></div></div>
-          {links.slice(4)}
+          {secondaryNavigation.map(renderLink)}
           <div className="flex gap-2.5 pt-5"><HeaderActions mobile onSearch={() => { setIsOpen(false); setIsSearchOpen(true); }} /></div>
         </nav>
       )}
