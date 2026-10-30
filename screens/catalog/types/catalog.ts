@@ -1,4 +1,4 @@
-export type CatalogVariant = "general" | "h1";
+export type CatalogVariant = "general" | "h1" | "merchandising";
 
 export type CatalogProduct = {
   id: string;

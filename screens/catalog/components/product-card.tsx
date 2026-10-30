@@ -15,7 +15,7 @@ export function ProductCard({ product, variant = "general" }: { product: Catalog
 
   return (
     <article className="group min-w-0 opacity-100 transition-[opacity,transform] duration-700 starting:translate-y-6 starting:opacity-0">
-      <Link href={`/mobiliario/${product.slug}${variant === "h1" ? "?catalogo=h1" : ""}`} className="block text-inherit no-underline">
+      <Link href={`/mobiliario/${product.slug}${variant === "h1" ? "?catalogo=h1" : variant === "merchandising" ? "?catalogo=merchandising" : ""}`} className="block text-inherit no-underline">
       <div className="relative aspect-[4/3] overflow-hidden bg-[#f5f5f2] shadow-[0_0_0_rgba(0,0,0,0)] transition-[background-color,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#efefeb] group-hover:shadow-[0_20px_55px_rgba(0,0,0,0.06)]">
         <Image unoptimized className={`${product.imageDisplayMode === "cover" ? "object-cover" : "object-contain p-[5%]"} transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.015]`} src={product.imageUrl} alt={product.name} fill sizes="(max-width: 450px) 92vw, (max-width: 650px) 46vw, (max-width: 1000px) 31vw, 330px" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/12 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" aria-hidden="true" />

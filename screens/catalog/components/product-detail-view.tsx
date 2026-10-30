@@ -37,7 +37,7 @@ export function ProductDetailView({ product, related, variant }: { product: Prod
     <div className="bg-[#f8f8f6] text-[#111]">
       <nav className="site-container flex min-h-[74px] items-center gap-3 border-b border-black/[.07] text-[9px] font-medium tracking-[1.5px] text-black/35 uppercase" aria-label="Migas de pan">
         <Link className="transition-colors duration-300 hover:text-black" href="/">Inicio</Link><span>/</span>
-        <Link className="transition-colors duration-300 hover:text-black" href={variant === "h1" ? "/mobiliario-h1" : "/mobiliario"}>{variant === "h1" ? "Mobiliario H1" : "Mobiliario"}</Link><span>/</span>
+        <Link className="transition-colors duration-300 hover:text-black" href={variant === "h1" ? "/mobiliario-h1" : "/mobiliario"}>{variant === "h1" ? "Mobiliario H1" : variant === "merchandising" ? "Catálogo" : "Mobiliario"}</Link><span>/</span>
         <span className="text-black/65">{product.name}</span>
       </nav>
 

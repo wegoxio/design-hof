@@ -6,9 +6,9 @@ import { relatedToCatalogProduct, toCatalogProduct, toProductDetail } from "./ad
 import type { CataloguerCategory, CataloguerGroup, CataloguerGroupList, CataloguerPage, CataloguerProduct, HeaderMerchandisingLink } from "./types";
 
 function channelFor(variant: CatalogVariant) {
-  return variant === "h1"
-    ? process.env.CATALOGUER_H1_CHANNEL || "mobiliario-h1"
-    : process.env.CATALOGUER_GENERAL_CHANNEL || "mobiliario";
+  if (variant === "h1") return process.env.CATALOGUER_H1_CHANNEL || "mobiliario-h1";
+  if (variant === "merchandising") return process.env.CATALOGUER_MERCHANDISING_CHANNEL || "merchandising";
+  return process.env.CATALOGUER_GENERAL_CHANNEL || "mobiliario";
 }
 
 export type CatalogProductPageOptions = {
@@ -56,15 +56,16 @@ export async function getCatalogProductPage(variant: CatalogVariant, options: Ca
 
 /**
  * Header merchandising is controlled by category publication in Cataloguer.
- * Merely creating a category is not enough: it must be visible in the general
- * storefront channel. NEW IN wins defensively if both seasonal categories are
- * accidentally published at once.
+ * Merely creating a category is not enough: it must be visible in the neutral
+ * merchandising channel. That channel is a storefront placement, not product
+ * ownership, so NEW IN may contain both general and H1 products. NEW IN wins
+ * defensively if both seasonal categories are accidentally published at once.
  */
 export async function getHeaderMerchandisingLinks(): Promise<HeaderMerchandisingLink[]> {
   const response = await cataloguerFetch<CataloguerPage<CataloguerCategory>>("categories", {
     page: 1,
     limit: 100,
-    channel: channelFor("general"),
+    channel: channelFor("merchandising"),
     sortBy: "sortOrder",
     sortDirection: "asc",
   });
@@ -89,7 +90,7 @@ export async function getHeaderMerchandisingLinks(): Promise<HeaderMerchandising
   return links;
 }
 
-export async function getCatalogCategories(variant: CatalogVariant): Promise<CatalogCategory[]> {
+export async function getCatalogCategories(variant: Exclude<CatalogVariant, "merchandising">): Promise<CatalogCategory[]> {
   const groups = await getGroups(variant, "NAVIGATION", "CATALOG");
   return groups.filter((group) => group.productCount > 0).map((group) => ({
     id: group.key,
@@ -138,7 +139,11 @@ export async function getCatalogProductDetail(slug: string, variant: CatalogVari
     });
     return {
       product: toProductDetail(response.data),
-      related: response.data.relatedProducts.slice(0, 5).map(relatedToCatalogProduct),
+      // Related DTOs do not expose their catalogue/category membership yet.
+      // In a cross-catalogue collection we therefore cannot build a truthful
+      // detail URL for them; hiding the strip is safer than linking to a
+      // channel where the related product may not be published.
+      related: variant === "merchandising" ? [] : response.data.relatedProducts.slice(0, 5).map(relatedToCatalogProduct),
     };
   } catch (error) {
     if (error instanceof Error && "status" in error && (error as { status?: number }).status === 404) return null;

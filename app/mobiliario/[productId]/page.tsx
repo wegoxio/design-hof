@@ -8,7 +8,7 @@ import { CatalogUnavailableNotice } from "@/screens/catalog/components/catalog-u
 export async function generateMetadata({ params, searchParams }: PageProps<"/mobiliario/[productId]">): Promise<Metadata> {
   const { productId } = await params;
   const query = await searchParams;
-  const variant = query.catalogo === "h1" ? "h1" : "general";
+  const variant = query.catalogo === "h1" ? "h1" : query.catalogo === "merchandising" ? "merchandising" : "general";
   const result = await getCatalogProductDetail(productId, variant);
   if (!result) return {};
 
@@ -38,7 +38,7 @@ export async function generateMetadata({ params, searchParams }: PageProps<"/mob
 export default async function ProductPage({ params, searchParams }: PageProps<"/mobiliario/[productId]">) {
   const { productId } = await params;
   const query = await searchParams;
-  const variant = query.catalogo === "h1" ? "h1" : "general";
+  const variant = query.catalogo === "h1" ? "h1" : query.catalogo === "merchandising" ? "merchandising" : "general";
   let result;
   try {
     result = await getCatalogProductDetail(productId, variant);
