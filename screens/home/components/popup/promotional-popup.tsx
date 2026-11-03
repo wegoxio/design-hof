@@ -25,7 +25,9 @@ export function PromotionalPopup({ content }: PromotionalPopupProps) {
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setIsMounted(true);
-      requestAnimationFrame(() => requestAnimationFrame(() => setIsVisible(true)));
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => setIsVisible(true)),
+      );
     }, OPEN_DELAY);
     return () => {
       window.clearTimeout(timer);
@@ -38,7 +40,10 @@ export function PromotionalPopup({ content }: PromotionalPopupProps) {
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    const focusTimer = window.setTimeout(() => closeButtonRef.current?.focus(), 500);
+    const focusTimer = window.setTimeout(
+      () => closeButtonRef.current?.focus(),
+      500,
+    );
 
     function closeWithEscape(event: KeyboardEvent) {
       if (event.key === "Escape") closePopup();
@@ -93,7 +98,18 @@ export function PromotionalPopup({ content }: PromotionalPopupProps) {
           onClick={() => closePopup()}
           aria-label="Cerrar promoción"
         >
-          <svg className="size-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" strokeWidth="1.4" /></svg>
+          <svg
+            className="size-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M6 6l12 12M18 6 6 18"
+              stroke="currentColor"
+              strokeWidth="1.4"
+            />
+          </svg>
         </button>
 
         <div className="relative min-h-[454px] overflow-hidden bg-[#d8d2ca] max-[740px]:min-h-0 max-[740px]:aspect-[16/10]">
@@ -109,7 +125,10 @@ export function PromotionalPopup({ content }: PromotionalPopupProps) {
             />
           ))}
 
-          <div className="absolute right-0 bottom-4 left-0 z-10 flex justify-center gap-2" aria-label={`Imagen ${activeImage + 1} de ${content.images.length}`}>
+          <div
+            className="absolute right-0 bottom-4 left-0 z-10 flex justify-center gap-2"
+            aria-label={`Imagen ${activeImage + 1} de ${content.images.length}`}
+          >
             {content.images.map((image, index) => (
               <button
                 className={`h-5 w-6 cursor-pointer border-0 bg-transparent p-0 before:block before:h-[2px] before:w-full before:rounded-full before:transition-all before:duration-500 before:content-[''] ${activeImage === index ? "before:scale-x-100 before:bg-white" : "before:scale-x-50 before:bg-white/55"}`}
@@ -125,15 +144,37 @@ export function PromotionalPopup({ content }: PromotionalPopupProps) {
 
         <div className="flex min-h-[454px] flex-col items-center justify-center px-[52px] py-12 text-center max-[740px]:min-h-0 max-[740px]:px-6 max-[740px]:py-9">
           <div className="mb-8 flex items-center gap-6 max-[740px]:mb-5 max-[740px]:gap-4">
-            <Image className="size-14 max-[740px]:size-11" src="/shared/brand/designhof-logo.svg" alt="Design HOF" width={56} height={56} />
-            <span className="h-9 w-px bg-[#deded9] max-[740px]:h-7" aria-hidden="true" />
-            <Image className="size-28 max-[740px]:size-24" src="/shared/brand/LOGO_H1.png" alt="H1 brand logo" width={112} height={112} priority />
+            <Image
+              className="size-14 max-[740px]:size-11"
+              src="/shared/brand/designhof-logo.svg"
+              alt="Design HOF"
+              width={56}
+              height={56}
+            />
+            <span
+              className="h-9 w-px bg-[#deded9] max-[740px]:h-7"
+              aria-hidden="true"
+            />
+            <Image
+              className="size-28 max-[740px]:size-24"
+              src="/shared/brand/LOGO_H1.svg"
+              alt="H1 brand logo"
+              width={112}
+              height={112}
+              priority
+            />
           </div>
 
-          <h2 id="h1-popup-title" className="max-w-[330px] text-[29px] leading-[1.18] font-medium tracking-[-1px] max-[740px]:text-[25px]">
+          <h2
+            id="h1-popup-title"
+            className="max-w-[330px] text-[29px] leading-[1.18] font-medium tracking-[-1px] max-[740px]:text-[25px]"
+          >
             {content.title}
           </h2>
-          <p id="h1-popup-description" className="mt-5 max-w-[300px] text-[15px] leading-[1.65] font-medium text-[#92928d] max-[740px]:mt-3 max-[740px]:text-[13px]">
+          <p
+            id="h1-popup-description"
+            className="mt-5 max-w-[300px] text-[15px] leading-[1.65] font-medium text-[#92928d] max-[740px]:mt-3 max-[740px]:text-[13px]"
+          >
             {content.description}
           </p>
 
@@ -145,7 +186,24 @@ export function PromotionalPopup({ content }: PromotionalPopupProps) {
               closePopup(() => router.push(content.ctaHref));
             }}
           >
-            <svg className="relative z-10 size-[19px] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 group-hover:-rotate-3" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.4-4.1A8 8 0 1 1 20 11.5Z" stroke="currentColor" strokeWidth="1.5" /><path d="M9 8.5c.4 2.5 2 4.1 4.5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+            <svg
+              className="relative z-10 size-[19px] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 group-hover:-rotate-3"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.4-4.1A8 8 0 1 1 20 11.5Z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M9 8.5c.4 2.5 2 4.1 4.5 5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
             <span className="relative z-10">{content.ctaLabel}</span>
           </Link>
         </div>
@@ -153,4 +211,3 @@ export function PromotionalPopup({ content }: PromotionalPopupProps) {
     </div>
   );
 }
-
