@@ -26,7 +26,12 @@ export type CataloguerCategory = {
   sortOrder: number;
   showInNavigation: boolean;
   kind: string | null;
-  ancestors: Array<{ id: string; name: string; slug: string; publicLabel: string | null }>;
+  ancestors: Array<{
+    id: string;
+    name: string;
+    slug: string;
+    publicLabel: string | null;
+  }>;
   locale: string;
   channelKey?: string | null;
   productCount?: number;
@@ -63,6 +68,7 @@ export type CataloguerRelatedProduct = {
 
 export type CataloguerProduct = {
   id: string;
+  manufacturerCode: string;
   name: string;
   slug: string;
   description?: string;
@@ -110,4 +116,3 @@ export type CataloguerGroup = {
 };
 
 export type CataloguerGroupList = { items: CataloguerGroup[] };
-
