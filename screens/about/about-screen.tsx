@@ -3,7 +3,6 @@ import { AboutIntroduction } from "./components/about-introduction";
 import { FoundersSection } from "./components/founders-section";
 import { InterviewsSection } from "./components/interviews-section";
 import { LegacySection } from "./components/legacy-section";
-import { VisitSection } from "./components/visit-section";
 import { aboutContent } from "./content/about-content";
 
 export function AboutScreen() {

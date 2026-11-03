@@ -41,8 +41,8 @@ export type CatalogCopy = {
   heroImage: string;
 };
 
-export type CatalogFilter = 'all' | 'stock' | 'special';
-export type CatalogSort = 'featured' | 'price-asc' | 'price-desc';
+export type CatalogFilter = "all" | "stock" | "special";
+export type CatalogSort = "featured" | "price-asc" | "price-desc";
 
 export type CatalogPageState = {
   categoryId: string;
@@ -54,6 +54,7 @@ export type CatalogPageState = {
 };
 
 export type ProductDetail = CatalogProduct & {
+  manufacturerCode: string;
   collection?: string;
   description: string;
   features: string[];
@@ -61,5 +62,9 @@ export type ProductDetail = CatalogProduct & {
   colors: Array<{ id: string; label: string }>;
   sizes: string[];
   variations: ProductVariation[];
-  gallery: Array<{ src: string; alt: string; displayMode: "contain" | "cover" }>;
+  gallery: Array<{
+    src: string;
+    alt: string;
+    displayMode: "contain" | "cover";
+  }>;
 };

@@ -1,7 +1,7 @@
 "use client";
 import { useInView } from "@/screens/home/hooks/use-in-view";
 import type { AboutContent } from "../types/about";
-import { VideoPlaceholder } from "./video-placeholder";
+import { YouTubeVideo } from "./youtube-video";
 
 export function InterviewsSection({
   interviews,
@@ -16,15 +16,16 @@ export function InterviewsSection({
       className={`mx-auto max-w-[1600px] px-5 py-[90px] transition-opacity duration-1000 ${isInView ? "opacity-100" : "opacity-0"}`}
     >
       <div className="grid grid-cols-2 items-center gap-16 max-[800px]:grid-cols-1">
-        <VideoPlaceholder label={first.videoLabel} />
+        <YouTubeVideo url={first.videoUrl} title={first.videoLabel} />
         <Editorial interview={first} />
       </div>
       <div className="my-[100px] grid grid-cols-2 items-center gap-16 max-[800px]:grid-cols-1">
         <Editorial interview={second} />
-        <VideoPlaceholder label={second.videoLabel} />
+        <YouTubeVideo url={second.videoUrl} title={second.videoLabel} />
       </div>
-      <VideoPlaceholder
-        label={full.videoLabel}
+      <YouTubeVideo
+        url={full.videoUrl}
+        title={full.videoLabel}
         className="min-h-[680px] max-[700px]:min-h-[420px]"
       />
     </section>
@@ -38,6 +39,9 @@ function Editorial({
 }) {
   return (
     <div>
+      <p className="mb-6 text-[9px] tracking-[5px] text-black/30">
+        {interview.index}
+      </p>
       <h2 className="max-w-[570px] text-[29px] leading-[1.2] font-bold tracking-[-1px]">
         {interview.title}
       </h2>
