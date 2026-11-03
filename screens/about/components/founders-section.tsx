@@ -49,7 +49,6 @@ export function FoundersSection({ content }: { content: AboutContent["founders"]
           <Image className="object-cover" src={content.imageUrl} alt="Fundadores de Design HOF" fill sizes="(max-width:850px) 100vw,50vw" />
         </div>
         <div className={`flex flex-col justify-center bg-[#090909] px-[clamp(42px,5vw,84px)] py-16 text-white transition-[opacity,transform] delay-100 duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] max-[600px]:px-6 ${isInView ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"}`}>
-          <p className="mb-10 text-[9px] tracking-[5px] text-white/24">02</p>
           <div className="grid grid-cols-2 gap-8">
             {content.people.map((person, index) => (
               <div key={person.name} className={`transition-[opacity,transform] duration-700 ${isInView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`} style={{ transitionDelay: `${250 + index * 100}ms` }}>

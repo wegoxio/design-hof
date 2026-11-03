@@ -14,7 +14,6 @@ export function AboutScreen() {
       <FoundersSection content={aboutContent.founders} />
       <InterviewsSection interviews={aboutContent.interviews} />
       <LegacySection content={aboutContent.legacy} />
-      <VisitSection />
     </>
   );
 }

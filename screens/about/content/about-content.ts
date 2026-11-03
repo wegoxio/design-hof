@@ -3,11 +3,12 @@ import type { AboutContent } from "../types/about";
 export const aboutContent: AboutContent = {
   hero: { eyebrow: "Sobre nosotros", title: "Sobre DESIGN HOF", imageUrl: "/about/hero/about-hero-01.png" },
   introduction: {
-    lead: "Somos DESIGN HOF, una tienda de diseño que ofrece una propuesta integral de mobiliario, cocinas, baños, clósets y revestimientos de estilo contemporáneo, atemporal y sofisticado.",
+    firstLane: "Somos DESIGN HOF,",
+    secondLane: "Ofrecemos asesoría de diseño e interiorismo para desarrollar soluciones particulares, residenciales y comerciales.",
     paragraphs: [
       "Nuestra propuesta se caracteriza por el uso de líneas puras, propias del norte de Europa, para crear espacios que trasciendan y brinden un verdadero placer.",
       "Nuestros clientes son la fuerza de inspiración para personalizar propuestas creativas y auténticas, con espacios sofisticados caracterizados por el buen gusto y la estética funcional.",
-      "Somos DESIGN HOF, un equipo de amplia trayectoria que ofrece soluciones integrales y personalizables de diseño. Brindamos acompañamiento a nuestros clientes para desarrollar soluciones de interiorismo particulares, residenciales y comerciales.",
+      "Somos DESIGN HOF, un equipo de amplia trayectoria que ofrece soluciones integrales y personalizables de diseño. Ofrecemos asesoría de diseño e interiorismo para desarrollar soluciones particulares, residenciales y comerciales.",
       "Nos enorgullece representar un portafolio de reconocidas marcas del norte de Europa, cuidadosamente seleccionadas para garantizar la calidad artesanal de cada detalle.",
     ],
     brochureHref: "/brochure-design-hof.pdf",

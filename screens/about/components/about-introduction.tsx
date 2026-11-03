@@ -14,14 +14,11 @@ export function AboutIntroduction({ content }: { content: AboutContent["introduc
       >
         <div>
           <h2 className="max-w-[510px] text-[23px] leading-[1.42] font-bold tracking-[-.75px] max-[600px]:text-[20px]">
-            {content.lead}
+            {content.firstLane}
           </h2>
-          <a
-            className="mt-9 inline-flex min-h-[43px] items-center border border-black/65 px-7 text-[9px] font-medium tracking-[3.5px] uppercase transition-[background-color,color,transform] duration-500 hover:-translate-y-0.5 hover:bg-black hover:text-white"
-            href={content.brochureHref}
-          >
-            Brochure Design HOF
-          </a>
+          <h2 className="max-w-[510px] text-[23px] leading-[1.42] font-bold tracking-[-.75px] max-[600px]:text-[20px]">
+            {content.secondLane}
+          </h2>
         </div>
         <div className="max-w-[690px] space-y-6 text-[13px] leading-[1.7] font-normal text-black/40">
           {content.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
