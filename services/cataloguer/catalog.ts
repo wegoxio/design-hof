@@ -30,8 +30,8 @@ export async function getCatalogProductPage(variant: CatalogVariant, options: Ca
     categorySlug: options.categorySlug,
     inStock: options.filter === 'stock' ? true : undefined,
     hasSalePrice: options.filter === 'special' ? true : undefined,
-    sortBy: sort === 'featured' ? 'createdAt' : 'price',
-    sortDirection: sort === 'price-asc' ? 'asc' : 'desc',
+    sortBy: sort === 'featured' ? 'catalogue' : 'price',
+    sortDirection: sort === 'price-desc' ? 'desc' : 'asc',
   });
   if (response.totalPages > 0 && response.page > response.totalPages) {
     response = await cataloguerFetch<CataloguerPage<CataloguerProduct>>('products', {
@@ -42,8 +42,8 @@ export async function getCatalogProductPage(variant: CatalogVariant, options: Ca
       categorySlug: options.categorySlug,
       inStock: options.filter === 'stock' ? true : undefined,
       hasSalePrice: options.filter === 'special' ? true : undefined,
-      sortBy: sort === 'featured' ? 'createdAt' : 'price',
-      sortDirection: sort === 'price-asc' ? 'asc' : 'desc',
+      sortBy: sort === 'featured' ? 'catalogue' : 'price',
+      sortDirection: sort === 'price-desc' ? 'desc' : 'asc',
     });
   }
   return {
