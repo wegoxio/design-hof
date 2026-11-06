@@ -156,7 +156,7 @@ export function PromotionalPopup({ content }: PromotionalPopupProps) {
               aria-hidden="true"
             />
             <Image
-              className="size-28 bg-[#111] p-2 max-[740px]:size-24"
+              className="size-28 object-contain max-[740px]:size-24"
               src="/shared/brand/LOGO_H1_AMARILLO.svg"
               alt="H1 brand logo"
               width={1500}
