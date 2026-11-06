@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
-import { companyLinks, furnitureLinks, legalLinks, type FooterLink } from "./footer-data";
+import { companyLinks, legalLinks, type FooterLink } from "./footer-data";
 import { NewsletterForm } from "./newsletter-form";
+import type { HeaderMerchandisingLink } from "@/services/cataloguer/types";
 
 function FooterLinks({ title, links }: { title: string; links: FooterLink[] }) {
   return (
@@ -17,7 +18,15 @@ function SocialIcon({ children, href, label }: { children: React.ReactNode; href
   return <a className="grid size-5 place-items-center text-white/24 transition-[color,transform] duration-400 hover:-translate-y-0.5 hover:text-white" href={href} aria-label={label} target="_blank" rel="noreferrer">{children}</a>;
 }
 
-export function SiteFooter() {
+export function SiteFooter({ merchandisingLinks }: { merchandisingLinks: HeaderMerchandisingLink[] }) {
+  const seasonalLink = merchandisingLinks.find((link) => link.kind === "new" || link.kind === "coming");
+  const specialLink = merchandisingLinks.find((link) => link.kind === "special");
+  const furnitureLinks: FooterLink[] = [
+    ...(seasonalLink ? [{ label: seasonalLink.label, href: seasonalLink.href }] : []),
+    { label: "Mobiliario", href: "/mobiliario" },
+    { label: "Mobiliario H1", href: "/mobiliario-h1" },
+    ...(specialLink ? [{ label: specialLink.label, href: specialLink.href }] : []),
+  ];
   return (
     <footer className="mt-auto bg-[#090909] px-[clamp(28px,4vw,58px)] pt-[88px] pb-10 text-white max-[767px]:pt-14">
       <div className="mx-auto max-w-[1600px]">

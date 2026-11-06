@@ -9,6 +9,7 @@ import type {
   ProductDetail,
 } from "../types/catalog";
 import { ProductCard } from "./product-card";
+import { productWhatsAppUrl } from "@/services/whatsapp";
 
 const money = new Intl.NumberFormat("es-ES", {
   style: "currency",
@@ -89,6 +90,9 @@ export function ProductDetailView({
       ]
     : product.gallery;
   const hasVariations = product.variations.length > 0;
+  const displayedStock = selectedVariation?.availableQuantity ?? product.availableQuantity;
+  const detailPath = `/mobiliario/${product.slug}${variant === "h1" ? "?catalogo=h1" : variant === "merchandising" ? "?catalogo=merchandising" : ""}`;
+  const whatsappUrl = productWhatsAppUrl(product.name, detailPath);
 
   return (
     <div className="bg-[#f8f8f6] text-[#111]">
@@ -176,16 +180,17 @@ export function ProductDetailView({
             {product.name}
           </h1>
           {product.manufacturerCode && (
-            <p className="mt-2 text-[9px] font-medium tracking-[3px] text-black/30 uppercase">
-              {product.manufacturerCode}
-            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] uppercase">
+              <span className="font-medium tracking-[2px] text-black/35">Código interno</span>
+              <span className="font-semibold tracking-[1.2px] text-black/75">{product.manufacturerCode}</span>
+            </div>
           )}
+          <div className="mt-5 flex items-center gap-2 text-[11px] font-medium tracking-[.5px] text-black/65">
+            <span className={`size-2 rounded-full ${product.trackInventory && displayedStock <= 0 ? "bg-amber-500" : "bg-emerald-500"}`} aria-hidden="true" />
+            <span>{product.trackInventory ? `Stock disponible: ${displayedStock}` : "Stock disponible"}</span>
+          </div>
           <p className="mt-7 flex items-baseline gap-3 text-[22px] font-bold">
-            <span>
-              {displayedPrice === null
-                ? "Consultar precio"
-                : money.format(displayedPrice)}
-            </span>
+            {displayedPrice === null ? <a href={whatsappUrl} target="_blank" rel="noreferrer" className="border-b border-black/30 pb-1 text-[12px] font-semibold tracking-[2px] text-black/70 uppercase transition hover:border-[#25d366] hover:text-[#128c4a]">Más información →</a> : <span>{money.format(displayedPrice)}</span>}
             {displayedPreviousPrice &&
               displayedPrice !== null &&
               displayedPreviousPrice > displayedPrice && (
@@ -262,15 +267,17 @@ export function ProductDetailView({
             </fieldset>
           )}
 
-          <Link
-            href="/contacto"
+          <a
+            href={displayedPrice === null ? whatsappUrl : "/contacto"}
+            target={displayedPrice === null ? "_blank" : undefined}
+            rel={displayedPrice === null ? "noreferrer" : undefined}
             className="group mt-8 flex min-h-[54px] items-center justify-center gap-4 bg-[#0b0b0a] px-6 text-[9px] font-medium tracking-[3px] text-white uppercase transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(0,0,0,.16)]"
           >
-            Consultar producto{" "}
+            {displayedPrice === null ? "Más información por WhatsApp" : "Consultar producto"}{" "}
             <span className="transition-transform duration-500 group-hover:translate-x-1.5">
               →
             </span>
-          </Link>
+          </a>
 
           <div className="mt-9 border-t border-black/[.08]">
             {panels.map((panel) => {

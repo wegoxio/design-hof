@@ -23,6 +23,7 @@ export type ProductVariation = {
   imageUrl?: string;
   imageDisplayMode?: "contain" | "cover";
   available: boolean;
+  availableQuantity: number;
 };
 
 export type CatalogCategory = {
@@ -56,6 +57,8 @@ export type CatalogPageState = {
 
 export type ProductDetail = CatalogProduct & {
   manufacturerCode: string;
+  trackInventory: boolean;
+  availableQuantity: number;
   collection?: string;
   description: string;
   features: string[];

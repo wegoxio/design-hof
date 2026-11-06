@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { getHeaderMerchandisingLinks } from "@/services/cataloguer/catalog";
 import { CataloguerRequestError } from "@/services/cataloguer/client";
+import { WhatsAppFloatingButton } from "@/components/whatsapp-floating-button";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -56,7 +57,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       <body className="m-0 flex min-h-full min-w-80 flex-col bg-[#f5f5f3] text-[#1d1d1b]">
         <SiteHeader merchandisingLinks={merchandisingLinks} />
         <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <WhatsAppFloatingButton />
+        <SiteFooter merchandisingLinks={merchandisingLinks} />
       </body>
     </html>
   );

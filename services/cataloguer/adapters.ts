@@ -133,6 +133,7 @@ function childToVariation(child: CataloguerChild): ProductVariation {
     imageUrl: child.primaryImage?.url,
     imageDisplayMode: displayMode(child.primaryImage?.displayMode),
     available: !child.trackInventory || child.availableQuantity > 0,
+    availableQuantity: child.availableQuantity,
   };
 }
 
@@ -177,19 +178,12 @@ export function toProductDetail(product: CataloguerProduct): ProductDetail {
   return {
     ...base,
     manufacturerCode: product.manufacturerCode || "",
+    trackInventory: product.trackInventory,
+    availableQuantity: product.availableQuantity,
     collection:
       product.category?.publicLabel || product.category?.name || undefined,
     description: product.description || "",
-    features: [
-      ...(product.trackInventory
-        ? [
-            product.availableQuantity > 0
-              ? `Stock disponible: ${product.availableQuantity}`
-              : "Sin stock disponible",
-          ]
-        : []),
-      ...features,
-    ],
+    features,
     dimensions,
     colors: colors.map((color, index) => ({
       id: `color-${index + 1}`,
