@@ -19,9 +19,8 @@ export function ProductCard({
     ? { label: "New In", className: "bg-[#111] text-white" }
     : product.tags.includes("special")
       ? { label: "Special Price", className: "bg-h1 text-black" }
-      : product.tags.includes("stock")
-        ? { label: "Stock", className: "bg-white text-black" }
-        : null;
+      : null;
+  const isH1 = variant === "h1" || product.tags.includes("h1");
 
   return (
     <article className="group min-w-0 opacity-100 transition-[opacity,transform] duration-700 starting:translate-y-6 starting:opacity-0">
@@ -50,6 +49,17 @@ export function ProductCard({
               className={`absolute top-3 left-3 px-2.5 py-1.5 text-[7px] font-bold tracking-[.8px] uppercase shadow-[0_4px_14px_rgba(0,0,0,.08)] transition-transform duration-500 group-hover:-translate-y-px ${status.className}`}
             >
               {status.label}
+            </span>
+          )}
+          {isH1 && (
+            <span className="absolute top-3 right-3 flex h-10 w-14 items-center justify-center bg-white/94 px-2 shadow-[0_4px_14px_rgba(0,0,0,.08)] backdrop-blur-sm transition-transform duration-500 group-hover:-translate-y-px">
+              <Image
+                src="/shared/brand/LOGO_H1.svg"
+                alt="H1"
+                width={200}
+                height={200}
+                className="h-8 w-8 object-contain"
+              />
             </span>
           )}
         </div>

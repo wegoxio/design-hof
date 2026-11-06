@@ -6,13 +6,24 @@ export function AllianzScreen() {
   return (
     <div className="bg-[#f7f7f5] text-[#0d0d0b]">
       <section className="bg-[#0d0d0b] px-8 pb-28 pt-44 text-white max-[800px]:px-6 max-[800px]:pb-16 max-[800px]:pt-24" aria-labelledby="allianz-title">
-        <div className="mx-auto grid max-w-[1376px] grid-cols-2 items-end gap-20 max-[800px]:grid-cols-1 max-[800px]:gap-12">
+        <div className="mx-auto grid max-w-[1376px] grid-cols-[minmax(300px,0.8fr)_minmax(0,1.2fr)] items-start gap-20 max-[900px]:grid-cols-1 max-[900px]:gap-12">
           <div>
             <p className="text-[12px] font-medium tracking-[5.4px] text-white/30 uppercase">Programa de Alianzas</p>
             <h1 id="allianz-title" className="sr-only">Allianz Design HOF</h1>
             <Image className="mt-8 h-auto w-[302px] brightness-0 invert" src="/allianz/allianz-design-hof.png" alt="Allianz Design HOF" width={1079} height={422} priority />
           </div>
-          <blockquote className="max-w-[548px] text-[20px] leading-8 font-normal text-white/65 max-[800px]:text-[17px] max-[800px]:leading-7">“Para nosotros es un placer trabajar y crear alianzas con profesionales del mundo del Diseño de Interiores.”</blockquote>
+          <div className="max-w-[720px] space-y-5 text-[17px] leading-[1.75] font-normal text-white/68 max-[800px]:text-[15px] max-[800px]:leading-7">
+            <p className="text-[22px] leading-[1.5] text-white max-[800px]:text-[19px]">
+              Para nosotros es un placer trabajar y crear alianzas con profesionales del interiorismo y la arquitectura.
+            </p>
+            <p>Allianz es nuestro programa de alianzas con arquitectos, diseñadores de interiores, decoradores y constructores, a través del cual trabajamos en conjunto para brindar las mejores soluciones y hacer realidad los requerimientos de cada cliente, ofreciendo a nuestros aliados un atractivo esquema de beneficios, comisiones y respaldo operativo.</p>
+            <p>Contamos con más de 20 años de experiencia desarrollando tanto proyectos residenciales como de gran escala.</p>
+            <p>Ofrecemos atención personalizada, visitas en sitio, información detallada de disponibilidad de mobiliario y total dedicación para adaptar cada propuesta a las necesidades del proyecto.</p>
+            <p>Presentamos nuestras propuestas de diseño a través de planos, renders y moodboards para facilitar la visualización del espacio.</p>
+            <p>Nuestro acompañamiento es integral: desde la conceptualización hasta la instalación final y supervisión en sitio.</p>
+            <p>Si eres profesional del diseño, contáctanos y descubre los beneficios de formar parte de Allianz.</p>
+            <p className="pt-2 text-white">¡Estaremos encantados de trabajar juntos!</p>
+          </div>
         </div>
       </section>
 
