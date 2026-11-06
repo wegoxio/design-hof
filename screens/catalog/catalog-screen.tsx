@@ -19,5 +19,7 @@ export function CatalogScreen({ copy, categories, products, state, variant, unav
     router.push(`${pathname}${next.size ? `?${next}` : ""}`, { scroll: false });
   };
 
-  return <><CatalogHero copy={copy} /><CatalogCategories categories={categories} activeId={state.categoryId} onSelect={selectCategory} /><ProductsCatalog products={products} state={state} variant={variant} unavailable={unavailable} /></>;
+  const productSetKey = `${variant}:${state.categoryId}:${state.categorySlug ?? ""}:${state.filter}:${state.sort}`;
+
+  return <><CatalogHero copy={copy} /><CatalogCategories categories={categories} activeId={state.categoryId} onSelect={selectCategory} /><ProductsCatalog key={productSetKey} products={products} state={state} variant={variant} unavailable={unavailable} /></>;
 }

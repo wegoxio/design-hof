@@ -46,6 +46,7 @@ export type CatalogSort = "featured" | "price-asc" | "price-desc";
 
 export type CatalogPageState = {
   categoryId: string;
+  categorySlug?: string;
   filter: CatalogFilter;
   sort: CatalogSort;
   page: number;
