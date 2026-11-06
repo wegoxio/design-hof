@@ -93,7 +93,9 @@ export function SiteHeader({ merchandisingLinks }: { merchandisingLinks: HeaderM
     { label: "Colección", href: "/mobiliario?coleccion=collection" },
     { label: "Proyectos", href: "/proyectos" },
   ];
-  const secondaryNavigation = [
+  const aboutNavigation = [
+    { label: "Sobre nosotros", href: "/nosotros" },
+    { label: "Nuestras marcas", href: "/nuestras-marcas" },
     { label: "Allianz", href: "/allianz" },
     { label: "Smart Modull", href: "/smart-modull" },
     { label: "Contacto", href: "/contacto" },
@@ -102,7 +104,7 @@ export function SiteHeader({ merchandisingLinks }: { merchandisingLinks: HeaderM
     <Link className={linkClass(pathname === href)} href={href} key={href} aria-current={pathname === href ? "page" : undefined} onClick={() => setIsOpen(false)}>{label}</Link>
   );
 
-  const isAboutActive = pathname === "/nosotros" || pathname === "/nuestras-marcas";
+  const isAboutActive = aboutNavigation.some((item) => pathname === item.href);
 
   return (
     <header className="sticky top-0 z-50 h-[80px] w-full border-b border-black/8 bg-white/96 backdrop-blur-2xl max-[930px]:h-[76px]">
@@ -134,11 +136,9 @@ export function SiteHeader({ merchandisingLinks }: { merchandisingLinks: HeaderM
               role="menu"
               className={`absolute top-full left-1/2 w-[255px] -translate-x-1/2 border border-black/8 bg-white shadow-[0_18px_45px_rgba(0,0,0,.1)] transition-[opacity,transform,visibility] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isAboutOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}`}
             >
-              <Link role="menuitem" href="/nosotros" onClick={() => setIsAboutOpen(false)} className="flex min-h-[61px] items-center border-b border-black/8 px-7 text-[12px] font-medium tracking-[1.3px] text-black uppercase transition-[background-color,padding] duration-500 hover:bg-black/[.025] hover:pl-8">Sobre nosotros</Link>
-              <Link role="menuitem" href="/nuestras-marcas" onClick={() => setIsAboutOpen(false)} className="flex min-h-[61px] items-center px-7 text-[12px] font-medium tracking-[1.3px] text-black uppercase transition-[background-color,padding] duration-500 hover:bg-black/[.025] hover:pl-8">Nuestras marcas</Link>
+              {aboutNavigation.map((item) => <Link role="menuitem" href={item.href} key={item.href} onClick={() => setIsAboutOpen(false)} className="flex min-h-[57px] items-center border-b border-black/8 px-7 text-[12px] font-medium tracking-[1.3px] text-black uppercase transition-[background-color,padding] duration-500 last:border-b-0 hover:bg-black/[.025] hover:pl-8">{item.label}</Link>)}
             </div>
           </div>
-          {secondaryNavigation.map(renderLink)}
         </nav>
 
         <div className="flex items-center justify-end gap-[15px] justify-self-end">
@@ -153,8 +153,7 @@ export function SiteHeader({ merchandisingLinks }: { merchandisingLinks: HeaderM
         <nav id="mobile-navigation" className="fixed inset-x-0 top-[80px] hidden max-h-[calc(100svh-80px)] flex-col overflow-y-auto border-b border-[#d8d8d4] bg-white px-5 py-[18px] opacity-100 transition-opacity duration-300 starting:opacity-0 max-[1179px]:flex max-[930px]:top-[76px] max-[930px]:max-h-[calc(100svh-76px)]" aria-label="Navegación móvil">
           {primaryNavigation.map(renderLink)}
           <button type="button" className={`${linkClass(isAboutActive)} w-full border-0 bg-transparent p-0 text-left font-[inherit]`} aria-expanded={isAboutOpen} onClick={() => setIsAboutOpen((open) => !open)}>Nosotros</button>
-          <div className={`grid overflow-hidden pl-5 transition-[grid-template-rows,opacity] duration-500 ${isAboutOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}><div className="min-h-0"><Link className="flex min-h-11 items-center border-b border-[#eeeeeb] text-[11px] tracking-[1.4px] uppercase" href="/nosotros" onClick={() => { setIsOpen(false); setIsAboutOpen(false); }}>Sobre nosotros</Link><Link className="flex min-h-11 items-center border-b border-[#eeeeeb] text-[11px] tracking-[1.4px] uppercase" href="/nuestras-marcas" onClick={() => { setIsOpen(false); setIsAboutOpen(false); }}>Nuestras marcas</Link></div></div>
-          {secondaryNavigation.map(renderLink)}
+          <div className={`grid overflow-hidden pl-5 transition-[grid-template-rows,opacity] duration-500 ${isAboutOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}><div className="min-h-0">{aboutNavigation.map((item) => <Link key={item.href} className="flex min-h-11 items-center border-b border-[#eeeeeb] text-[11px] tracking-[1.4px] uppercase last:border-b-0" href={item.href} onClick={() => { setIsOpen(false); setIsAboutOpen(false); }}>{item.label}</Link>)}</div></div>
           <div className="flex gap-2.5 pt-5"><HeaderActions mobile onSearch={() => { setIsOpen(false); setIsSearchOpen(true); }} /></div>
         </nav>
       )}
