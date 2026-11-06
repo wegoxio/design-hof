@@ -1,6 +1,6 @@
 import { CatalogScreen } from "@/screens/catalog/catalog-screen";
 import { getCatalogCategories, getCatalogProductPage } from "@/services/cataloguer/catalog";
-import { catalogCopy } from "@/screens/catalog/content/catalog-copy";
+import { catalogCopyForCollection } from "@/screens/catalog/content/catalog-copy";
 import type { CatalogFilter, CatalogSort } from "@/screens/catalog/types/catalog";
 import { CataloguerRequestError } from "@/services/cataloguer/client";
 
@@ -35,5 +35,5 @@ export default async function FurniturePage({ searchParams }: PageProps<"/mobili
       console.error("Cataloguer unavailable while loading general products", error);
     }
   }
-  return <CatalogScreen copy={catalogCopy.general} categories={categories} products={result.items} state={{ categoryId, filter, sort, page: result.page, total: result.total, totalPages: result.totalPages }} variant={catalogueVariant} unavailable={unavailable} />;
+  return <CatalogScreen copy={catalogCopyForCollection(categorySlug)} categories={categories} products={result.items} state={{ categoryId, filter, sort, page: result.page, total: result.total, totalPages: result.totalPages }} variant={catalogueVariant} unavailable={unavailable} />;
 }

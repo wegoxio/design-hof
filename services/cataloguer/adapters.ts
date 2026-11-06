@@ -44,6 +44,9 @@ function splitValue(value: string | null): string[] {
 }
 
 function tags(product: CataloguerProduct): CatalogProduct["tags"] {
+  const directCategorySlugs = new Set(
+    product.categories.map((category) => category.slug),
+  );
   const paths = product.categories.flatMap((category) => [
     category.slug,
     ...category.ancestors.map((item) => item.slug),
@@ -55,7 +58,11 @@ function tags(product: CataloguerProduct): CatalogProduct["tags"] {
     product.children.some((child) => child.availableQuantity > 0)
   )
     result.push("stock");
-  if (paths.some((slug) => /new-in|novedad/.test(slug))) result.push("new");
+  // This badge is an explicit merchandising decision. Historical trees also
+  // contain slugs such as `mobiliario-h1-new-in-h1`; matching by substring or
+  // ancestor made legacy products look new. Only canonical direct membership
+  // may display NEW IN.
+  if (directCategorySlugs.has("new-in")) result.push("new");
   if (paths.some((slug) => /coleccion|collection/.test(slug)))
     result.push("collection");
   if (product.salePrice !== null && product.salePrice !== undefined)
