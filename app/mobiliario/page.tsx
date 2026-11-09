@@ -21,18 +21,20 @@ export default async function FurniturePage({ searchParams }: PageProps<"/mobili
   const filter: CatalogFilter = query.filtro === "stock" || query.filtro === "special" ? query.filtro : "all";
   const sort: CatalogSort = query.orden === "price-asc" || query.orden === "price-desc" ? query.orden : "featured";
   const categorySlug = typeof query.coleccion === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(query.coleccion) ? query.coleccion : undefined;
-  const catalogueVariant = categorySlug === "new-in" || categorySlug === "coming-soon" || categorySlug === "special-prices"
-    ? "merchandising"
-    : "general";
+  const catalogueVariant = categorySlug === "collection"
+    ? "collection"
+    : categorySlug === "new-in" || categorySlug === "coming-soon" || categorySlug === "special-prices"
+      ? "merchandising"
+      : "general";
   let result = { items: [], total: 0, page: 1, totalPages: 0 } as Awaited<ReturnType<typeof getCatalogProductPage>>;
   if (!unavailable) {
     try {
-      result = await getCatalogProductPage(catalogueVariant, { page: 1, limit: 16, group: categorySlug ? undefined : categoryId === "todas" ? undefined : categoryId, categorySlug, filter: filter === "all" ? undefined : filter, sort });
+      result = await getCatalogProductPage(catalogueVariant, { page: 1, limit: 16, group: categorySlug ? undefined : categoryId === "todas" ? undefined : categoryId, categorySlug: categorySlug === "collection" ? undefined : categorySlug, filter: filter === "all" ? undefined : filter, sort });
     } catch (error) {
       if (!(error instanceof CataloguerRequestError)) throw error;
       unavailable = true;
       console.error("Cataloguer unavailable while loading general products", error);
     }
   }
-  return <CatalogScreen copy={catalogCopyForCollection(categorySlug)} categories={categories} products={result.items} state={{ categoryId, categorySlug, filter, sort, page: result.page, total: result.total, totalPages: result.totalPages }} variant={catalogueVariant} unavailable={unavailable} />;
+  return <CatalogScreen copy={catalogCopyForCollection(categorySlug)} categories={catalogueVariant === "collection" ? [] : categories} products={result.items} state={{ categoryId: catalogueVariant === "collection" ? "todas" : categoryId, categorySlug, filter, sort, page: result.page, total: result.total, totalPages: result.totalPages }} variant={catalogueVariant} unavailable={unavailable} />;
 }

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { allianzBenefits, allianzPrinciples, allianzResources } from "./content/allianz-content";
+import { allianzBenefits, allianzResources } from "./content/allianz-content";
 import { AllianzRegisterForm } from "./components/allianz-register-form";
 
 export function AllianzScreen() {
@@ -11,31 +11,19 @@ export function AllianzScreen() {
             <p className="text-[12px] font-medium tracking-[5.4px] text-white/30 uppercase">Programa de Alianzas</p>
             <h1 id="allianz-title" className="sr-only">Allianz Design HOF</h1>
             <Image className="mt-8 h-auto w-[302px] brightness-0 invert" src="/allianz/allianz-design-hof.png" alt="Allianz Design HOF" width={1079} height={422} priority />
-          </div>
-          <div className="max-w-[720px] space-y-5 text-[17px] leading-[1.75] font-normal text-white/68 max-[800px]:text-[15px] max-[800px]:leading-7">
-            <p className="text-[22px] leading-[1.5] text-white max-[800px]:text-[19px]">
+            <p className="mt-14 max-w-[470px] text-[clamp(21px,2vw,30px)] leading-[1.35] tracking-[-.5px] text-white">
               Para nosotros es un placer trabajar y crear alianzas con profesionales del interiorismo y la arquitectura.
             </p>
+          </div>
+          <div className="max-w-[720px] space-y-6 text-[16px] leading-[1.72] font-normal text-white/68 max-[800px]:text-[15px] max-[800px]:leading-7">
             <p>Allianz es nuestro programa de alianzas con arquitectos, diseñadores de interiores, decoradores y constructores, a través del cual trabajamos en conjunto para brindar las mejores soluciones y hacer realidad los requerimientos de cada cliente, ofreciendo a nuestros aliados un atractivo esquema de beneficios, comisiones y respaldo operativo.</p>
             <p>Contamos con más de 20 años de experiencia desarrollando tanto proyectos residenciales como de gran escala.</p>
             <p>Ofrecemos atención personalizada, visitas en sitio, información detallada de disponibilidad de mobiliario y total dedicación para adaptar cada propuesta a las necesidades del proyecto.</p>
-            <p>Presentamos nuestras propuestas de diseño a través de planos, renders y moodboards para facilitar la visualización del espacio.</p>
+            <p className="border-y border-white/12 py-7 text-[clamp(20px,1.8vw,27px)] leading-[1.4] tracking-[-.35px] text-white">Presentamos nuestras propuestas de diseño a través de planos, renders y moodboards para facilitar la visualización del espacio.</p>
             <p>Nuestro acompañamiento es integral: desde la conceptualización hasta la instalación final y supervisión en sitio.</p>
             <p>Si eres profesional del diseño, contáctanos y descubre los beneficios de formar parte de Allianz.</p>
             <p className="pt-2 text-white">¡Estaremos encantados de trabajar juntos!</p>
           </div>
-        </div>
-      </section>
-
-      <section className="border-b border-black/9" aria-label="Nuestros principios">
-        <div className="mx-auto max-w-[1440px]">
-          {allianzPrinciples.map((principle) => (
-            <article className="grid grid-cols-[120px_320px_1fr] gap-12 border-b border-black/9 px-8 py-16 last:border-b-0 max-[900px]:grid-cols-[64px_1fr] max-[900px]:gap-x-6 max-[600px]:px-6 max-[600px]:py-11" key={principle.number}>
-              <span className="text-[12px] leading-[18px] text-[#888885]">{principle.number}</span>
-              <h2 className="text-[26px] leading-[1.5] font-bold tracking-[-.64px] max-[600px]:text-[22px]">{principle.title}</h2>
-              <p className="max-w-[640px] text-[16px] leading-[26px] text-[#888885] max-[900px]:col-start-2 max-[600px]:text-[14px] max-[600px]:leading-6">{principle.description}</p>
-            </article>
-          ))}
         </div>
       </section>
 

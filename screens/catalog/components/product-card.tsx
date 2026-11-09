@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { productWhatsAppUrl } from "@/services/whatsapp";
+import { formatUsd } from "@/services/money";
 import type { CatalogProduct, CatalogVariant } from "../types/catalog";
-
-const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 
 export function ProductCard({ product, variant = "general" }: { product: CatalogProduct; variant?: CatalogVariant }) {
   const status = product.tags.includes("new")
@@ -12,7 +11,7 @@ export function ProductCard({ product, variant = "general" }: { product: Catalog
       ? { label: "Special Price", className: "bg-h1 text-black" }
       : null;
   const isH1 = variant === "h1" || product.tags.includes("h1");
-  const detailPath = `/mobiliario/${product.slug}${variant === "h1" ? "?catalogo=h1" : variant === "merchandising" ? "?catalogo=merchandising" : ""}`;
+  const detailPath = `/mobiliario/${product.slug}${variant === "h1" ? "?catalogo=h1" : variant === "merchandising" ? "?catalogo=merchandising" : variant === "collection" ? "?catalogo=collection" : ""}`;
   const whatsappUrl = productWhatsAppUrl(product.name, detailPath);
 
   return (
@@ -31,7 +30,7 @@ export function ProductCard({ product, variant = "general" }: { product: Catalog
       {product.price === null ? (
         <a href={whatsappUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex min-h-9 items-center border-b border-black/35 text-[9px] font-semibold tracking-[1.6px] text-black/65 uppercase transition-[border-color,color] hover:border-[#25d366] hover:text-[#128c4a]">Más información <span className="ml-2" aria-hidden="true">→</span></a>
       ) : (
-        <div className="mt-1.5 flex gap-2 text-[12px] font-normal text-black/65"><span>{money.format(product.price)}</span>{product.previousPrice && <span className="text-black/35 line-through">{money.format(product.previousPrice)}</span>}</div>
+        <div className="mt-1.5 flex gap-2 text-[12px] font-normal text-black/65"><span>{formatUsd(product.price)}</span>{product.previousPrice && <span className="text-black/35 line-through">{formatUsd(product.previousPrice)}</span>}</div>
       )}
     </article>
   );

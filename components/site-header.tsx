@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { HeaderMerchandisingLink } from "@/services/cataloguer/types";
+import { formatUsd } from "@/services/money";
 
 type SearchResult = {
   id: string;
@@ -16,11 +17,6 @@ type SearchResult = {
   imageAlt: string;
 };
 
-const money = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 0,
-});
 
 const iconClass = "grid size-[34px] cursor-pointer place-items-center rounded-full border-0 bg-transparent p-0 text-[#1d1d1b] transition duration-200 hover:-translate-y-0.5 hover:bg-[#1d1d1b] hover:text-white [&_svg]:size-[18px]";
 
@@ -55,7 +51,7 @@ function ProductSearch({ onClose }: { onClose: () => void }) {
   return <div className="fixed inset-x-0 top-[80px] z-40 border-b border-black/10 bg-white px-5 py-5 shadow-[0_18px_35px_rgba(0,0,0,.08)] max-[930px]:top-[76px]"><div className="site-container"><div className="flex items-center gap-3 border-b border-black/15 pb-3"><SearchIcon /><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar productos" aria-label="Buscar productos" className="min-w-0 flex-1 border-0 bg-transparent text-base outline-none" /><button type="button" onClick={onClose} aria-label="Cerrar búsqueda" className="text-xl text-black/45">×</button></div>{query.length >= 2 && <div className="grid gap-1 pt-3">{loading && <p className="py-3 text-sm text-black/45">Buscando…</p>}{!loading && results.length === 0 && <p className="py-3 text-sm text-black/45">No encontramos productos.</p>}{results.map((product) => {
         const effectivePrice = product.salePrice ?? product.price;
         const hasSale = product.salePrice !== null && product.salePrice !== undefined && product.price > product.salePrice;
-        return <Link key={product.id} href={`/mobiliario/${product.slug}`} onClick={onClose} className="flex items-center gap-3 px-2 py-2 no-underline hover:bg-[#f5f5f2]"><span className="relative size-12 shrink-0 overflow-hidden bg-[#f3f3f0]">{product.imageUrl && <Image src={product.imageUrl} alt={product.imageAlt} fill sizes="48px" className="object-contain" />}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm text-black">{product.name}</span><span className="mt-0.5 flex items-center gap-2 text-xs text-black/60"><span>{effectivePrice > 0 ? money.format(effectivePrice) : "Consultar precio"}</span>{hasSale && <span className="text-black/35 line-through">{money.format(product.price)}</span>}</span></span></Link>;
+        return <Link key={product.id} href={`/mobiliario/${product.slug}`} onClick={onClose} className="flex items-center gap-3 px-2 py-2 no-underline hover:bg-[#f5f5f2]"><span className="relative size-12 shrink-0 overflow-hidden bg-[#f3f3f0]">{product.imageUrl && <Image src={product.imageUrl} alt={product.imageAlt} fill sizes="48px" className="object-contain" />}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm text-black">{product.name}</span><span className="mt-0.5 flex items-center gap-2 text-xs text-black/60"><span>{effectivePrice > 0 ? formatUsd(effectivePrice) : "Consultar precio"}</span>{hasSale && <span className="text-black/35 line-through">{formatUsd(product.price)}</span>}</span></span></Link>;
       })}</div>}</div></div>;
 }
 

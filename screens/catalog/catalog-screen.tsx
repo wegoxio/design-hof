@@ -21,5 +21,5 @@ export function CatalogScreen({ copy, categories, products, state, variant, unav
 
   const productSetKey = `${variant}:${state.categoryId}:${state.categorySlug ?? ""}:${state.filter}:${state.sort}`;
 
-  return <><CatalogHero copy={copy} /><CatalogCategories categories={categories} activeId={state.categoryId} onSelect={selectCategory} /><ProductsCatalog key={productSetKey} products={products} state={state} variant={variant} unavailable={unavailable} /></>;
+  return <><CatalogHero copy={copy} />{variant !== "collection" && <CatalogCategories categories={categories} activeId={state.categoryId} onSelect={selectCategory} />}<ProductsCatalog key={productSetKey} products={products} state={state} variant={variant} unavailable={unavailable} /></>;
 }

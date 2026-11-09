@@ -10,12 +10,8 @@ import type {
 } from "../types/catalog";
 import { ProductCard } from "./product-card";
 import { productWhatsAppUrl } from "@/services/whatsapp";
+import { formatUsd } from "@/services/money";
 
-const money = new Intl.NumberFormat("es-ES", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 0,
-});
 type Panel = "description" | "features" | "dimensions";
 
 export function ProductDetailView({
@@ -91,7 +87,7 @@ export function ProductDetailView({
     : product.gallery;
   const hasVariations = product.variations.length > 0;
   const displayedStock = selectedVariation?.availableQuantity ?? product.availableQuantity;
-  const detailPath = `/mobiliario/${product.slug}${variant === "h1" ? "?catalogo=h1" : variant === "merchandising" ? "?catalogo=merchandising" : ""}`;
+  const detailPath = `/mobiliario/${product.slug}${variant === "h1" ? "?catalogo=h1" : variant === "merchandising" ? "?catalogo=merchandising" : variant === "collection" ? "?catalogo=collection" : ""}`;
   const whatsappUrl = productWhatsAppUrl(product.name, detailPath);
 
   return (
@@ -190,12 +186,12 @@ export function ProductDetailView({
             <span>{product.trackInventory ? `Stock disponible: ${displayedStock}` : "Stock disponible"}</span>
           </div>
           <p className="mt-7 flex items-baseline gap-3 text-[22px] font-bold">
-            {displayedPrice === null ? <a href={whatsappUrl} target="_blank" rel="noreferrer" className="border-b border-black/30 pb-1 text-[12px] font-semibold tracking-[2px] text-black/70 uppercase transition hover:border-[#25d366] hover:text-[#128c4a]">Más información →</a> : <span>{money.format(displayedPrice)}</span>}
+            {displayedPrice === null ? <a href={whatsappUrl} target="_blank" rel="noreferrer" className="border-b border-black/30 pb-1 text-[12px] font-semibold tracking-[2px] text-black/70 uppercase transition hover:border-[#25d366] hover:text-[#128c4a]">Más información →</a> : <span>{formatUsd(displayedPrice)}</span>}
             {displayedPreviousPrice &&
               displayedPrice !== null &&
               displayedPreviousPrice > displayedPrice && (
                 <span className="text-sm font-normal text-black/35 line-through">
-                  {money.format(displayedPreviousPrice)}
+                  {formatUsd(displayedPreviousPrice)}
                 </span>
               )}
           </p>

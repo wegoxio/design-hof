@@ -8,6 +8,9 @@ import type { CataloguerCategory, CataloguerGroup, CataloguerGroupList, Catalogu
 function channelFor(variant: CatalogVariant) {
   if (variant === "h1") return process.env.CATALOGUER_H1_CHANNEL || "mobiliario-h1";
   if (variant === "merchandising") return process.env.CATALOGUER_MERCHANDISING_CHANNEL || "merchandising";
+  // Collection is the complete store catalogue. Omitting the channel keeps
+  // both ordinary and H1 products, irrespective of their current stock.
+  if (variant === "collection") return undefined;
   return process.env.CATALOGUER_GENERAL_CHANNEL || "mobiliario";
 }
 
@@ -22,28 +25,31 @@ export type CatalogProductPageOptions = {
 
 export async function getCatalogProductPage(variant: CatalogVariant, options: CatalogProductPageOptions) {
   const sort = options.sort ?? 'featured';
-  let response = await cataloguerFetch<CataloguerPage<CataloguerProduct>>('products', {
-    page: options.page,
-    limit: options.limit,
+  const isSellableChannel = variant === 'general' || variant === 'h1';
+  const productQuery = {
     channel: channelFor(variant),
     group: options.group,
     categorySlug: options.categorySlug,
-    inStock: options.filter === 'stock' ? true : undefined,
+    // Mobiliario is available inventory, not the archive. Collection is the
+    // complete published catalogue and deliberately receives neither filter.
+    minPrice: isSellableChannel ? 0.01 : undefined,
+    inStock: isSellableChannel || options.filter === 'stock' ? true : undefined,
     hasSalePrice: options.filter === 'special' ? true : undefined,
-    sortBy: sort === 'featured' ? 'catalogue' : 'price',
+    // Catalogue ranking belongs to one configured channel. Collection spans
+    // every channel, so its stable default is the publication chronology.
+    sortBy: sort === 'featured' ? (variant === 'collection' ? 'createdAt' : 'catalogue') : 'price',
     sortDirection: sort === 'price-desc' ? 'desc' : 'asc',
+  } as const;
+  let response = await cataloguerFetch<CataloguerPage<CataloguerProduct>>('products', {
+    page: options.page,
+    limit: options.limit,
+    ...productQuery,
   });
   if (response.totalPages > 0 && response.page > response.totalPages) {
     response = await cataloguerFetch<CataloguerPage<CataloguerProduct>>('products', {
       page: response.totalPages,
       limit: options.limit,
-      channel: channelFor(variant),
-      group: options.group,
-      categorySlug: options.categorySlug,
-      inStock: options.filter === 'stock' ? true : undefined,
-      hasSalePrice: options.filter === 'special' ? true : undefined,
-      sortBy: sort === 'featured' ? 'catalogue' : 'price',
-      sortDirection: sort === 'price-desc' ? 'desc' : 'asc',
+      ...productQuery,
     });
   }
   return {
@@ -143,7 +149,7 @@ export async function getCatalogProductDetail(slug: string, variant: CatalogVari
       // In a cross-catalogue collection we therefore cannot build a truthful
       // detail URL for them; hiding the strip is safer than linking to a
       // channel where the related product may not be published.
-      related: variant === "merchandising" ? [] : response.data.relatedProducts.slice(0, 5).map(relatedToCatalogProduct),
+      related: variant === "merchandising" || variant === "collection" ? [] : response.data.relatedProducts.slice(0, 5).map(relatedToCatalogProduct),
     };
   } catch (error) {
     if (error instanceof Error && "status" in error && (error as { status?: number }).status === 404) return null;
