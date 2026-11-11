@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useInView } from "@/screens/home/hooks/use-in-view";
 import type { ProjectDetailContent, ProjectDetailStat } from "../types/gran-scale";
@@ -38,7 +39,16 @@ export function ProjectDetailIntroduction({ content }: { content: ProjectDetailC
         <h2 className="text-[clamp(22px,2.3vw,32px)] font-semibold tracking-[-.8px]">{content.explorationTitle}</h2>
         <p className="mt-3 max-w-[720px] text-[13px] leading-6 text-black/45">{content.explorationDescription}</p>
         <ul className="mt-8 grid grid-cols-3 gap-2 max-[850px]:grid-cols-2 max-[520px]:grid-cols-1" aria-label="Tipos de proyecto">
-          {content.filters.map((filter) => <li key={filter}><a href={`#${projectAnchor(filter)}`} className="flex min-h-12 items-center justify-center border border-black/10 bg-white px-4 text-center text-[9px] font-medium tracking-[.2px] text-black/62 transition hover:border-black hover:bg-black hover:text-white">{filter}</a></li>)}
+          {content.filters.map((filter) => {
+            const item = typeof filter === "string" ? { label: filter } : filter;
+            return (
+              <li key={item.label}>
+                <a href={`#${projectAnchor(item.label)}`} className="flex min-h-12 items-center justify-center border border-black/10 bg-white px-4 text-center text-[9px] font-medium tracking-[.2px] text-black/62 transition hover:border-black hover:bg-black hover:text-white">
+                  {item.imageUrl ? <Image src={item.imageUrl} alt={item.label} width={190} height={54} className="h-9 max-w-[82%] object-contain" /> : item.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
 

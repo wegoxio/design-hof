@@ -5,6 +5,11 @@ export type ProjectDetailStat = {
   label: string;
 };
 
+export type ProjectDetailFilter = {
+  label: string;
+  imageUrl?: string;
+};
+
 export type ProjectDetailContent = {
   breadcrumb: string[];
   hero: {
@@ -17,7 +22,7 @@ export type ProjectDetailContent = {
     eyebrow: string;
     explorationTitle: string;
     explorationDescription: string;
-    filters: string[];
+    filters: Array<string | ProjectDetailFilter>;
     description: string;
     ctaLabel: string;
     ctaHref: string;

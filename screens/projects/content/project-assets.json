@@ -1,0 +1,658 @@
+{
+    "private-homes":  {
+                          "apartamento-blick":  {
+                                                    "images":  [
+                                                                   "/projects/private-homes/projects/apartamento-blick/images/image-001.jpg",
+                                                                   "/projects/private-homes/projects/apartamento-blick/images/image-002.jpg",
+                                                                   "/projects/private-homes/projects/apartamento-blick/images/image-003.jpg",
+                                                                   "/projects/private-homes/projects/apartamento-blick/images/image-004.jpg",
+                                                                   "/projects/private-homes/projects/apartamento-blick/images/image-005.jpg",
+                                                                   "/projects/private-homes/projects/apartamento-blick/images/image-006.jpg"
+                                                               ]
+                                                },
+                          "apartamento-camuri":  {
+                                                     "images":  [
+                                                                    "/projects/private-homes/projects/apartamento-camuri/images/image-001.jpg",
+                                                                    "/projects/private-homes/projects/apartamento-camuri/images/image-002.jpg",
+                                                                    "/projects/private-homes/projects/apartamento-camuri/images/image-003.jpg",
+                                                                    "/projects/private-homes/projects/apartamento-camuri/images/image-004.jpg",
+                                                                    "/projects/private-homes/projects/apartamento-camuri/images/image-005.jpg",
+                                                                    "/projects/private-homes/projects/apartamento-camuri/images/image-006.jpg",
+                                                                    "/projects/private-homes/projects/apartamento-camuri/images/image-007.jpg",
+                                                                    "/projects/private-homes/projects/apartamento-camuri/images/image-008.jpg",
+                                                                    "/projects/private-homes/projects/apartamento-camuri/images/image-009.jpg"
+                                                                ]
+                                                 },
+                          "apartamento-lomas":  {
+                                                    "images":  [
+                                                                   "/projects/private-homes/projects/apartamento-lomas/images/image-001.jpg",
+                                                                   "/projects/private-homes/projects/apartamento-lomas/images/image-002.jpg",
+                                                                   "/projects/private-homes/projects/apartamento-lomas/images/image-003.jpg",
+                                                                   "/projects/private-homes/projects/apartamento-lomas/images/image-004.jpg",
+                                                                   "/projects/private-homes/projects/apartamento-lomas/images/image-005.jpg",
+                                                                   "/projects/private-homes/projects/apartamento-lomas/images/image-006.jpg",
+                                                                   "/projects/private-homes/projects/apartamento-lomas/images/image-007.jpg",
+                                                                   "/projects/private-homes/projects/apartamento-lomas/images/image-008.jpg"
+                                                               ]
+                                                },
+                          "aurea":  {
+                                        "images":  [
+                                                       "/projects/private-homes/projects/aurea/images/image-001.jpg",
+                                                       "/projects/private-homes/projects/aurea/images/image-002.png",
+                                                       "/projects/private-homes/projects/aurea/images/image-003.png",
+                                                       "/projects/private-homes/projects/aurea/images/image-004.jpg",
+                                                       "/projects/private-homes/projects/aurea/images/image-005.jpg",
+                                                       "/projects/private-homes/projects/aurea/images/image-006.jpg",
+                                                       "/projects/private-homes/projects/aurea/images/image-007.jpg"
+                                                   ]
+                                    },
+                          "biblioteca":  {
+                                             "images":  [
+                                                            "/projects/private-homes/projects/biblioteca/images/image-001.jpg",
+                                                            "/projects/private-homes/projects/biblioteca/images/image-002.jpg",
+                                                            "/projects/private-homes/projects/biblioteca/images/image-003.jpg",
+                                                            "/projects/private-homes/projects/biblioteca/images/image-004.jpg",
+                                                            "/projects/private-homes/projects/biblioteca/images/image-005.jpg"
+                                                        ]
+                                         },
+                          "casa-campo":  {
+                                             "images":  [
+                                                            "/projects/private-homes/projects/casa-campo/images/image-001.jpg",
+                                                            "/projects/private-homes/projects/casa-campo/images/image-002.jpg",
+                                                            "/projects/private-homes/projects/casa-campo/images/image-003.jpg",
+                                                            "/projects/private-homes/projects/casa-campo/images/image-004.jpg",
+                                                            "/projects/private-homes/projects/casa-campo/images/image-005.jpg",
+                                                            "/projects/private-homes/projects/casa-campo/images/image-006.jpg",
+                                                            "/projects/private-homes/projects/casa-campo/images/image-007.jpg"
+                                                        ]
+                                         },
+                          "casa-verde":  {
+                                             "images":  [
+                                                            "/projects/private-homes/projects/casa-verde/images/image-001.jpg",
+                                                            "/projects/private-homes/projects/casa-verde/images/image-002.jpg",
+                                                            "/projects/private-homes/projects/casa-verde/images/image-003.jpg",
+                                                            "/projects/private-homes/projects/casa-verde/images/image-004.jpg",
+                                                            "/projects/private-homes/projects/casa-verde/images/image-005.jpg",
+                                                            "/projects/private-homes/projects/casa-verde/images/image-006.jpg",
+                                                            "/projects/private-homes/projects/casa-verde/images/image-007.jpg",
+                                                            "/projects/private-homes/projects/casa-verde/images/image-008.jpg",
+                                                            "/projects/private-homes/projects/casa-verde/images/image-009.jpg",
+                                                            "/projects/private-homes/projects/casa-verde/images/image-010.jpg",
+                                                            "/projects/private-homes/projects/casa-verde/images/image-011.jpg",
+                                                            "/projects/private-homes/projects/casa-verde/images/image-012.jpg"
+                                                        ]
+                                         },
+                          "cocina-azul":  {
+                                              "images":  [
+                                                             "/projects/private-homes/projects/cocina-azul/images/image-001.jpg",
+                                                             "/projects/private-homes/projects/cocina-azul/images/image-002.jpg",
+                                                             "/projects/private-homes/projects/cocina-azul/images/image-003.jpg",
+                                                             "/projects/private-homes/projects/cocina-azul/images/image-004.jpg",
+                                                             "/projects/private-homes/projects/cocina-azul/images/image-005.jpg",
+                                                             "/projects/private-homes/projects/cocina-azul/images/image-006.jpg",
+                                                             "/projects/private-homes/projects/cocina-azul/images/image-007.jpg",
+                                                             "/projects/private-homes/projects/cocina-azul/images/image-008.jpg",
+                                                             "/projects/private-homes/projects/cocina-azul/images/image-009.jpg",
+                                                             "/projects/private-homes/projects/cocina-azul/images/image-010.jpg",
+                                                             "/projects/private-homes/projects/cocina-azul/images/image-011.jpg",
+                                                             "/projects/private-homes/projects/cocina-azul/images/image-012.jpg"
+                                                         ]
+                                          },
+                          "cocina-casa-natural":  {
+                                                      "images":  [
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-001.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-002.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-003.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-004.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-005.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-006.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-007.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-008.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-009.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-010.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-011.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-012.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-013.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-014.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-015.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-016.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-017.jpg",
+                                                                     "/projects/private-homes/projects/cocina-casa-natural/images/image-018.jpg"
+                                                                 ]
+                                                  },
+                          "cocina-greige":  {
+                                                "images":  [
+                                                               "/projects/private-homes/projects/cocina-greige/images/image-001.jpg",
+                                                               "/projects/private-homes/projects/cocina-greige/images/image-002.jpg",
+                                                               "/projects/private-homes/projects/cocina-greige/images/image-003.jpg",
+                                                               "/projects/private-homes/projects/cocina-greige/images/image-004.jpg"
+                                                           ]
+                                            },
+                          "cocina-gris":  {
+                                              "images":  [
+                                                             "/projects/private-homes/projects/cocina-gris/images/image-001.jpg",
+                                                             "/projects/private-homes/projects/cocina-gris/images/image-002.jpg",
+                                                             "/projects/private-homes/projects/cocina-gris/images/image-003.jpg",
+                                                             "/projects/private-homes/projects/cocina-gris/images/image-004.jpg",
+                                                             "/projects/private-homes/projects/cocina-gris/images/image-005.jpg",
+                                                             "/projects/private-homes/projects/cocina-gris/images/image-006.jpg",
+                                                             "/projects/private-homes/projects/cocina-gris/images/image-007.jpg"
+                                                         ]
+                                          },
+                          "cocina-gris-claro":  {
+                                                    "images":  [
+                                                                   "/projects/private-homes/projects/cocina-gris-claro/images/image-001.jpg",
+                                                                   "/projects/private-homes/projects/cocina-gris-claro/images/image-002.jpg",
+                                                                   "/projects/private-homes/projects/cocina-gris-claro/images/image-003.jpg",
+                                                                   "/projects/private-homes/projects/cocina-gris-claro/images/image-004.jpg",
+                                                                   "/projects/private-homes/projects/cocina-gris-claro/images/image-005.jpg",
+                                                                   "/projects/private-homes/projects/cocina-gris-claro/images/image-006.jpg",
+                                                                   "/projects/private-homes/projects/cocina-gris-claro/images/image-007.jpg",
+                                                                   "/projects/private-homes/projects/cocina-gris-claro/images/image-008.jpg",
+                                                                   "/projects/private-homes/projects/cocina-gris-claro/images/image-009.jpg",
+                                                                   "/projects/private-homes/projects/cocina-gris-claro/images/image-010.jpg"
+                                                               ]
+                                                },
+                          "cocina-latte":  {
+                                               "images":  [
+                                                              "/projects/private-homes/projects/cocina-latte/images/image-001.jpg",
+                                                              "/projects/private-homes/projects/cocina-latte/images/image-002.jpg",
+                                                              "/projects/private-homes/projects/cocina-latte/images/image-003.jpg",
+                                                              "/projects/private-homes/projects/cocina-latte/images/image-004.jpg",
+                                                              "/projects/private-homes/projects/cocina-latte/images/image-005.jpg",
+                                                              "/projects/private-homes/projects/cocina-latte/images/image-006.jpg",
+                                                              "/projects/private-homes/projects/cocina-latte/images/image-007.jpg",
+                                                              "/projects/private-homes/projects/cocina-latte/images/image-008.jpg"
+                                                          ]
+                                           },
+                          "cocina-lineal":  {
+                                                "images":  [
+                                                               "/projects/private-homes/projects/cocina-lineal/images/image-001.jpg",
+                                                               "/projects/private-homes/projects/cocina-lineal/images/image-002.jpg",
+                                                               "/projects/private-homes/projects/cocina-lineal/images/image-003.jpg",
+                                                               "/projects/private-homes/projects/cocina-lineal/images/image-004.jpg",
+                                                               "/projects/private-homes/projects/cocina-lineal/images/image-005.jpg",
+                                                               "/projects/private-homes/projects/cocina-lineal/images/image-006.jpg",
+                                                               "/projects/private-homes/projects/cocina-lineal/images/image-007.jpg"
+                                                           ]
+                                            },
+                          "cocina-negra":  {
+                                               "images":  [
+                                                              "/projects/private-homes/projects/cocina-negra/images/image-001.jpg",
+                                                              "/projects/private-homes/projects/cocina-negra/images/image-002.jpg",
+                                                              "/projects/private-homes/projects/cocina-negra/images/image-003.jpg",
+                                                              "/projects/private-homes/projects/cocina-negra/images/image-004.jpg",
+                                                              "/projects/private-homes/projects/cocina-negra/images/image-005.jpg",
+                                                              "/projects/private-homes/projects/cocina-negra/images/image-006.jpg"
+                                                          ]
+                                           },
+                          "cocina-sebucan":  {
+                                                 "images":  [
+                                                                "/projects/private-homes/projects/cocina-sebucan/images/image-001.jpg",
+                                                                "/projects/private-homes/projects/cocina-sebucan/images/image-002.jpg",
+                                                                "/projects/private-homes/projects/cocina-sebucan/images/image-003.jpg",
+                                                                "/projects/private-homes/projects/cocina-sebucan/images/image-004.jpg",
+                                                                "/projects/private-homes/projects/cocina-sebucan/images/image-005.jpg",
+                                                                "/projects/private-homes/projects/cocina-sebucan/images/image-006.jpg",
+                                                                "/projects/private-homes/projects/cocina-sebucan/images/image-007.jpg",
+                                                                "/projects/private-homes/projects/cocina-sebucan/images/image-008.jpg"
+                                                            ]
+                                             },
+                          "grau-kuche":  {
+                                             "images":  [
+                                                            "/projects/private-homes/projects/grau-kuche/images/image-001.jpg",
+                                                            "/projects/private-homes/projects/grau-kuche/images/image-002.jpg",
+                                                            "/projects/private-homes/projects/grau-kuche/images/image-003.jpg",
+                                                            "/projects/private-homes/projects/grau-kuche/images/image-004.jpg",
+                                                            "/projects/private-homes/projects/grau-kuche/images/image-005.jpg",
+                                                            "/projects/private-homes/projects/grau-kuche/images/image-006.jpg",
+                                                            "/projects/private-homes/projects/grau-kuche/images/image-007.jpg"
+                                                        ]
+                                         },
+                          "kids-playroom":  {
+                                                "images":  [
+                                                               "/projects/private-homes/projects/kids-playroom/images/image-001.jpg",
+                                                               "/projects/private-homes/projects/kids-playroom/images/image-002.jpg",
+                                                               "/projects/private-homes/projects/kids-playroom/images/image-003.jpg",
+                                                               "/projects/private-homes/projects/kids-playroom/images/image-004.jpg",
+                                                               "/projects/private-homes/projects/kids-playroom/images/image-005.jpg",
+                                                               "/projects/private-homes/projects/kids-playroom/images/image-006.jpg",
+                                                               "/projects/private-homes/projects/kids-playroom/images/image-007.jpg",
+                                                               "/projects/private-homes/projects/kids-playroom/images/image-008.jpg",
+                                                               "/projects/private-homes/projects/kids-playroom/images/image-009.jpg",
+                                                               "/projects/private-homes/projects/kids-playroom/images/image-010.jpg",
+                                                               "/projects/private-homes/projects/kids-playroom/images/image-011.jpg"
+                                                           ]
+                                            },
+                          "koncept":  {
+                                          "images":  [
+                                                         "/projects/private-homes/projects/koncept/images/image-001.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-002.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-003.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-004.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-005.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-006.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-007.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-008.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-009.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-010.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-011.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-012.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-013.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-014.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-015.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-016.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-017.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-018.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-019.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-020.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-021.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-022.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-023.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-024.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-025.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-026.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-027.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-028.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-029.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-030.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-031.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-032.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-033.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-034.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-035.jpg",
+                                                         "/projects/private-homes/projects/koncept/images/image-036.jpg"
+                                                     ]
+                                      },
+                          "marmor-haus":  {
+                                              "images":  [
+                                                             "/projects/private-homes/projects/marmor-haus/images/image-001.jpg",
+                                                             "/projects/private-homes/projects/marmor-haus/images/image-002.jpg",
+                                                             "/projects/private-homes/projects/marmor-haus/images/image-003.jpg",
+                                                             "/projects/private-homes/projects/marmor-haus/images/image-004.jpg",
+                                                             "/projects/private-homes/projects/marmor-haus/images/image-005.jpg",
+                                                             "/projects/private-homes/projects/marmor-haus/images/image-006.jpg",
+                                                             "/projects/private-homes/projects/marmor-haus/images/image-007.jpg"
+                                                         ]
+                                          },
+                          "proyecto-81":  {
+                                              "images":  [
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-001.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-002.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-003.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-004.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-005.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-006.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-007.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-008.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-009.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-010.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-011.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-012.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-013.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-014.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-015.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-016.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-017.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-018.jpg",
+                                                             "/projects/private-homes/projects/proyecto-81/images/image-019.jpg"
+                                                         ]
+                                          },
+                          "proyecto-alta":  {
+                                                "images":  [
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-001.png",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-002.png",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-003.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-004.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-005.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-006.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-007.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-008.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-009.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-010.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-011.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-012.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-013.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-014.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-015.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-016.jpg",
+                                                               "/projects/private-homes/projects/proyecto-alta/images/image-017.jpg"
+                                                           ]
+                                            },
+                          "proyecto-ava":  {
+                                               "images":  [
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-001.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-002.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-003.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-004.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-005.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-006.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-007.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-008.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-009.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-010.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-011.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-012.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-013.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-014.jpg",
+                                                              "/projects/private-homes/projects/proyecto-ava/images/image-015.jpg"
+                                                          ]
+                                           },
+                          "proyecto-b-w":  {
+                                               "images":  [
+                                                              "/projects/private-homes/projects/proyecto-b-w/images/image-001.jpg",
+                                                              "/projects/private-homes/projects/proyecto-b-w/images/image-002.jpg",
+                                                              "/projects/private-homes/projects/proyecto-b-w/images/image-003.jpg",
+                                                              "/projects/private-homes/projects/proyecto-b-w/images/image-004.jpg",
+                                                              "/projects/private-homes/projects/proyecto-b-w/images/image-005.jpg",
+                                                              "/projects/private-homes/projects/proyecto-b-w/images/image-006.jpg",
+                                                              "/projects/private-homes/projects/proyecto-b-w/images/image-007.jpg",
+                                                              "/projects/private-homes/projects/proyecto-b-w/images/image-008.jpg",
+                                                              "/projects/private-homes/projects/proyecto-b-w/images/image-009.jpg"
+                                                          ]
+                                           },
+                          "proyecto-freien":  {
+                                                  "images":  [
+                                                                 "/projects/private-homes/projects/proyecto-freien/images/image-001.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-freien/images/image-002.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-freien/images/image-003.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-freien/images/image-004.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-freien/images/image-005.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-freien/images/image-006.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-freien/images/image-007.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-freien/images/image-008.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-freien/images/image-009.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-freien/images/image-010.jpg"
+                                                             ]
+                                              },
+                          "proyecto-grun":  {
+                                                "images":  [
+                                                               "/projects/private-homes/projects/proyecto-grun/images/image-001.jpg",
+                                                               "/projects/private-homes/projects/proyecto-grun/images/image-002.jpg",
+                                                               "/projects/private-homes/projects/proyecto-grun/images/image-003.jpg",
+                                                               "/projects/private-homes/projects/proyecto-grun/images/image-004.jpg",
+                                                               "/projects/private-homes/projects/proyecto-grun/images/image-005.jpg",
+                                                               "/projects/private-homes/projects/proyecto-grun/images/image-006.jpg"
+                                                           ]
+                                            },
+                          "proyecto-h-4":  {
+                                               "images":  [
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-001.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-002.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-003.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-004.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-005.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-006.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-007.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-008.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-009.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-010.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-011.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-012.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-013.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-014.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-015.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-016.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-017.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-018.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-019.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-020.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-021.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-022.jpg",
+                                                              "/projects/private-homes/projects/proyecto-h-4/images/image-023.jpg"
+                                                          ]
+                                           },
+                          "proyecto-hubsch":  {
+                                                  "images":  [
+                                                                 "/projects/private-homes/projects/proyecto-hubsch/images/image-001.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-hubsch/images/image-002.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-hubsch/images/image-003.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-hubsch/images/image-004.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-hubsch/images/image-005.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-hubsch/images/image-006.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-hubsch/images/image-007.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-hubsch/images/image-008.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-hubsch/images/image-009.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-hubsch/images/image-010.jpg"
+                                                             ]
+                                              },
+                          "proyecto-nature":  {
+                                                  "images":  [
+                                                                 "/projects/private-homes/projects/proyecto-nature/images/image-001.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-nature/images/image-002.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-nature/images/image-003.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-nature/images/image-004.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-nature/images/image-005.jpg",
+                                                                 "/projects/private-homes/projects/proyecto-nature/images/image-006.jpg"
+                                                             ]
+                                              },
+                          "proyecto-talblick":  {
+                                                    "images":  [
+                                                                   "/projects/private-homes/projects/proyecto-talblick/images/image-001.jpg",
+                                                                   "/projects/private-homes/projects/proyecto-talblick/images/image-002.jpg",
+                                                                   "/projects/private-homes/projects/proyecto-talblick/images/image-003.jpg",
+                                                                   "/projects/private-homes/projects/proyecto-talblick/images/image-004.jpg",
+                                                                   "/projects/private-homes/projects/proyecto-talblick/images/image-005.jpg",
+                                                                   "/projects/private-homes/projects/proyecto-talblick/images/image-006.jpg",
+                                                                   "/projects/private-homes/projects/proyecto-talblick/images/image-007.jpg",
+                                                                   "/projects/private-homes/projects/proyecto-talblick/images/image-008.jpg",
+                                                                   "/projects/private-homes/projects/proyecto-talblick/images/image-009.jpg",
+                                                                   "/projects/private-homes/projects/proyecto-talblick/images/image-010.jpg",
+                                                                   "/projects/private-homes/projects/proyecto-talblick/images/image-011.jpg"
+                                                               ]
+                                                },
+                          "terraza-amarillo":  {
+                                                   "images":  [
+                                                                  "/projects/private-homes/projects/terraza-amarillo/images/image-001.jpg",
+                                                                  "/projects/private-homes/projects/terraza-amarillo/images/image-002.jpg",
+                                                                  "/projects/private-homes/projects/terraza-amarillo/images/image-003.jpg",
+                                                                  "/projects/private-homes/projects/terraza-amarillo/images/image-004.jpg",
+                                                                  "/projects/private-homes/projects/terraza-amarillo/images/image-005.jpg"
+                                                              ]
+                                               }
+                      },
+    "residential":  {
+                        "arubas-life":  {
+                                            "images":  [
+                                                           "/projects/residential/projects/arubas-life/images/image-001.jpg",
+                                                           "/projects/residential/projects/arubas-life/images/image-002.jpg",
+                                                           "/projects/residential/projects/arubas-life/images/image-003.jpg",
+                                                           "/projects/residential/projects/arubas-life/images/image-004.jpg",
+                                                           "/projects/residential/projects/arubas-life/images/image-005.jpg",
+                                                           "/projects/residential/projects/arubas-life/images/image-006.jpg"
+                                                       ],
+                                            "logo":  "/projects/residential/projects/arubas-life/logo.jpg"
+                                        },
+                        "azure":  {
+                                      "images":  [
+                                                     "/projects/residential/projects/azure/images/image-001.jpg",
+                                                     "/projects/residential/projects/azure/images/image-002.jpg",
+                                                     "/projects/residential/projects/azure/images/image-003.jpg",
+                                                     "/projects/residential/projects/azure/images/image-004.jpg"
+                                                 ],
+                                      "logo":  "/projects/residential/projects/azure/logo.jpg"
+                                  },
+                        "blue-residences":  {
+                                                "images":  [
+                                                               "/projects/residential/projects/blue-residences/images/image-001.jpg",
+                                                               "/projects/residential/projects/blue-residences/images/image-002.jpg",
+                                                               "/projects/residential/projects/blue-residences/images/image-003.jpg",
+                                                               "/projects/residential/projects/blue-residences/images/image-004.jpg",
+                                                               "/projects/residential/projects/blue-residences/images/image-005.jpg",
+                                                               "/projects/residential/projects/blue-residences/images/image-006.jpg",
+                                                               "/projects/residential/projects/blue-residences/images/image-007.jpg",
+                                                               "/projects/residential/projects/blue-residences/images/image-008.jpg",
+                                                               "/projects/residential/projects/blue-residences/images/image-009.jpg",
+                                                               "/projects/residential/projects/blue-residences/images/image-010.jpg",
+                                                               "/projects/residential/projects/blue-residences/images/image-011.jpg"
+                                                           ],
+                                                "logo":  "/projects/residential/projects/blue-residences/logo.jpg"
+                                            },
+                        "botaniko":  {
+                                         "images":  [
+                                                        "/projects/residential/projects/botaniko/images/image-001.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-002.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-003.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-004.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-005.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-006.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-007.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-008.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-009.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-010.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-011.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-012.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-013.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-014.jpg",
+                                                        "/projects/residential/projects/botaniko/images/image-015.jpg"
+                                                    ],
+                                         "logo":  "/projects/residential/projects/botaniko/logo.png"
+                                     },
+                        "costamar":  {
+                                         "images":  [
+                                                        "/projects/residential/projects/costamar/images/image-001.jpg",
+                                                        "/projects/residential/projects/costamar/images/image-002.jpg",
+                                                        "/projects/residential/projects/costamar/images/image-003.jpg",
+                                                        "/projects/residential/projects/costamar/images/image-004.jpg",
+                                                        "/projects/residential/projects/costamar/images/image-005.jpg"
+                                                    ],
+                                         "logo":  "/projects/residential/projects/costamar/logo.jpg"
+                                     },
+                        "harbour-house":  {
+                                              "images":  [
+                                                             "/projects/residential/projects/harbour-house/images/image-001.jpg",
+                                                             "/projects/residential/projects/harbour-house/images/image-002.jpg",
+                                                             "/projects/residential/projects/harbour-house/images/image-003.jpg",
+                                                             "/projects/residential/projects/harbour-house/images/image-004.jpg",
+                                                             "/projects/residential/projects/harbour-house/images/image-005.jpg",
+                                                             "/projects/residential/projects/harbour-house/images/image-006.jpg",
+                                                             "/projects/residential/projects/harbour-house/images/image-007.jpg",
+                                                             "/projects/residential/projects/harbour-house/images/image-008.jpg",
+                                                             "/projects/residential/projects/harbour-house/images/image-009.jpg"
+                                                         ],
+                                              "logo":  "/projects/residential/projects/harbour-house/logo.jpg"
+                                          },
+                        "manantiales":  {
+                                            "images":  [
+                                                           "/projects/residential/projects/manantiales/images/image-001.jpg",
+                                                           "/projects/residential/projects/manantiales/images/image-002.jpg",
+                                                           "/projects/residential/projects/manantiales/images/image-003.jpg",
+                                                           "/projects/residential/projects/manantiales/images/image-004.jpg"
+                                                       ]
+                                        },
+                        "premier-27":  {
+                                           "images":  [
+                                                          "/projects/residential/projects/premier-27/images/image-001.jpg",
+                                                          "/projects/residential/projects/premier-27/images/image-002.jpg",
+                                                          "/projects/residential/projects/premier-27/images/image-003.jpg",
+                                                          "/projects/residential/projects/premier-27/images/image-004.jpg",
+                                                          "/projects/residential/projects/premier-27/images/image-005.jpg",
+                                                          "/projects/residential/projects/premier-27/images/image-006.jpg",
+                                                          "/projects/residential/projects/premier-27/images/image-007.jpg",
+                                                          "/projects/residential/projects/premier-27/images/image-008.jpg",
+                                                          "/projects/residential/projects/premier-27/images/image-009.jpg",
+                                                          "/projects/residential/projects/premier-27/images/image-010.jpg",
+                                                          "/projects/residential/projects/premier-27/images/image-011.jpg",
+                                                          "/projects/residential/projects/premier-27/images/image-012.jpg",
+                                                          "/projects/residential/projects/premier-27/images/image-013.jpg",
+                                                          "/projects/residential/projects/premier-27/images/image-014.jpg"
+                                                      ],
+                                           "logo":  "/projects/residential/projects/premier-27/logo.png"
+                                       },
+                        "premier-las-lomas":  {
+                                                  "images":  [
+                                                                 "/projects/residential/projects/premier-las-lomas/images/image-001.jpg",
+                                                                 "/projects/residential/projects/premier-las-lomas/images/image-002.jpg",
+                                                                 "/projects/residential/projects/premier-las-lomas/images/image-003.jpg"
+                                                             ],
+                                                  "logo":  "/projects/residential/projects/premier-las-lomas/logo.png"
+                                              },
+                        "premier-terra":  {
+                                              "images":  [
+                                                             "/projects/residential/projects/premier-terra/images/image-001.jpg",
+                                                             "/projects/residential/projects/premier-terra/images/image-002.jpg",
+                                                             "/projects/residential/projects/premier-terra/images/image-003.jpg",
+                                                             "/projects/residential/projects/premier-terra/images/image-004.jpg",
+                                                             "/projects/residential/projects/premier-terra/images/image-005.jpg",
+                                                             "/projects/residential/projects/premier-terra/images/image-006.jpg"
+                                                         ],
+                                              "logo":  "/projects/residential/projects/premier-terra/logo.png"
+                                          },
+                        "quarzo":  {
+                                       "images":  [
+                                                      "/projects/residential/projects/quarzo/images/image-001.jpg",
+                                                      "/projects/residential/projects/quarzo/images/image-002.jpg",
+                                                      "/projects/residential/projects/quarzo/images/image-003.jpg",
+                                                      "/projects/residential/projects/quarzo/images/image-004.jpg",
+                                                      "/projects/residential/projects/quarzo/images/image-005.jpg",
+                                                      "/projects/residential/projects/quarzo/images/image-006.jpg",
+                                                      "/projects/residential/projects/quarzo/images/image-007.jpg",
+                                                      "/projects/residential/projects/quarzo/images/image-008.jpg",
+                                                      "/projects/residential/projects/quarzo/images/image-009.jpg",
+                                                      "/projects/residential/projects/quarzo/images/image-010.jpg",
+                                                      "/projects/residential/projects/quarzo/images/image-011.jpg"
+                                                  ],
+                                       "logo":  "/projects/residential/projects/quarzo/logo.png"
+                                   },
+                        "vista-frontera":  {
+                                               "images":  [
+                                                              "/projects/residential/projects/vista-frontera/images/image-001.jpg",
+                                                              "/projects/residential/projects/vista-frontera/images/image-002.jpg",
+                                                              "/projects/residential/projects/vista-frontera/images/image-003.jpg"
+                                                          ],
+                                               "logo":  "/projects/residential/projects/vista-frontera/logo.jpg"
+                                           }
+                    },
+    "corporate":  {
+                      "centro-financiero":  {
+                                                "images":  [
+                                                               "/projects/corporate/projects/centro-financiero/images/image-001.jpg",
+                                                               "/projects/corporate/projects/centro-financiero/images/image-002.jpg",
+                                                               "/projects/corporate/projects/centro-financiero/images/image-003.jpg",
+                                                               "/projects/corporate/projects/centro-financiero/images/image-004.jpg",
+                                                               "/projects/corporate/projects/centro-financiero/images/image-005.jpg"
+                                                           ]
+                                            },
+                      "centro-medico":  {
+                                            "images":  [
+                                                           "/projects/corporate/projects/centro-medico/images/image-001.jpg",
+                                                           "/projects/corporate/projects/centro-medico/images/image-002.jpg",
+                                                           "/projects/corporate/projects/centro-medico/images/image-003.jpg",
+                                                           "/projects/corporate/projects/centro-medico/images/image-004.jpg",
+                                                           "/projects/corporate/projects/centro-medico/images/image-005.jpg"
+                                                       ]
+                                        },
+                      "counter-torre-de-oficinas":  {
+                                                        "images":  [
+                                                                       "/projects/corporate/projects/counter-torre-de-oficinas/images/image-001.jpg",
+                                                                       "/projects/corporate/projects/counter-torre-de-oficinas/images/image-002.jpg",
+                                                                       "/projects/corporate/projects/counter-torre-de-oficinas/images/image-003.jpg",
+                                                                       "/projects/corporate/projects/counter-torre-de-oficinas/images/image-004.jpg"
+                                                                   ]
+                                                    },
+                      "co-working-space":  {
+                                               "images":  [
+                                                              "/projects/corporate/projects/co-working-space/images/image-001.jpg",
+                                                              "/projects/corporate/projects/co-working-space/images/image-002.jpg",
+                                                              "/projects/corporate/projects/co-working-space/images/image-003.jpg",
+                                                              "/projects/corporate/projects/co-working-space/images/image-004.jpg"
+                                                          ]
+                                           },
+                      "oficina-corporativa":  {
+                                                  "images":  [
+                                                                 "/projects/corporate/projects/oficina-corporativa/images/image-001.jpg",
+                                                                 "/projects/corporate/projects/oficina-corporativa/images/image-002.jpg",
+                                                                 "/projects/corporate/projects/oficina-corporativa/images/image-003.jpg",
+                                                                 "/projects/corporate/projects/oficina-corporativa/images/image-004.jpg",
+                                                                 "/projects/corporate/projects/oficina-corporativa/images/image-005.jpg"
+                                                             ]
+                                              },
+                      "torre-comercial":  {
+                                              "images":  [
+                                                             "/projects/corporate/projects/torre-comercial/images/image-001.jpg",
+                                                             "/projects/corporate/projects/torre-comercial/images/image-002.jpg",
+                                                             "/projects/corporate/projects/torre-comercial/images/image-003.jpg"
+                                                         ]
+                                          }
+                  }
+}

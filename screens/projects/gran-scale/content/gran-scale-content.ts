@@ -1,14 +1,8 @@
 import type { ProjectDetailContent } from "../types/gran-scale";
-
-const gallery = [
-  "/projects/gran-scale/gallery/gran-scale-gallery-01-v2.jpg",
-  "/projects/gran-scale/gallery/gran-scale-gallery-02-v2.png",
-  "/projects/gran-scale/gallery/gran-scale-gallery-03-v2.jpg",
-  "/projects/gran-scale/gallery/gran-scale-gallery-04-v2.jpg",
-  "/projects/gran-scale/gallery/gran-scale-gallery-05-v2.png",
-];
+import assets from "../../content/project-assets.json";
 
 type Project = ProjectDetailContent["gallery"]["projects"][number];
+const privateAssets = assets["private-homes"] as Record<string, { images: string[] }>;
 
 function project(index: number, title: string, scope: string, description: string, location = "Vivienda Residencial. Caracas – Venezuela."): Project {
   const id = title.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -19,10 +13,7 @@ function project(index: number, title: string, scope: string, description: strin
     location,
     scope,
     description,
-    images: [0, 1, 2].map((step) => ({
-      src: gallery[(index - 1 + step) % gallery.length],
-      alt: `${title} — imagen ${step + 1}`,
-    })),
+    images: privateAssets[id].images.map((src, imageIndex) => ({ src, alt: `${title} — imagen ${imageIndex + 1}` })),
   };
 }
 
@@ -62,7 +53,7 @@ const selectedProjects: Project[] = [
 
 export const granScaleContent: ProjectDetailContent = {
   breadcrumb: ["Inicio", "Proyectos", "Viviendas particulares"],
-  hero: { eyebrow: "Viviendas particulares", title: "Viviendas particulares", description: "Diseño a medida para cada hogar.", imageUrl: "/projects/gran-scale/hero/gran-scale-hero-01-v2.jpg" },
+  hero: { eyebrow: "Viviendas particulares", title: "Viviendas particulares", description: "Diseño a medida para cada hogar.", imageUrl: privateAssets.koncept.images[0] },
   introduction: {
     eyebrow: "Acerca de este servicio",
     explorationTitle: "Explora nuestras viviendas",
