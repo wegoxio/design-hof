@@ -12,6 +12,7 @@ export type CatalogProduct = {
   imageDisplayMode: "contain" | "cover";
   categoryIds: string[];
   tags: Array<"stock" | "new" | "collection" | "special" | "h1">;
+  contactOnly: boolean;
 };
 
 export type ProductVariation = {
@@ -22,6 +23,7 @@ export type ProductVariation = {
   previousPrice?: number;
   imageUrl?: string;
   imageDisplayMode?: "contain" | "cover";
+  trackInventory: boolean;
   available: boolean;
   availableQuantity: number;
 };

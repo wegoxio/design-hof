@@ -87,8 +87,14 @@ export function ProductDetailView({
     : product.gallery;
   const hasVariations = product.variations.length > 0;
   const displayedStock = selectedVariation?.availableQuantity ?? product.availableQuantity;
+  const displayedTrackInventory = selectedVariation?.trackInventory ?? product.trackInventory;
+  const requiresWhatsApp =
+    displayedPrice === null || !displayedTrackInventory || displayedStock <= 0;
   const detailPath = `/mobiliario/${product.slug}${variant === "h1" ? "?catalogo=h1" : variant === "merchandising" ? "?catalogo=merchandising" : variant === "collection" ? "?catalogo=collection" : ""}`;
-  const whatsappUrl = productWhatsAppUrl(product.name, detailPath);
+  const whatsappProductName = selectedVariation
+    ? `${product.name} — ${selectedVariation.label}`
+    : product.name;
+  const whatsappUrl = productWhatsAppUrl(whatsappProductName, detailPath);
 
   return (
     <div className="bg-[#f8f8f6] text-[#111]">
@@ -182,8 +188,14 @@ export function ProductDetailView({
             </div>
           )}
           <div className="mt-5 flex items-center gap-2 text-[11px] font-medium tracking-[.5px] text-black/65">
-            <span className={`size-2 rounded-full ${product.trackInventory && displayedStock <= 0 ? "bg-amber-500" : "bg-emerald-500"}`} aria-hidden="true" />
-            <span>{product.trackInventory ? `Stock disponible: ${displayedStock}` : "Stock disponible"}</span>
+            <span className={`size-2 rounded-full ${requiresWhatsApp ? "bg-amber-500" : "bg-emerald-500"}`} aria-hidden="true" />
+            <span>
+              {!displayedTrackInventory
+                ? "Disponibilidad por consultar"
+                : displayedStock > 0
+                  ? `Stock disponible: ${displayedStock}`
+                  : "Sin stock disponible — consultar"}
+            </span>
           </div>
           <p className="mt-7 flex items-baseline gap-3 text-[22px] font-bold">
             {displayedPrice === null ? <a href={whatsappUrl} target="_blank" rel="noreferrer" className="border-b border-black/30 pb-1 text-[12px] font-semibold tracking-[2px] text-black/70 uppercase transition hover:border-[#25d366] hover:text-[#128c4a]">Más información →</a> : <span>{formatUsd(displayedPrice)}</span>}
@@ -206,15 +218,22 @@ export function ProductDetailView({
                   <button
                     key={variation.id}
                     type="button"
-                    disabled={!variation.available}
                     aria-pressed={selectedVariationId === variation.id}
                     onClick={() => {
                       setSelectedVariationId(variation.id);
                       setActiveImage(0);
                     }}
-                    className={`min-h-10 border px-5 text-[8px] font-medium tracking-[1px] uppercase transition-[background,color,border-color,transform,opacity] duration-400 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-35 ${selectedVariationId === variation.id ? "border-black bg-black text-white" : "border-black/12 bg-transparent text-black"}`}
+                    className={`min-h-10 border px-5 py-2 text-[8px] font-medium tracking-[1px] uppercase transition-[background,color,border-color,transform,opacity] duration-400 hover:-translate-y-0.5 ${selectedVariationId === variation.id ? "border-black bg-black text-white" : "border-black/12 bg-transparent text-black"}`}
                   >
-                    {variation.label}
+                    <span className="block">{variation.label}</span>
+                    <span className={`mt-1 block text-[9px] tracking-normal normal-case ${selectedVariationId === variation.id ? "text-white/70" : "text-black/45"}`}>
+                      {variation.price === null
+                        ? "Consultar precio"
+                        : formatUsd(variation.price)}
+                      {!variation.trackInventory || variation.availableQuantity <= 0
+                        ? " · Consultar disponibilidad"
+                        : ` · ${variation.availableQuantity} disponibles`}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -264,12 +283,12 @@ export function ProductDetailView({
           )}
 
           <a
-            href={displayedPrice === null ? whatsappUrl : "/contacto"}
-            target={displayedPrice === null ? "_blank" : undefined}
-            rel={displayedPrice === null ? "noreferrer" : undefined}
+            href={requiresWhatsApp ? whatsappUrl : "/contacto"}
+            target={requiresWhatsApp ? "_blank" : undefined}
+            rel={requiresWhatsApp ? "noreferrer" : undefined}
             className="group mt-8 flex min-h-[54px] items-center justify-center gap-4 bg-[#0b0b0a] px-6 text-[9px] font-medium tracking-[3px] text-white uppercase transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(0,0,0,.16)]"
           >
-            {displayedPrice === null ? "Más información por WhatsApp" : "Consultar producto"}{" "}
+            {requiresWhatsApp ? "Consultar por WhatsApp" : "Consultar producto"}{" "}
             <span className="transition-transform duration-500 group-hover:translate-x-1.5">
               →
             </span>

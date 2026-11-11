@@ -27,8 +27,20 @@ export function ProductCard({ product, variant = "general" }: { product: Catalog
         {product.brand && <p className="mt-4 text-[8px] font-medium tracking-[2.4px] text-black/42 uppercase transition-colors duration-500 group-hover:text-black/58">{product.brand}</p>}
         <h3 className={`${product.brand ? "mt-1.5" : "mt-5"} text-[15px] leading-[1.3] font-semibold tracking-[-.15px] transition-colors duration-500 group-hover:text-black/72`}>{product.name}</h3>
       </Link>
-      {product.price === null ? (
-        <a href={whatsappUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex min-h-9 items-center border-b border-black/35 text-[9px] font-semibold tracking-[1.6px] text-black/65 uppercase transition-[border-color,color] hover:border-[#25d366] hover:text-[#128c4a]">Más información <span className="ml-2" aria-hidden="true">→</span></a>
+      {product.price === null || product.contactOnly ? (
+        <div className="mt-1.5 flex flex-col items-start gap-1.5">
+          {product.price !== null && (
+            <div className="flex gap-2 text-[12px] font-normal text-black/65">
+              <span>{formatUsd(product.price)}</span>
+              {product.previousPrice && (
+                <span className="text-black/35 line-through">
+                  {formatUsd(product.previousPrice)}
+                </span>
+              )}
+            </div>
+          )}
+          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-9 items-center border-b border-black/35 text-[9px] font-semibold tracking-[1.6px] text-black/65 uppercase transition-[border-color,color] hover:border-[#25d366] hover:text-[#128c4a]">Más información <span className="ml-2" aria-hidden="true">→</span></a>
+        </div>
       ) : (
         <div className="mt-1.5 flex gap-2 text-[12px] font-normal text-black/65"><span>{formatUsd(product.price)}</span>{product.previousPrice && <span className="text-black/35 line-through">{formatUsd(product.previousPrice)}</span>}</div>
       )}

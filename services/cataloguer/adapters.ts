@@ -55,7 +55,9 @@ function tags(product: CataloguerProduct): CatalogProduct["tags"] {
   if (
     !product.trackInventory ||
     product.availableQuantity > 0 ||
-    product.children.some((child) => child.availableQuantity > 0)
+    product.children.some(
+      (child) => !child.trackInventory || child.availableQuantity > 0,
+    )
   )
     result.push("stock");
   // This badge is an explicit merchandising decision. Historical trees also
@@ -88,7 +90,23 @@ export function toCatalogProduct(product: CataloguerProduct): CatalogProduct {
     "fabricante",
     "manufacturer",
   ]);
-  const price = effectivePrice(product);
+  const pricedChildren = product.children
+    .map((child) => ({
+      price: child.salePrice ?? child.price,
+      previousPrice:
+        child.salePrice !== null &&
+        child.salePrice !== undefined &&
+        child.price > child.salePrice
+          ? child.price
+          : undefined,
+      contactOnly: !child.trackInventory || child.availableQuantity <= 0,
+    }))
+    .filter((child) => child.price > 0)
+    .sort((a, b) => a.price - b.price);
+  const representativeChild = pricedChildren[0];
+  const price = product.children.length
+    ? (representativeChild?.price ?? 0)
+    : effectivePrice(product);
   return {
     id: product.id,
     slug: product.slug,
@@ -96,10 +114,11 @@ export function toCatalogProduct(product: CataloguerProduct): CatalogProduct {
     name: product.name,
     description: product.description || "",
     price: price > 0 ? price : null,
-    previousPrice:
-      product.salePrice !== null &&
-      product.salePrice !== undefined &&
-      product.price > product.salePrice
+    previousPrice: product.children.length
+      ? representativeChild?.previousPrice
+      : product.salePrice !== null &&
+          product.salePrice !== undefined &&
+          product.price > product.salePrice
         ? product.price
         : undefined,
     imageUrl:
@@ -112,6 +131,9 @@ export function toCatalogProduct(product: CataloguerProduct): CatalogProduct {
       ...category.ancestors.map((item) => item.slug),
     ]),
     tags: tags(product),
+    contactOnly: product.children.length
+      ? pricedChildren.every((child) => child.contactOnly)
+      : !product.trackInventory || product.availableQuantity <= 0,
   };
 }
 
@@ -132,6 +154,7 @@ function childToVariation(child: CataloguerChild): ProductVariation {
         : undefined,
     imageUrl: child.primaryImage?.url,
     imageDisplayMode: displayMode(child.primaryImage?.displayMode),
+    trackInventory: child.trackInventory,
     available: !child.trackInventory || child.availableQuantity > 0,
     availableQuantity: child.availableQuantity,
   };
@@ -221,5 +244,6 @@ export function relatedToCatalogProduct(
     imageDisplayMode: displayMode(product.primaryImage?.displayMode),
     categoryIds: [],
     tags: [],
+    contactOnly: true,
   };
 }
