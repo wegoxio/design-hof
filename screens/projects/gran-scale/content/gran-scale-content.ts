@@ -26,7 +26,7 @@ const selectedProjects: Project[] = [
   project(6, "Cocina Casa Natural", "Cocina · Tope · Baño de visita · Área de lavandería", "Diseño e instalación de mobiliario de cocina y área de lavandería.\n\nSuministro e instalación de tope de piedra sinterizada.\n\nSuministro e instalación de revestimiento de piedra para baño de visita."),
   project(7, "Cocina Greige", "Cocina · Tope", "Diseño e instalación de mobiliario de cocina.\n\nSuministro e instalación de tope de piedra sinterizada."),
   project(8, "Casa Verde", "Interiorismo · Mobiliario", "Interiorismo y suministro de mobiliario para sala, comedor y área de terraza y deck en jardín."),
-  project(9, "Casa Campo", "Cocina · Tope", "Diseño e instalación de mobiliario de cocina. -Suministro e instalación de tope de piedra sinterizada."),
+  project(9, "Casa Campo", "Cocina · Tope", "Diseño e instalación de mobiliario de cocina.\n\nSuministro e instalación de tope de piedra sinterizada."),
   project(10, "Proyecto Alta", "Cocina · Interiorismo · Mobiliario", "Diseño e instalación de mobiliario de cocina.\n\nInteriorismo y suministro de mobiliario para interiores."),
   project(11, "Kids Playroom", "HomeBar · Interiorismo · Mobiliario", "Diseño e instalación de mobiliario a medida para cuarto de juegos.\n\nInteriorismo y suministro de mobiliario para interiores."),
   project(12, "Proyecto Talblick", "HomeBar · Interiorismo · Mobiliario", "Diseño e instalación de mobiliario para HomeBar.\n\nInteriorismo y suministro de mobiliario para interiores."),
