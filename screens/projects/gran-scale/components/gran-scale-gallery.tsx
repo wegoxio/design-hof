@@ -33,16 +33,16 @@ export function ProjectDetailGallery({ content }: { content: ProjectDetailConten
         <p className="mt-4 max-w-[680px] text-[13px] leading-6 text-black/45">{content.description}</p>
         <div className="mt-[clamp(52px,7vw,90px)] space-y-[clamp(82px,10vw,150px)]">
           {content.projects.map((project, index) => (
-            <article key={project.id} className={`grid grid-cols-[minmax(280px,.78fr)_minmax(0,1.35fr)] items-center gap-[clamp(42px,7vw,105px)] max-[900px]:grid-cols-1 max-[900px]:gap-8 ${index % 2 ? "[&>*:first-child]:order-2 max-[900px]:[&>*:first-child]:order-1" : ""}`}>
+            <article id={project.id} key={project.id} className="grid scroll-mt-28 grid-cols-[minmax(280px,.78fr)_minmax(0,1.35fr)] items-start gap-[clamp(42px,7vw,105px)] max-[900px]:grid-cols-1 max-[900px]:gap-8">
               <div className={`transition-[opacity,transform] duration-1000 ${isInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`} style={{ transitionDelay: `${index * 120}ms` }}>
                 <p className="text-[8px] tracking-[3.2px] text-black/30 uppercase">{project.eyebrow}</p>
                 <h3 className="mt-5 text-[clamp(28px,3vw,44px)] font-semibold tracking-[-1.2px]">{project.title}</h3>
-                <dl className="mt-8 space-y-3 border-y border-black/8 py-6 text-[11px]">
-                  <div className="grid grid-cols-[90px_1fr] gap-4"><dt className="text-black/35 uppercase">Proyecto</dt><dd>{project.title}</dd></div>
-                  <div className="grid grid-cols-[90px_1fr] gap-4"><dt className="text-black/35 uppercase">Ubicación</dt><dd>{project.location}</dd></div>
-                  <div className="grid grid-cols-[90px_1fr] gap-4"><dt className="text-black/35 uppercase">Alcance</dt><dd>{project.scope}</dd></div>
+                <dl className="mt-8 space-y-5 border border-black/10 p-5 text-[11px]">
+                  <div><dt className="text-[8px] tracking-[2.2px] text-black/35 uppercase">Proyecto y ubicación</dt><dd className="mt-3">{project.location}</dd></div>
+                  <div><dt className="text-[8px] tracking-[2.2px] text-black/35 uppercase">Alcance</dt><dd className="mt-3">{project.scope}</dd></div>
                 </dl>
                 <p className="mt-6 text-[13px] leading-6 text-black/55">{project.description}</p>
+                <a href="#project-detail-top" className="mt-6 inline-block text-[9px] text-black/35 transition hover:text-black">↑ Volver a los proyectos</a>
               </div>
               <ProjectImage project={project} />
             </article>

@@ -6,31 +6,12 @@ import type { ProjectDetailContent } from "../types/gran-scale";
 export function ProjectDetailHero({ content }: { content: ProjectDetailContent }) {
   return (
     <>
-      <div className="h-16 border-b border-black/[.055] bg-white max-[700px]:h-[58px]">
+      <div id="project-detail-top" className="h-16 scroll-mt-24 border-b border-black/[.055] bg-white max-[700px]:h-[58px]">
         <nav
           aria-label="Migas de pan"
           className="site-container flex h-full items-center gap-[11px] overflow-x-auto text-[9px] font-medium tracking-[1.35px] whitespace-nowrap uppercase [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {content.breadcrumb.map((item, index) => {
-            const isCurrent = index === content.breadcrumb.length - 1;
-            const href = index === 0 ? "/" : "/proyectos";
-
-            return (
-              <span key={item} className="inline-flex items-center gap-[11px]">
-                {index > 0 && <span aria-hidden="true" className="text-black/18">/</span>}
-                {isCurrent ? (
-                  <span aria-current="page" className="text-black/75">{item}</span>
-                ) : (
-                  <Link
-                    href={href}
-                    className="text-black/30 transition-colors duration-500 hover:text-black/70"
-                  >
-                    {item}
-                  </Link>
-                )}
-              </span>
-            );
-          })}
+          <Link href="/proyectos" className="text-black/35 transition-colors duration-500 hover:text-black/70">← Volver a proyectos</Link>
         </nav>
       </div>
 

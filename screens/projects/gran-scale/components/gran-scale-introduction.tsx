@@ -5,6 +5,10 @@ import { useEffect, useState } from "react";
 import { useInView } from "@/screens/home/hooks/use-in-view";
 import type { ProjectDetailContent, ProjectDetailStat } from "../types/gran-scale";
 
+function projectAnchor(label: string) {
+  return label.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
 function Counter({ stat, active, delay }: { stat: ProjectDetailStat; active: boolean; delay: number }) {
   const [current, setCurrent] = useState(0);
   useEffect(() => {
@@ -34,7 +38,7 @@ export function ProjectDetailIntroduction({ content }: { content: ProjectDetailC
         <h2 className="text-[clamp(22px,2.3vw,32px)] font-semibold tracking-[-.8px]">{content.explorationTitle}</h2>
         <p className="mt-3 max-w-[720px] text-[13px] leading-6 text-black/45">{content.explorationDescription}</p>
         <ul className="mt-8 grid grid-cols-3 gap-2 max-[850px]:grid-cols-2 max-[520px]:grid-cols-1" aria-label="Tipos de proyecto">
-          {content.filters.map((filter) => <li key={filter} className="flex min-h-12 items-center justify-center border border-black/10 bg-white px-4 text-center text-[9px] font-medium tracking-[1.4px] text-black/62 uppercase">{filter}</li>)}
+          {content.filters.map((filter) => <li key={filter}><a href={`#${projectAnchor(filter)}`} className="flex min-h-12 items-center justify-center border border-black/10 bg-white px-4 text-center text-[9px] font-medium tracking-[.2px] text-black/62 transition hover:border-black hover:bg-black hover:text-white">{filter}</a></li>)}
         </ul>
       </div>
 
