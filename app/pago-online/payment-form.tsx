@@ -1,6 +1,15 @@
 "use client";
 
 import { FormEvent, useRef, useState } from "react";
+import Image from "next/image";
+
+const PAYMENT_METHODS = [
+  { name: "American Express", src: "/payment-methods/american-express.svg", width: 30, height: 30 },
+  { name: "Mastercard", src: "/payment-methods/mastercard.svg", width: 34, height: 28 },
+  { name: "Visa", src: "/payment-methods/visa.svg", width: 36, height: 28 },
+  { name: "Klarna", src: "/payment-methods/klarna.svg", width: 29, height: 29 },
+  { name: "Affirm", src: "/payment-methods/affirm.svg", width: 38, height: 24 },
+] as const;
 
 function displayAmount(value: string) {
   const normalized = value.replace(",", ".");
@@ -67,8 +76,12 @@ export function PaymentForm({ cancelled }: { cancelled: boolean }) {
 
       <div className="mt-8 border-t border-black/10 pt-6">
         <p className="text-[10px] font-semibold tracking-[1.8px] text-black/40 uppercase">Pago procesado de forma segura por Stripe</p>
-        <div className="mt-4 flex flex-wrap gap-2" aria-label="Tarjetas aceptadas">
-          {["VISA", "Mastercard", "AMEX"].map((brand) => <span className="border border-black/10 bg-white px-3 py-2 text-[10px] font-bold tracking-wide" key={brand}>{brand}</span>)}
+        <div className="mt-4 flex flex-wrap items-center gap-2.5" aria-label="Métodos de pago admitidos">
+          {PAYMENT_METHODS.map((method) => (
+            <span className="flex h-9 min-w-12 items-center justify-center rounded-[3px] border border-black/10 bg-white px-2 shadow-[0_1px_2px_rgba(0,0,0,0.04)]" key={method.name} title={method.name}>
+              <Image className="max-h-7 w-auto object-contain" src={method.src} alt={method.name} width={method.width} height={method.height} />
+            </span>
+          ))}
         </div>
       </div>
     </form>
