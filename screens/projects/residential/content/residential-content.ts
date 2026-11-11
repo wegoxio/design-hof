@@ -7,6 +7,13 @@ function images(project: string, slug: string) {
   return residentialAssets[slug].images.map((src, index) => ({ src, alt: `${project} — imagen ${index + 1}` }));
 }
 
+function botanikoImages() {
+  const projectImages = residentialAssets.botaniko.images;
+  const cover = projectImages.find((src) => src.endsWith("/image-004.jpg"));
+  const orderedImages = cover ? [cover, ...projectImages.filter((src) => src !== cover)] : projectImages;
+  return orderedImages.map((src, index) => ({ src, alt: `Botaniko — imagen ${index + 1}` }));
+}
+
 export const residentialContent: ProjectDetailContent = {
   breadcrumb: ["Inicio", "Proyectos", "Residencial"],
   hero: { eyebrow: "Residencial", title: "Proyectos Residenciales", description: "El hogar como obra de arte.", imageUrl: residentialAssets.quarzo.images[0] },
@@ -34,7 +41,7 @@ export const residentialContent: ProjectDetailContent = {
       {
         id: "botaniko", eyebrow: "02 · Proyecto residencial", title: "Botaniko",
         location: "Condominio residencial de lujo. Caracas, Venezuela.", scope: "Clósets · Baños · Puertas internas · Cocina área Lounge",
-        description: "Diseño e instalación de mobiliario de clósets y baños.\n\nDiseño e instalación de puertas internas de habitación.", images: images("Botaniko", "botaniko"),
+        description: "Diseño e instalación de mobiliario de clósets y baños.\n\nDiseño e instalación de puertas internas de habitación.", images: botanikoImages(),
       },
       {
         id: "premier-terra", eyebrow: "03 · Proyecto residencial", title: "Premier Terra",
