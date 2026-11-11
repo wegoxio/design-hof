@@ -14,17 +14,35 @@ import { promotionalPopupContent } from "./content/promotional-popup";
 import { homeProjects } from "./content/home-projects";
 import { CatalogUnavailableNotice } from "../catalog/components/catalog-unavailable-notice";
 
-export function HomeScreen({ catalogueCategories, catalogueRooms, catalogueFeatured, catalogueUnavailable = false }: { catalogueCategories: ProductCategory[]; catalogueRooms: RoomCategory[]; catalogueFeatured: FeaturedProduct[]; catalogueUnavailable?: boolean }) {
+export function HomeScreen({
+  catalogueCategories,
+  catalogueRooms,
+  catalogueFeatured,
+  catalogueUnavailable = false,
+}: {
+  catalogueCategories: ProductCategory[];
+  catalogueRooms: RoomCategory[];
+  catalogueFeatured: FeaturedProduct[];
+  catalogueUnavailable?: boolean;
+}) {
   return (
     <>
       <HeroSection slides={heroSlides} />
-      {catalogueUnavailable ? <CatalogUnavailableNotice /> : <CategoriesSection rooms={catalogueRooms} categories={catalogueCategories} />}
+      {catalogueUnavailable ? (
+        <CatalogUnavailableNotice />
+      ) : (
+        <CategoriesSection
+          rooms={catalogueRooms}
+          categories={catalogueCategories}
+        />
+      )}
       <H1FeatureSection content={h1FeatureContent} />
-      {!catalogueUnavailable && <FeaturedProductsSection products={catalogueFeatured} />}
+      {!catalogueUnavailable && (
+        <FeaturedProductsSection products={catalogueFeatured} />
+      )}
       <DesignSpacesSection content={designSpacesContent} />
       <HomeProjectsSection projects={homeProjects} />
       <PromotionalPopup content={promotionalPopupContent} />
     </>
   );
 }
-

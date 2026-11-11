@@ -14,7 +14,6 @@ export const brands: Brand[] = [
   brand("rolf-benz", "Rolf Benz", "Alemania"),
   brand("freistil", "Freistil Rolf Benz", "Alemania"),
   brand("and", "A—N—D", "Alemania"),
-  brand("kettnaker", "Kettnaker", "Alemania"),
   brand("himolla", "Himolla", "Alemania"),
   brand("nolte-kuechen", "Nolte Küchen", "Alemania"),
   brand("raumplus", "Raumplus", "Alemania"),
