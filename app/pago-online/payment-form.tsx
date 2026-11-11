@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const PAYMENT_METHODS = [
   { name: "American Express", src: "/payment-methods/american-express.svg", width: 30, height: 30 },
-  { name: "Mastercard", src: "/payment-methods/mastercard.svg", width: 34, height: 28 },
+  { name: "Mastercard", src: "/payment-methods/ma_symbol.svg", width: 34, height: 28 },
   { name: "Visa", src: "/payment-methods/visa.svg", width: 36, height: 28 },
   { name: "Klarna", src: "/payment-methods/klarna.svg", width: 29, height: 29 },
   { name: "Affirm", src: "/payment-methods/affirm.svg", width: 38, height: 24 },
