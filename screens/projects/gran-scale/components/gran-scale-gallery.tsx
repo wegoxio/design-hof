@@ -16,7 +16,7 @@ function ProjectImage({ project }: { project: SelectedProject }) {
   const aspectRatio = geometry?.aspectRatio ?? 4 / 3;
   const move = (direction: -1 | 1) => setIndex((current) => (current + direction + project.images.length) % project.images.length);
   return (
-    <div className="flex w-full justify-center overflow-hidden bg-[#f7f7f5]">
+    <div className="flex w-full justify-center overflow-hidden bg-white">
       <div
         className={`relative w-full transition-[max-width] duration-500 ${isPortrait ? "max-w-[620px]" : "max-w-none"}`}
         style={{ aspectRatio }}
