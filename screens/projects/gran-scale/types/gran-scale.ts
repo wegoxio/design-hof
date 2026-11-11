@@ -15,6 +15,9 @@ export type ProjectDetailContent = {
   };
   introduction: {
     eyebrow: string;
+    explorationTitle: string;
+    explorationDescription: string;
+    filters: string[];
     description: string;
     ctaLabel: string;
     ctaHref: string;
@@ -22,9 +25,16 @@ export type ProjectDetailContent = {
   };
   gallery: {
     eyebrow: string;
-    images: Array<{
-      src: string;
-      alt: string;
+    title: string;
+    description: string;
+    projects: Array<{
+      id: string;
+      eyebrow: string;
+      title: string;
+      location: string;
+      scope: string;
+      description: string;
+      images: Array<{ src: string; alt: string }>;
     }>;
   };
 };

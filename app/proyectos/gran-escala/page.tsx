@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { GranScaleScreen } from "@/screens/projects/gran-scale/gran-scale-screen";
 
 export const metadata: Metadata = {
-  title: "Proyectos de Gran Escala | Design HOF",
-  description: "Proyectos arquitectónicos de alta complejidad desarrollados por Design HOF.",
+  title: "Viviendas particulares | Design HOF",
+  description: "Proyectos de interiorismo y mobiliario para viviendas particulares desarrollados por Design HOF.",
 };
 
 export default function GranScalePage() {
