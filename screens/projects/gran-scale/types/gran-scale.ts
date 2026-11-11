@@ -32,6 +32,7 @@ export type ProjectDetailContent = {
       eyebrow: string;
       title: string;
       location: string;
+      locationLabel?: string;
       scope: string;
       description: string;
       images: Array<{ src: string; alt: string }>;

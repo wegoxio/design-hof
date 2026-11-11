@@ -38,10 +38,10 @@ export function ProjectDetailGallery({ content }: { content: ProjectDetailConten
                 <p className="text-[8px] tracking-[3.2px] text-black/30 uppercase">{project.eyebrow}</p>
                 <h3 className="mt-5 text-[clamp(28px,3vw,44px)] font-semibold tracking-[-1.2px]">{project.title}</h3>
                 <dl className="mt-8 space-y-5 border border-black/10 p-5 text-[11px]">
-                  <div><dt className="text-[8px] tracking-[2.2px] text-black/35 uppercase">Proyecto y ubicación</dt><dd className="mt-3">{project.location}</dd></div>
+                  <div><dt className="text-[8px] tracking-[2.2px] text-black/35 uppercase">{project.locationLabel ?? "Proyecto y ubicación"}</dt><dd className="mt-3">{project.location}</dd></div>
                   <div><dt className="text-[8px] tracking-[2.2px] text-black/35 uppercase">Alcance</dt><dd className="mt-3">{project.scope}</dd></div>
                 </dl>
-                <p className="mt-6 text-[13px] leading-6 text-black/55">{project.description}</p>
+                <p className="mt-6 whitespace-pre-line text-[13px] leading-6 text-black/55">{project.description}</p>
                 <a href="#project-detail-top" className="mt-6 inline-block text-[9px] text-black/35 transition hover:text-black">↑ Volver a los proyectos</a>
               </div>
               <ProjectImage project={project} />
