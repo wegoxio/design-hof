@@ -11,8 +11,8 @@ type SearchResult = {
   id: string;
   name: string;
   slug: string;
-  price: number;
-  salePrice?: number | null;
+  price: number | null;
+  salePrice: number | null;
   imageUrl: string | null;
   imageAlt: string;
 };
@@ -36,23 +36,42 @@ function HeaderActions({ mobile = false, onSearch }: { mobile?: boolean; onSearc
 function ProductSearch({ onClose }: { onClose: () => void }) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
+  const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
     const timer = window.setTimeout(async () => {
-      if (query.trim().length < 2) { setResults([]); setLoading(false); return; }
+      if (query.trim().length < 2) {
+        setResults([]);
+        setTotal(0);
+        setLoading(false);
+        return;
+      }
       setLoading(true);
-      try { const response = await fetch(`/api/storefront?q=${encodeURIComponent(query)}`, { signal: controller.signal }); if (response.ok) setResults((await response.json()).items ?? []); }
-      catch (error) { if ((error as Error).name !== "AbortError") setResults([]); }
+      try {
+        const response = await fetch(`/api/storefront?q=${encodeURIComponent(query)}`, { signal: controller.signal });
+        if (response.ok) {
+          const payload = (await response.json()) as { items?: SearchResult[]; total?: number };
+          setResults(payload.items ?? []);
+          setTotal(payload.total ?? payload.items?.length ?? 0);
+        }
+      } catch (error) {
+        if ((error as Error).name !== "AbortError") {
+          setResults([]);
+          setTotal(0);
+        }
+      }
       finally { if (!controller.signal.aborted) setLoading(false); }
     }, 300);
     return () => { window.clearTimeout(timer); controller.abort(); };
   }, [query]);
-  return <div className="fixed inset-x-0 top-[80px] z-40 border-b border-black/10 bg-white px-5 py-5 shadow-[0_18px_35px_rgba(0,0,0,.08)] max-[930px]:top-[76px]"><div className="site-container"><div className="flex items-center gap-3 border-b border-black/15 pb-3"><SearchIcon /><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar productos" aria-label="Buscar productos" className="min-w-0 flex-1 border-0 bg-transparent text-base outline-none" /><button type="button" onClick={onClose} aria-label="Cerrar búsqueda" className="text-xl text-black/45">×</button></div>{query.length >= 2 && <div className="grid gap-1 pt-3">{loading && <p className="py-3 text-sm text-black/45">Buscando…</p>}{!loading && results.length === 0 && <p className="py-3 text-sm text-black/45">No encontramos productos.</p>}{results.map((product) => {
-        const effectivePrice = product.salePrice ?? product.price;
-        const hasSale = product.salePrice !== null && product.salePrice !== undefined && product.price > product.salePrice;
-        return <Link key={product.id} href={`/mobiliario/${product.slug}`} onClick={onClose} className="flex items-center gap-3 px-2 py-2 no-underline hover:bg-[#f5f5f2]"><span className="relative size-12 shrink-0 overflow-hidden bg-[#f3f3f0]">{product.imageUrl && <Image src={product.imageUrl} alt={product.imageAlt} fill sizes="48px" className="object-contain" />}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm text-black">{product.name}</span><span className="mt-0.5 flex items-center gap-2 text-xs text-black/60"><span>{effectivePrice > 0 ? formatUsd(effectivePrice) : "Consultar precio"}</span>{hasSale && <span className="text-black/35 line-through">{formatUsd(product.price)}</span>}</span></span></Link>;
-      })}</div>}</div></div>;
+  return <div className="fixed inset-x-0 top-[80px] z-40 border-b border-black/10 bg-white px-5 py-5 shadow-[0_18px_35px_rgba(0,0,0,.08)] max-[930px]:top-[76px]"><div className="site-container"><div className="flex items-center gap-3 border-b border-black/15 pb-3"><SearchIcon /><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar productos" aria-label="Buscar productos" className="min-w-0 flex-1 border-0 bg-transparent text-base outline-none" /><button type="button" onClick={onClose} aria-label="Cerrar búsqueda" className="text-xl text-black/45">×</button></div>{query.trim().length >= 2 && <div className="pt-3">{loading && <p className="py-3 text-sm text-black/45">Buscando…</p>}{!loading && results.length === 0 && <p className="py-3 text-sm text-black/45">No encontramos productos.</p>}{!loading && results.length > 0 && <><p className="px-2 pb-2 text-xs tracking-wide text-black/45">{total} {total === 1 ? "resultado" : "resultados"}</p><div className="grid max-h-[min(60vh,560px)] gap-1 overflow-y-auto overscroll-contain pr-1">{results.map((product) => {
+        const regularPrice = product.price !== null && product.price > 0 ? product.price : null;
+        const salePrice = product.salePrice !== null && product.salePrice > 0 ? product.salePrice : null;
+        const effectivePrice = salePrice ?? regularPrice;
+        const hasSale = salePrice !== null && regularPrice !== null && regularPrice > salePrice;
+        return <Link key={product.id} href={`/mobiliario/${product.slug}`} onClick={onClose} className="flex items-center gap-3 px-2 py-2 no-underline hover:bg-[#f5f5f2]"><span className="relative size-12 shrink-0 overflow-hidden bg-[#f3f3f0]">{product.imageUrl && <Image src={product.imageUrl} alt={product.imageAlt} fill sizes="48px" className="object-contain" />}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm text-black">{product.name}</span><span className="mt-0.5 flex items-center gap-2 text-xs text-black/60"><span>{effectivePrice !== null ? formatUsd(effectivePrice) : "Consultar precio"}</span>{hasSale && <span className="text-black/35 line-through">{formatUsd(regularPrice)}</span>}</span></span></Link>;
+      })}</div></>}</div>}</div></div>;
 }
 
 export function SiteHeader({ merchandisingLinks }: { merchandisingLinks: HeaderMerchandisingLink[] }) {

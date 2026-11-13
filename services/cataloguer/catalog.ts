@@ -157,6 +157,22 @@ export async function getCatalogProductDetail(slug: string, variant: CatalogVari
   }
 }
 
+export async function getCatalogProductDetailResolved(
+  slug: string,
+  preferredVariant: CatalogVariant,
+): Promise<{ product: ProductDetail; related: CatalogProduct[]; variant: CatalogVariant } | null> {
+  const variants = Array.from(
+    new Set<CatalogVariant>([preferredVariant, "general", "h1", "merchandising", "collection"]),
+  );
+
+  for (const variant of variants) {
+    const result = await getCatalogProductDetail(slug, variant);
+    if (result) return { ...result, variant };
+  }
+
+  return null;
+}
+
 export async function getFeaturedProducts(limit = 5): Promise<CatalogProduct[]> {
   const page = await cataloguerFetch<CataloguerPage<CataloguerProduct>>("products", {
     page: 1,

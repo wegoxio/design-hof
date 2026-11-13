@@ -70,9 +70,10 @@ export function ProductDetailView({
   const selectedVariation = product.variations.find(
     (variation) => variation.id === selectedVariationId,
   );
-  const displayedPrice = selectedVariation?.price ?? product.price;
-  const displayedPreviousPrice =
-    selectedVariation?.previousPrice ?? product.previousPrice;
+  const displayedPrice = selectedVariation ? selectedVariation.price : product.price;
+  const displayedPreviousPrice = selectedVariation
+    ? selectedVariation.previousPrice
+    : product.previousPrice;
   const gallery = selectedVariation?.imageUrl
     ? [
         {
