@@ -8,8 +8,8 @@
 - [ ] `/mobiliario-h1` solo muestra productos del canal H1.
 - [ ] Cambiar categoría actualiza `categoria` en la URL y reinicia la página.
 - [ ] `Stock disponible` actualiza `filtro=stock` y el total mostrado.
-- [ ] `Special Prices` actualiza `filtro=special` y solo devuelve productos o
-      familias con una oferta pública.
+- [ ] `Special Prices` solo devuelve productos asignados explícitamente a la
+      categoría canónica `special-prices`; tener `salePrice` no los clasifica.
 - [ ] Ordenar por precio actualiza `orden` y mantiene categoría/filtro.
 - [ ] Anterior/siguiente actualiza `pagina` y conserva los demás filtros.
 - [ ] Una página manipulada o excesiva no produce error y termina mostrando la
