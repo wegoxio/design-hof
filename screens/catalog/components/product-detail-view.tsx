@@ -199,7 +199,7 @@ export function ProductDetailView({
             </span>
           </div>
           <p className="mt-7 flex items-baseline gap-3 text-[22px] font-bold">
-            {displayedPrice === null ? <a href={whatsappUrl} target="_blank" rel="noreferrer" className="border-b border-black/30 pb-1 text-[12px] font-semibold tracking-[2px] text-black/70 uppercase transition hover:border-[#25d366] hover:text-[#128c4a]">Más información →</a> : <span>{formatUsd(displayedPrice)}</span>}
+            {displayedPrice === null ? <a href={whatsappUrl} target="_blank" rel="noreferrer" className="border-b border-black/30 pb-1 text-[12px] font-semibold tracking-[2px] text-black/70 uppercase transition hover:border-[#25d366] hover:text-[#128c4a]">Consultar precio por WhatsApp →</a> : <span>{formatUsd(displayedPrice)}</span>}
             {displayedPreviousPrice &&
               displayedPrice !== null &&
               displayedPreviousPrice > displayedPrice && (
@@ -229,7 +229,7 @@ export function ProductDetailView({
                     <span className="block">{variation.label}</span>
                     <span className={`mt-1 block text-[9px] tracking-normal normal-case ${selectedVariationId === variation.id ? "text-white/70" : "text-black/45"}`}>
                       {variation.price === null
-                        ? "Consultar precio"
+                        ? "Consultar precio por WhatsApp"
                         : formatUsd(variation.price)}
                       {!variation.trackInventory || variation.availableQuantity <= 0
                         ? " · Consultar disponibilidad"

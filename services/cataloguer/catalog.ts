@@ -25,7 +25,7 @@ export type CatalogProductPageOptions = {
 
 export async function getCatalogProductPage(variant: CatalogVariant, options: CatalogProductPageOptions) {
   const sort = options.sort ?? 'featured';
-  const isSellableChannel = variant === 'general' || variant === 'h1';
+  const isInventoryChannel = variant === 'general' || variant === 'h1';
   // Keep the legacy `filtro=special` URL working, but make its meaning match
   // the storefront badge: explicit membership in the merchandising category.
   // A sale price by itself must never classify a product as SPECIAL PRICE.
@@ -36,8 +36,7 @@ export async function getCatalogProductPage(variant: CatalogVariant, options: Ca
     categorySlug,
     // Mobiliario is available inventory, not the archive. Collection is the
     // complete published catalogue and deliberately receives neither filter.
-    minPrice: isSellableChannel ? 0.01 : undefined,
-    inStock: isSellableChannel || options.filter === 'stock' ? true : undefined,
+    inStock: isInventoryChannel || options.filter === 'stock' ? true : undefined,
     // Catalogue ranking belongs to one configured channel. Collection spans
     // every channel, so its stable default is the publication chronology.
     sortBy: sort === 'featured' ? (variant === 'collection' ? 'createdAt' : 'catalogue') : 'price',
@@ -93,7 +92,7 @@ export async function getHeaderMerchandisingLinks(): Promise<HeaderMerchandising
     links.push({
       kind: "special",
       label: special.publicLabel || special.name,
-      href: `/mobiliario?coleccion=${encodeURIComponent(special.slug)}`,
+        href: "/special-prices",
     });
   }
   return links;

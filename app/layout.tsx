@@ -26,18 +26,18 @@ export const metadata: Metadata = {
     description: "Mobiliario y diseño de interiores.",
     images: [
       {
-        url: "/og-designhof.svg",
-        width: 1200,
-        height: 630,
-        alt: "Design HOF — mobiliario y diseño de interiores",
+          url: "/og-logo",
+          width: 272,
+          height: 272,
+          alt: "Design HOF",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+      card: "summary",
     title: "Design HOF",
     description: "Mobiliario y diseño de interiores.",
-    images: ["/og-designhof.svg"],
+      images: ["/og-logo"],
   },
 };
 

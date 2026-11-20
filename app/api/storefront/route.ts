@@ -21,6 +21,7 @@ export async function GET(request: Request) {
     const remainingPages = pageCount > 1
       ? await Promise.all(Array.from({ length: pageCount - 1 }, (_, index) => fetchPage(index + 2)))
       : [];
+    // La búsqueda de cabecera es global: no se limita por canal, inventario ni precio.
     const products = Array.from(
       new Map([firstPage, ...remainingPages].flatMap((page) => page.items).map((product) => [product.id, product])).values(),
     );

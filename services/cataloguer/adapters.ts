@@ -92,8 +92,7 @@ export function toCatalogProduct(product: CataloguerProduct): CatalogProduct {
     "fabricante",
     "manufacturer",
   ]);
-  const pricedChildren = product.children
-    .map((child) => ({
+  const childSummaries = product.children.map((child) => ({
       price: child.salePrice ?? child.price,
       previousPrice:
         child.salePrice !== null &&
@@ -102,10 +101,10 @@ export function toCatalogProduct(product: CataloguerProduct): CatalogProduct {
           ? child.price
           : undefined,
       contactOnly: !child.trackInventory || child.availableQuantity <= 0,
-    }))
+    }));
+  const representativeChild = childSummaries
     .filter((child) => child.price > 0)
-    .sort((a, b) => a.price - b.price);
-  const representativeChild = pricedChildren[0];
+    .sort((a, b) => a.price - b.price)[0];
   const price = product.children.length
     ? (representativeChild?.price ?? 0)
     : effectivePrice(product);
@@ -134,7 +133,7 @@ export function toCatalogProduct(product: CataloguerProduct): CatalogProduct {
     ]),
     tags: tags(product),
     contactOnly: product.children.length
-      ? pricedChildren.every((child) => child.contactOnly)
+      ? childSummaries.every((child) => child.contactOnly)
       : !product.trackInventory || product.availableQuantity <= 0,
   };
 }
