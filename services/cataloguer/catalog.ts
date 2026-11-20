@@ -29,7 +29,7 @@ export async function getCatalogProductPage(variant: CatalogVariant, options: Ca
   // Keep the legacy `filtro=special` URL working, but make its meaning match
   // the storefront badge: explicit membership in the merchandising category.
   // A sale price by itself must never classify a product as SPECIAL PRICE.
-  const categorySlug = options.categorySlug ?? (options.filter === 'special' ? 'special-prices' : undefined);
+  const categorySlug = options.categorySlug ?? (options.filter === 'special' ? 'mobiliario-special-prices' : undefined);
   const productQuery = {
     channel: channelFor(variant),
     group: options.group,
@@ -87,7 +87,7 @@ export async function getHeaderMerchandisingLinks(): Promise<HeaderMerchandising
       href: `/mobiliario?coleccion=${encodeURIComponent(seasonal.slug)}`,
     });
   }
-  const special = bySlug.get("special-prices");
+  const special = bySlug.get("mobiliario-special-prices");
   if (special) {
     links.push({
       kind: "special",

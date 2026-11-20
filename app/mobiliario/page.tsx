@@ -23,7 +23,7 @@ export default async function FurniturePage({ searchParams }: PageProps<"/mobili
   const categorySlug = typeof query.coleccion === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(query.coleccion) ? query.coleccion : undefined;
   const catalogueVariant = categorySlug === "collection"
     ? "collection"
-    : categorySlug === "new-in" || categorySlug === "coming-soon" || categorySlug === "special-prices"
+    : categorySlug === "new-in" || categorySlug === "coming-soon" || categorySlug === "mobiliario-special-prices"
       ? "merchandising"
       : "general";
   let result = { items: [], total: 0, page: 1, totalPages: 0 } as Awaited<ReturnType<typeof getCatalogProductPage>>;

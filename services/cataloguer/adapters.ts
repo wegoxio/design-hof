@@ -69,8 +69,8 @@ function tags(product: CataloguerProduct): CatalogProduct["tags"] {
     result.push("collection");
   // A discounted amount is pricing data, not a merchandising placement.
   // SPECIAL PRICE is displayed only when Cataloguer explicitly assigns the
-  // product to the canonical `special-prices` category.
-  if (directCategorySlugs.has("special-prices")) result.push("special");
+  // product to the canonical `mobiliario-special-prices` category.
+  if (directCategorySlugs.has("mobiliario-special-prices")) result.push("special");
   if (paths.some((slug) => /(^|-)h1($|-)|ch1/.test(slug))) result.push("h1");
   return result;
 }

@@ -29,7 +29,7 @@ export default async function SpecialPricesPage({ searchParams }: SpecialPricesP
     result = await getCatalogProductPage("merchandising", {
       page: 1,
       limit: 16,
-      categorySlug: "special-prices",
+      categorySlug: "mobiliario-special-prices",
       sort,
     });
   } catch (error) {
@@ -40,12 +40,12 @@ export default async function SpecialPricesPage({ searchParams }: SpecialPricesP
 
   return (
     <CatalogScreen
-      copy={catalogCopyForCollection("special-prices")}
+      copy={catalogCopyForCollection("mobiliario-special-prices")}
       categories={[]}
       products={result.items}
       state={{
         categoryId: "todas",
-        categorySlug: "special-prices",
+        categorySlug: "mobiliario-special-prices",
         filter: "all",
         sort,
         page: result.page,

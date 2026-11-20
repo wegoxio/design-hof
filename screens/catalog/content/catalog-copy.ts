@@ -18,7 +18,7 @@ const collectionCopy: Record<string, CatalogCopy> = {
     description: 'Una mirada anticipada a las piezas que llegarán muy pronto.',
     heroImage: '/catalog/hero/catalog-hero-01.png',
   },
-  'special-prices': {
+  'mobiliario-special-prices': {
     eyebrow: 'Design HOF · Selección especial',
     title: 'Special Prices',
     description: 'Piezas seleccionadas disponibles con condiciones especiales.',
