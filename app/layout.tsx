@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { Suspense } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { getHeaderMerchandisingLinks } from "@/services/cataloguer/catalog";
@@ -55,7 +56,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       className={`${montserrat.className} h-full antialiased`}
     >
       <body className="m-0 flex min-h-full min-w-80 flex-col bg-[#f5f5f3] text-[#1d1d1b]">
-        <SiteHeader merchandisingLinks={merchandisingLinks} />
+        <Suspense fallback={<div className="h-[80px] border-b border-black/8 bg-white max-[930px]:h-[76px]" />}>
+          <SiteHeader merchandisingLinks={merchandisingLinks} />
+        </Suspense>
         <main className="flex-1">{children}</main>
         <WhatsAppFloatingButton />
         <SiteFooter merchandisingLinks={merchandisingLinks} />

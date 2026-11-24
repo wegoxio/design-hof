@@ -36,7 +36,11 @@ export async function getCatalogProductPage(variant: CatalogVariant, options: Ca
     categorySlug,
     // Mobiliario is available inventory, not the archive. Collection is the
     // complete published catalogue and deliberately receives neither filter.
-    inStock: isInventoryChannel || options.filter === 'stock' ? true : undefined,
+    // The two furniture storefronts mean physical stock, not merely
+    // "sellable": untracked products belong in Collection but must not leak
+    // into Mobiliario or Mobiliario H1.
+    hasStock: isInventoryChannel ? true : undefined,
+    inStock: !isInventoryChannel && options.filter === 'stock' ? true : undefined,
     // Catalogue ranking belongs to one configured channel. Collection spans
     // every channel, so its stable default is the publication chronology.
     sortBy: sort === 'featured' ? (variant === 'collection' ? 'createdAt' : 'catalogue') : 'price',
@@ -100,7 +104,18 @@ export async function getHeaderMerchandisingLinks(): Promise<HeaderMerchandising
 
 export async function getCatalogCategories(variant: Exclude<CatalogVariant, "merchandising">): Promise<CatalogCategory[]> {
   const groups = await getGroups(variant, "NAVIGATION", "CATALOG");
-  return groups.filter((group) => group.productCount > 0).map((group) => ({
+  const uniqueGroups = variant === "collection"
+    ? Array.from(groups.reduce((byKey, group) => {
+        const current = byKey.get(group.key);
+        byKey.set(group.key, current ? {
+          ...current,
+          productCount: current.productCount + group.productCount,
+          categorySlugs: Array.from(new Set([...current.categorySlugs, ...group.categorySlugs])),
+        } : group);
+        return byKey;
+      }, new Map<string, CataloguerGroup>()).values())
+    : groups;
+  return uniqueGroups.filter((group) => group.productCount > 0).map((group) => ({
     id: group.key,
     name: group.name,
     imageUrl: group.imageUrl || "/catalog/products/product-placeholder.svg",

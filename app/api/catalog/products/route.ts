@@ -18,7 +18,7 @@ export async function GET(request: Request) {
   if ((categoryId !== "todas" && !slugPattern.test(categoryId)) || (categorySlug && !slugPattern.test(categorySlug))) return NextResponse.json({ message: "Categoria invalida" }, { status: 400 });
   if (!["all", "stock", "special"].includes(filter) || !["featured", "price-asc", "price-desc"].includes(sort)) return NextResponse.json({ message: "Filtro invalido" }, { status: 400 });
   try {
-    const result = await getCatalogProductPage(variant, { page, limit: 16, group: categorySlug || categoryId === "todas" ? undefined : categoryId, categorySlug: categorySlug === "collection" ? undefined : categorySlug, filter: filter === "all" ? undefined : filter, sort });
+    const result = await getCatalogProductPage(variant, { page, limit: 16, group: categoryId === "todas" ? undefined : categoryId, categorySlug: categorySlug === "collection" ? undefined : categorySlug, filter: filter === "all" ? undefined : filter, sort });
     return NextResponse.json(result, { headers: { "Cache-Control": "private, max-age=15" } });
   } catch (error) {
     const status = error instanceof CataloguerRequestError && error.status && error.status >= 400 && error.status < 500 ? error.status : 502;

@@ -57,7 +57,7 @@ export function HeroSection({ slides }: HeroSectionProps) {
           Una tienda de diseño que ofrece una propuesta integral de mobiliario, cocinas, baños y clósets de estilo atemporal. Nuestra propuesta se caracteriza por el uso de líneas puras, propias del norte de Europa, para crear espacios que trasciendan y brinden un verdadero placer.
         </p>
         <Link className={`${reveal} group relative mt-[46px] inline-flex items-center gap-[18px] pb-[11px] text-xs leading-[1.5] font-medium tracking-[4px] text-white uppercase no-underline delay-[610ms] before:absolute before:right-0 before:bottom-0 before:left-0 before:h-px before:bg-white/35 before:content-[''] after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:origin-left after:scale-x-0 after:bg-white after:content-[''] after:transition-transform after:duration-[550ms] after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:scale-x-100 max-[930px]:mt-7 max-[930px]:gap-4 max-[930px]:text-[9px] max-[930px]:tracking-[2.6px]`} href="/mobiliario">
-          <span>Explorar colección</span>
+          <span>Explorar mobiliario</span>
           <span className="text-lg tracking-normal transition-transform duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[6px]" aria-hidden="true">→</span>
         </Link>
       </div>

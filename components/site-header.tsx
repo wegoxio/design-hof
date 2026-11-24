@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { HeaderMerchandisingLink } from "@/services/cataloguer/types";
 import { formatUsd } from "@/services/money";
@@ -76,6 +76,7 @@ function ProductSearch({ onClose }: { onClose: () => void }) {
 
 export function SiteHeader({ merchandisingLinks }: { merchandisingLinks: HeaderMerchandisingLink[] }) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -115,9 +116,20 @@ export function SiteHeader({ merchandisingLinks }: { merchandisingLinks: HeaderM
     { label: "Smart Modull", href: "/smart-modull" },
     { label: "Contacto", href: "/contacto" },
   ];
-  const renderLink = ({ label, href }: { label: string; href: string }) => (
-    <Link className={linkClass(pathname === href)} href={href} key={href} aria-current={pathname === href ? "page" : undefined} onClick={() => setIsOpen(false)}>{label}</Link>
-  );
+  const linkIsActive = (href: string) => {
+    const [targetPath, targetQuery = ""] = href.split("?");
+    if (pathname !== targetPath) return false;
+    const targetParams = new URLSearchParams(targetQuery);
+    if (targetParams.size === 0) {
+      // Mobiliario is not active while a named collection owns the page.
+      return targetPath !== "/mobiliario" || !searchParams.has("coleccion");
+    }
+    return Array.from(targetParams.entries()).every(([key, value]) => searchParams.get(key) === value);
+  };
+  const renderLink = ({ label, href }: { label: string; href: string }) => {
+    const active = linkIsActive(href);
+    return <Link className={linkClass(active)} href={href} key={href} aria-current={active ? "page" : undefined} onClick={() => setIsOpen(false)}>{label}</Link>;
+  };
 
   const isAboutActive = aboutNavigation.some((item) => pathname === item.href);
 
