@@ -3,12 +3,20 @@ import assets from "../../content/project-assets.json";
 
 type Project = ProjectDetailContent["gallery"]["projects"][number];
 
-const allAssets = assets as Record<
-  string,
-  Record<string, { hero?: string; images: string[] }>
->;
+type AssetEntry = {
+  hero?: string;
+  logo?: string;
+  thumbnail?: string;
+  images?: string[];
+};
 
-const privateAssets = allAssets["private-homes"] ?? {};
+const allAssets = assets as {
+  heroes?: Record<string, string>;
+  residential?: Record<string, AssetEntry>;
+};
+
+const heroes = allAssets.heroes ?? {};
+const residentialAssets = allAssets["residential"] ?? {};
 
 function project(
   index: number,
@@ -16,22 +24,20 @@ function project(
   title: string,
   scope: string,
   description: string,
-  thumbnailUrl: string,
   totalImages: number,
   category: string,
   location: string,
 ): Project {
-  const folder = thumbnailUrl.replace(/\/[^/]+$/, "");
-  const prefix =
-    thumbnailUrl
-      .split("/")
-      .pop()
-      ?.replace(/-\d+\.[^.]+$/, "") ?? id;
+  const entry = residentialAssets[id];
+  const fromJson = entry?.images;
 
-  const rawImages = Array.from({ length: totalImages }, (_, i) => {
-    const num = String(i + 1).padStart(2, "0");
-    return i === 0 ? thumbnailUrl : `${folder}/${prefix}-${num}.png`;
-  });
+  const rawImages =
+    fromJson && fromJson.length > 0
+      ? fromJson
+      : Array.from({ length: totalImages }, (_, i) => {
+          const num = String(i + 1).padStart(3, "0");
+          return `/projects/residential/projects/${id}/images/image-${num}.jpg`;
+        });
 
   return {
     id,
@@ -40,6 +46,7 @@ function project(
     location,
     scope,
     description,
+    thumbnailUrl: entry?.thumbnail,
     images: rawImages.map((src, imageIndex) => ({
       src,
       alt: `${title} — imagen ${imageIndex + 1}`,
@@ -54,7 +61,6 @@ export const selectedProjects: Project[] = [
     "Quarzo",
     "Vestiers · Clósets · Baños · Puertas internas · Puertas principales apt. · Cocina apt. modelo",
     "Diseño e instalación de Vestiers, clósets y baños.\n\nDiseño e instalación de puertas principales de apartamentos con cerradura digital.\n\nDiseño e instalación de puertas internas de habitación.\n\nDiseño e instalación de cocina para apartamento modelo.",
-    "/projects/project/quarzo-01.png",
     11,
     "Proyecto Residencial",
     "Condominio residencial de lujo. Caracas, Venezuela.",
@@ -65,7 +71,6 @@ export const selectedProjects: Project[] = [
     "Botaniko",
     "Clósets · Baños · Puertas internas · Cocina área Lounge",
     "Diseño e instalación de mobiliario de clósets y baños.\n\nDiseño e instalación de puertas internas de habitación.",
-    "/projects/project/botaniko-01.png",
     15,
     "Proyecto Residencial",
     "Condominio residencial de lujo. Caracas, Venezuela.",
@@ -76,7 +81,6 @@ export const selectedProjects: Project[] = [
     "Premier Terra",
     "Cocinas · Clósets · Puertas internas",
     "Diseño e instalación de mobiliario de cocinas y clósets\n\nDiseño e instalación de puertas internas de habitación.",
-    "/projects/project/premier-terra-01.png",
     6,
     "Proyecto Residencial",
     "Condominio residencial. Caracas, Venezuela.",
@@ -87,7 +91,6 @@ export const selectedProjects: Project[] = [
     "Premier Las Lomas",
     "Cocinas · Topes",
     "Diseño e instalación de mobiliario de cocinas.\n\nSuministro e instalación de topes de acrílico mineral en cocinas.",
-    "/projects/project/premier-las-lomas-01.png",
     3,
     "Proyecto Residencial",
     "Condominio residencial. Caracas, Venezuela.",
@@ -98,7 +101,6 @@ export const selectedProjects: Project[] = [
     "Premier 27",
     "Cocinas · Topes · Interiorismo · Mobiliario",
     "Diseño e instalación de mobiliario de cocinas.\n\nSuministro e instalación de topes de acrílico mineral en cocinas.\n\nInteriorismo y suministro de mobiliario de exteriores para áreas de piscinas y parrillera.",
-    "/projects/project/premier-27-01.png",
     14,
     "Proyecto Residencial",
     "Condominio residencial de lujo. Caracas, Venezuela.",
@@ -109,7 +111,6 @@ export const selectedProjects: Project[] = [
     "Costamar",
     "Cocinas · Clósets",
     "Diseño e instalación de mobiliario de cocinas y clósets.",
-    "/projects/project/costamar-01.png",
     5,
     "Proyecto Residencial",
     "Condominio residencial Beach Front. Hacienda Iguana Golf and Beach Club, Nicaragua.",
@@ -120,7 +121,6 @@ export const selectedProjects: Project[] = [
     "Arubas Life",
     "Cocinas · Baños · Clósets · Topes · Interiorismo · Mobiliario",
     "Diseño e instalación de mobiliario de cocinas, baños y clósets.\n\nSuministro e instalación de topes de cuarzo en cocinas.\n\nInteriorismo y suministro de mobiliario en apartamento modelo.",
-    "/projects/project/arubas-life-01.png",
     6,
     "Proyecto Residencial",
     "Condominio residencial. Noord, Aruba.",
@@ -131,7 +131,6 @@ export const selectedProjects: Project[] = [
     "Harbour House",
     "Cocinas · Baños · Clósets · Topes · Interiorismo · Mobiliario",
     "Diseño e instalación de mobiliario de cocinas, baños y clósets.\n\nSuministro e instalación de topes de cuarzo en cocinas.\n\nInteriorismo y suministro de mobiliario para Sale's office.",
-    "/projects/project/harbour-house-01.png",
     9,
     "Proyecto Residencial",
     "Condominio residencial y comercial de lujo. Oranjestad, Aruba.",
@@ -142,7 +141,6 @@ export const selectedProjects: Project[] = [
     "Azure",
     "Cocinas · Baños · Clósets · Topes · Interiorismo · Mobiliario",
     "Diseño e instalación de mobiliario de cocinas, baños y clósets.\n\nSuministro e instalación de topes de cuarzo en cocinas.\n\nInteriorismo y suministro de mobiliario en Lobby y Owner's Lounge.",
-    "/projects/project/azure-01.png",
     4,
     "Proyecto Residencial",
     "Condominio residencial Beach Front. Eagle Beach, Aruba.",
@@ -153,7 +151,6 @@ export const selectedProjects: Project[] = [
     "Blue Residences",
     "Cocinas · Baños · Clósets · Topes · Interiorismo · Mobiliario",
     "Diseño e instalación de mobiliario de cocinas, baños y clósets.\n\nSuministro e instalación de topes de cuarzo en cocinas.\n\nInteriorismo y suministro de mobiliario en apartamentos.",
-    "/projects/project/blue-residences-01.png",
     11,
     "Proyecto Residencial",
     "Condominio residencial de lujo Beach Front. Eagle Beach, Aruba.",
@@ -164,7 +161,6 @@ export const selectedProjects: Project[] = [
     "Manantiales",
     "Baños · Clósets",
     "Diseño e instalación de mobiliario de baños y clósets.",
-    "/projects/project/manantial-01.png",
     3,
     "Proyecto Residencial",
     "Edificio residencial de lujo. Caracas, Venezuela.",
@@ -175,7 +171,6 @@ export const selectedProjects: Project[] = [
     "Vista Frontera",
     "Baños · Clósets",
     "Diseño e instalación de mobiliario de baños y clósets.",
-    "/projects/project/vista-frontera-01.png",
     3,
     "Proyecto Residencial",
     "Caracas, Venezuela",
@@ -189,25 +184,25 @@ export const granScaleContent: ProjectDetailContent = {
     title: "Proyectos de gran escala",
     description: "El hogar como obra de arte.",
     imageUrl:
-      selectedProjects[0]?.images[0]?.src ?? privateAssets.koncept?.hero ?? "",
+      heroes["gran-escala"] ?? selectedProjects[0]?.images[0]?.src ?? "",
   },
   introduction: {
     eyebrow: "Acerca de este servicio",
     explorationTitle: "Explora nuestros proyectos",
     explorationDescription:
       "Explora las imágenes. Pasa el cursor para ampliar o selecciona un proyecto.",
-    filters: selectedProjects.map(({ title, images }) => ({
+    filters: selectedProjects.map(({ title, images, thumbnailUrl }) => ({
       label: title,
-      imageUrl: images[0]?.src,
+      imageUrl: thumbnailUrl ?? images[0]?.src,
     })),
     description:
       "Trabajamos junto a arquitectos y familias para transformar residencias en experiencias. Desde apartamentos de autor hasta casas de campo, cada proyecto parte de una escucha profunda para dar forma a espacios únicos, funcionales y atemporales.",
     ctaLabel: "Consultar proyecto",
     ctaHref: "/contacto",
     stats: [
-      { value: 200, label: "Residencias amuebladas" },
-      { value: 100, label: "Proyectos Personalizados" },
-      { value: 8, label: "Tiempo Promedio" },
+      { value: 200, suffix: "+", label: "Residencias amuebladas" },
+      { value: 100, suffix: "%", label: "Proyectos Personalizados" },
+      { value: 8, suffix: " sem", label: "Tiempo Promedio" },
     ],
   },
   gallery: {
