@@ -206,8 +206,8 @@ export const granScaleContent: ProjectDetailContent = {
     ctaHref: "/contacto",
     stats: [
       { value: 200, label: "Residencias amuebladas" },
-      { value: 90, label: "Imágenes de obra" },
-      { value: 3, label: "Países: Venezuela, Aruba y Nicaragua" },
+      { value: 100, label: "Proyectos Personalizados" },
+      { value: 8, label: "Tiempo Promedio" },
     ],
   },
   gallery: {
