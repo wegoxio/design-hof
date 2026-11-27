@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useInView } from "@/screens/home/hooks/use-in-view";
@@ -16,6 +16,21 @@ export function ProjectAreasSection({
   const [perPage, setPerPage] = useState(2);
   const [pageIndex, setPageIndex] = useState(0);
 
+  const filteredAreas = useMemo(
+    () =>
+      areas.filter((area) => {
+        const id = area.id.toLowerCase();
+        const href = area.href.toLowerCase();
+        return (
+          id !== "residencial" &&
+          id !== "residenciales" &&
+          !href.endsWith("/residencial") &&
+          !href.endsWith("/residenciales")
+        );
+      }),
+    [areas],
+  );
+
   // En móvil (<= 850px) se muestra 1 tarjeta por vista; en escritorio, 2
   useEffect(() => {
     const updatePerPage = () => {
@@ -26,10 +41,10 @@ export function ProjectAreasSection({
     return () => window.removeEventListener("resize", updatePerPage);
   }, []);
 
-  const totalPages = Math.max(1, Math.ceil(areas.length / perPage));
+  const totalPages = Math.max(1, Math.ceil(filteredAreas.length / perPage));
   const safePageIndex = Math.min(pageIndex, totalPages - 1);
 
-  const visibleAreas = areas.slice(
+  const visibleAreas = filteredAreas.slice(
     safePageIndex * perPage,
     safePageIndex * perPage + perPage,
   );
@@ -48,7 +63,7 @@ export function ProjectAreasSection({
     });
   };
 
-  if (areas.length === 0) return null;
+  if (filteredAreas.length === 0) return null;
 
   return (
     <section
