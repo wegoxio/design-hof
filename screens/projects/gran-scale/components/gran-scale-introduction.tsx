@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ProjectDetailContent } from "../types/gran-scale"; // ajusta si tu tipo está en otra ruta
+import type { ProjectDetailContent } from "../types/gran-scale";
 
 type IntroductionContent = ProjectDetailContent["introduction"];
 
@@ -84,7 +84,7 @@ export function ExplorationSection({
         </ul>
       </div>
 
-      <div className="site-container grid grid-cols-[minmax(0,1fr)_330px] gap-[clamp(60px,9vw,145px)] py-[clamp(70px,8vw,112px)] max-[850px]:grid-cols-1 max-[850px]:gap-16">
+      <div className="site-container grid grid-cols-[minmax(0,1fr)_400px] gap-[clamp(60px,9vw,145px)] py-[clamp(70px,8vw,112px)] max-[850px]:grid-cols-1 max-[850px]:gap-16">
         <div
           className={`transition-[opacity,transform] duration-1000 ${
             isInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
@@ -108,7 +108,7 @@ export function ExplorationSection({
         </div>
 
         <div className="border-l border-black/10 pl-[clamp(36px,5vw,68px)] max-[850px]:border-t max-[850px]:border-l-0 max-[850px]:pt-12 max-[850px]:pl-0">
-          <div className="grid gap-8 max-[850px]:grid-cols-3 max-[550px]:grid-cols-1">
+          <div className="grid gap-10 max-[850px]:grid-cols-3 max-[550px]:grid-cols-1">
             {content.stats.map((stat, index) => (
               <div
                 key={stat.label}
@@ -121,10 +121,10 @@ export function ExplorationSection({
                   transitionDelay: isInView ? `${index * 130}ms` : "0ms",
                 }}
               >
-                <p className="text-[38px] leading-none font-bold tracking-[-1.5px] tabular-nums">
+                <p className="text-[36px] leading-none font-bold tracking-[-1.2px] text-black tabular-nums">
                   <Counter stat={stat} active={isInView} delay={index * 130} />
                 </p>
-                <p className="mt-3 text-[8px] tracking-[3.5px] text-black/30 uppercase">
+                <p className="mt-3 text-[8px] leading-normal tracking-[3.5px] text-black/35 uppercase">
                   {stat.label}
                 </p>
               </div>
