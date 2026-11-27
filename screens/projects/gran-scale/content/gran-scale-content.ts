@@ -201,11 +201,11 @@ export const granScaleContent: ProjectDetailContent = {
       imageUrl: images[0]?.src,
     })),
     description:
-      "Diseñamos e instalamos cocinas, clósets, baños y mobiliario a medida. Una selección de proyectos residenciales con soluciones de interiorismo, materiales y equipamiento para cada espacio.",
+      "Trabajamos junto a arquitectos y familias para transformar residencias en experiencias. Desde apartamentos de autor hasta casas de campo, cada proyecto parte de una escucha profunda para dar forma a espacios únicos, funcionales y atemporales.",
     ctaLabel: "Consultar proyecto",
     ctaHref: "/contacto",
     stats: [
-      { value: 12, label: "Proyectos seleccionados" },
+      { value: 200, label: "Residencias amuebladas" },
       { value: 90, label: "Imágenes de obra" },
       { value: 3, label: "Países: Venezuela, Aruba y Nicaragua" },
     ],
