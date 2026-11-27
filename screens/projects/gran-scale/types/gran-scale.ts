@@ -40,6 +40,7 @@ export type ProjectDetailContent = {
       locationLabel?: string;
       scope: string;
       description: string;
+      thumbnailUrl?: string;
       images: Array<{ src: string; alt: string }>;
     }>;
   };
