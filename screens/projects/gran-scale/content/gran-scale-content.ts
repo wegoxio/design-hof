@@ -9,9 +9,6 @@ const allAssets = assets as Record<
 >;
 
 const privateAssets = allAssets["private-homes"] ?? {};
-// Si en project-assets.json estos 12 están bajo otra clave (ej. "projects" o "residential"), la toma automáticamente:
-const residentialAssets =
-  allAssets["projects"] ?? allAssets["residential"] ?? privateAssets;
 
 function project(
   index: number,
@@ -24,15 +21,17 @@ function project(
   category: string,
   location: string,
 ): Project {
-  const fromJson = residentialAssets[id]?.images;
+  const folder = thumbnailUrl.replace(/\/[^/]+$/, "");
+  const prefix =
+    thumbnailUrl
+      .split("/")
+      .pop()
+      ?.replace(/-\d+\.[^.]+$/, "") ?? id;
 
-  const rawImages =
-    fromJson && fromJson.length > 0
-      ? fromJson
-      : Array.from({ length: totalImages }, (_, i) => {
-          const num = String(i + 1).padStart(2, "0");
-          return i === 0 ? thumbnailUrl : `/projects/projects/${id}-${num}.png`;
-        });
+  const rawImages = Array.from({ length: totalImages }, (_, i) => {
+    const num = String(i + 1).padStart(2, "0");
+    return i === 0 ? thumbnailUrl : `${folder}/${prefix}-${num}.png`;
+  });
 
   return {
     id,
