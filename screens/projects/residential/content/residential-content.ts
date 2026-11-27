@@ -1,98 +1,116 @@
 import type { ProjectDetailContent } from "../../gran-scale/types/gran-scale";
 import assets from "../../content/project-assets.json";
 
-const residentialAssets = assets.residential as Record<string, { images: string[]; logo?: string }>;
+type Project = ProjectDetailContent["gallery"]["projects"][number];
 
-function images(project: string, slug: string) {
-  return residentialAssets[slug].images.map((src, index) => ({ src, alt: `${project} — imagen ${index + 1}` }));
+type AssetEntry = {
+  hero?: string;
+  logo?: string;
+  thumbnail?: string;
+  images?: string[];
+};
+
+const heroes = assets.heroes as Record<string, string>;
+const privateAssets = assets["private-homes"] as Record<string, AssetEntry>;
+
+/**
+ * El identificador de cada vivienda sale de su nombre, de modo que el ancla
+ * del filtro y el `id` del artículo de la galería apuntan al mismo sitio.
+ */
+function project(
+  index: number,
+  title: string,
+  scope: string,
+  description: string,
+  location = "Vivienda Residencial. Caracas – Venezuela.",
+): Project {
+  const id = title
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
+  return {
+    id,
+    eyebrow: `${String(index).padStart(2, "0")} · Vivienda particular`,
+    title,
+    location,
+    scope,
+    description,
+    images: (privateAssets[id]?.images ?? []).map((src, imageIndex) => ({
+      src,
+      alt: `${title} — imagen ${imageIndex + 1}`,
+    })),
+  };
 }
 
-function botanikoImages() {
-  const projectImages = residentialAssets.botaniko.images;
-  const cover = projectImages.find((src) => src.endsWith("/image-004.jpg"));
-  const orderedImages = cover ? [cover, ...projectImages.filter((src) => src !== cover)] : projectImages;
-  return orderedImages.map((src, index) => ({ src, alt: `Botaniko — imagen ${index + 1}` }));
-}
+const selectedProjects: Project[] = [
+  project(1, "Koncept", "Cocina · Tope · Clóset · Interiorismo · Mobiliario · Cuarto de juegos", "Diseño e instalación de mobiliario de cocina, clóset auxiliar y cuarto de juegos.\n\nSuministro e instalación de tope de piedra sinterizada.\n\nInteriorismo y suministro de mobiliario para interiores y exteriores."),
+  project(2, "Proyecto 81", "Cocina · Coffee Bar · Despensa · Área de servicio · Interiorismo", "Diseño e instalación de mobiliario de cocina, coffee bar, despensa y área de servicio.\n\nInteriorismo y suministro de luminaria para comedor."),
+  project(3, "Proyecto H 4", "Cocina · Tope · Área parrillera · Área de lavandería", "Diseño e instalación de mobiliario de cocina, área de parrillera y área de lavandería.\n\nSuministro e instalación de tope de piedra sinterizada."),
+  project(4, "Cocina Negra", "Cocina", "Diseño e instalación de mobiliario de cocina."),
+  project(5, "Proyecto AVA", "Cocina · Tope · Baño de visita · Revestimiento de paredes", "Diseño e instalación de mobiliario de cocina y área de lavandería.\n\nSuministro e instalación de tope de piedra sinterizada.\n\nSuministro e instalación de revestimiento de piedra para baño de visita.", "Apartamento residencial. Caracas – Venezuela"),
+  project(6, "Cocina Casa Natural", "Cocina · Tope · Baño de visita · Área de lavandería", "Diseño e instalación de mobiliario de cocina y área de lavandería.\n\nSuministro e instalación de tope de piedra sinterizada.\n\nSuministro e instalación de revestimiento de piedra para baño de visita."),
+  project(7, "Cocina Greige", "Cocina · Tope", "Diseño e instalación de mobiliario de cocina.\n\nSuministro e instalación de tope de piedra sinterizada."),
+  project(8, "Casa Verde", "Interiorismo · Mobiliario", "Interiorismo y suministro de mobiliario para sala, comedor y área de terraza y deck en jardín."),
+  project(9, "Casa Campo", "Cocina · Tope", "Diseño e instalación de mobiliario de cocina.\n\nSuministro e instalación de tope de piedra sinterizada."),
+  project(10, "Proyecto Alta", "Cocina · Interiorismo · Mobiliario", "Diseño e instalación de mobiliario de cocina.\n\nInteriorismo y suministro de mobiliario para interiores."),
+  project(11, "Kids Playroom", "HomeBar · Interiorismo · Mobiliario", "Diseño e instalación de mobiliario a medida para cuarto de juegos.\n\nInteriorismo y suministro de mobiliario para interiores."),
+  project(12, "Proyecto Talblick", "HomeBar · Interiorismo · Mobiliario", "Diseño e instalación de mobiliario para HomeBar.\n\nInteriorismo y suministro de mobiliario para interiores."),
+  project(13, "Proyecto Nature", "Interiorismo · Mobiliario", "Interiorismo y suministro de mobiliario para interiores."),
+  project(14, "Proyecto Freien", "Cocina · Tope · Walk in Clóset · Clósets", "Diseño e instalación de mobiliario de cocina, walk in clóset y clósets.\n\nSuministro e instalación de tope de piedra sinterizada."),
+  project(15, "Cocina Azul", "Cocina · Tope", "Diseño e instalación de mobiliario de cocina.\n\nSuministro e instalación de tope de piedra sinterizada."),
+  project(16, "Proyecto Hübsch", "Walk in Clóset · Vestier Interno · Walk in Shower · Baño · Clóset auxiliar · Office Room · Estudio de TV", "Diseño e instalación de mobiliario para Walk in clóset, Vestier Interno, Baño principal, Clóset auxiliar, Office room y estudio de TV.\n\nSuministro e instalación de piedra sinterizada para Walk in shower y área de lavamanos baño principal."),
+  project(17, "Terraza Amarillo", "Interiorismo · Mobiliario de exteriores", "Interiorismo y suministro de mobiliario de exteriores para terraza."),
+  project(18, "Cocina Latte", "Cocina · Tope · Mobiliario", "Diseño e instalación de mobiliario de cocina.\n\nSuministro e instalación de tope de piedra sinterizada.\n\nSelección y suministro de sillas de pantry."),
+  project(19, "Aurea", "Cocina principal · Cocina de Huéspedes", "Diseño e instalación de mobiliario de cocinas personalizado en color y textura.", "Casa Residencial de playa. Hacienda Iguana, Nicaragua."),
+  project(20, "Biblioteca", "Mobiliario", "Diseño e instalación de mobiliario personalizado para biblioteca."),
+  project(21, "Marmor Haus", "Interiorismo · Mobiliario", "Interiorismo y suministro de mobiliario."),
+  project(22, "Cocina Sebucán", "Cocina · Tope", "Diseño e instalación de mobiliario de cocina.\n\nSuministro e instalación de tope de piedra sinterizada."),
+  project(23, "Apartamento Lomas", "Interiorismo · Mobiliario", "Interiorismo y suministro de mobiliario."),
+  project(24, "Cocina Gris Claro", "Cocina · Tope", "Diseño e instalación de mobiliario de cocina.\n\nSuministro e instalación de tope de piedra sinterizada."),
+  project(25, "Proyecto Grün", "Cocina · Cocina área de parrillera · Tope", "Diseño e instalación de mobiliario de cocina.\n\nSuministro e instalación de tope de piedra sinterizada."),
+  project(26, "Apartamento Blick", "Cocina · Tope", "Diseño e instalación de mobiliario de cocina.\n\nSuministro e instalación de tope de piedra sinterizada."),
+  project(27, "Cocina Lineal", "Cocina · Tope", "Diseño e instalación de mobiliario de cocina.\n\nSuministro e instalación de tope de piedra sinterizada."),
+  project(28, "Proyecto B&W", "Walk in Clóset · Vestier Interno · Baños · Clóset auxiliar · Revestimiento", "Diseño e instalación de mobiliario para Walk in clóset, Vestier Interno, Baños, Clóset auxiliar.\n\nSuministro e instalación de piedra sinterizada."),
+  project(29, "Grau Küche", "Cocina · Tope", "Diseño e instalación de mobiliario de cocina.\n\nSuministro e instalación de tope de piedra sinterizada."),
+  project(30, "Cocina Gris", "Cocina · Tope · Interiorismo · Mobiliario", "Diseño e instalación de mobiliario de cocina.\n\nSuministro e instalación de tope de piedra sinterizada.\n\nInteriorismo y suministro de mobiliario para comedor."),
+  project(31, "Apartamento Camurí", "Cocina · Mueble de TV · Bar", "Diseño e instalación de mobiliario de cocina, mueble de TV y mueble de Bar.", "Apartamento de playa. La Guaira – Venezuela."),
+];
 
 export const residentialContent: ProjectDetailContent = {
   breadcrumb: ["Inicio", "Proyectos", "Residencial"],
-  hero: { eyebrow: "Residencial", title: "Proyectos Residenciales", description: "El hogar como obra de arte.", imageUrl: residentialAssets.quarzo.images[0] },
+  hero: {
+    eyebrow: "Viviendas particulares",
+    title: "Proyectos residenciales",
+    description: "Diseño a medida para cada hogar.",
+    imageUrl: heroes.residencial,
+  },
   introduction: {
     eyebrow: "Acerca de este servicio",
-    explorationTitle: "Explora nuestros proyectos",
-    explorationDescription: "Selecciona un logo para ir directamente al proyecto.",
-    filters: ["Quarzo", "Botaniko", "Premier Terra", "Premier Las Lomas", "Premier 27", "Costamar", "Arubas Life", "Harbour House", "Azure", "Blue Residences", "Manantiales", "Vista Frontera"].map((label) => {
-      const slug = label.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-      return { label, imageUrl: residentialAssets[slug]?.logo };
-    }),
-    description: "Trabajamos junto a arquitectos y familias para transformar residencias en experiencias. Desde apartamentos de autor hasta casas de campo, cada proyecto parte de una escucha profunda para dar forma a espacios únicos, funcionales y atemporales.",
-    ctaLabel: "Consultar proyecto", ctaHref: "/contacto",
-    stats: [{ value: 200, suffix: "+", label: "Residencias amuebladas" }, { value: 100, suffix: "%", label: "Proyectos personalizados" }, { value: 8, suffix: " sem", label: "Tiempo promedio" }],
+    explorationTitle: "Explora nuestras viviendas",
+    explorationDescription:
+      "Explora las imágenes. Pasa el cursor para ampliar o selecciona un proyecto.",
+    filters: selectedProjects.map(({ title, images }) => ({
+      label: title,
+      imageUrl: images[0]?.src,
+    })),
+    description:
+      "Diseñamos e instalamos cocinas, clósets, baños y mobiliario a medida. Una selección de viviendas particulares con soluciones de interiorismo, materiales y equipamiento para cada espacio.",
+    ctaLabel: "Consultar proyecto",
+    ctaHref: "/contacto",
+    stats: [
+      { value: 31, label: "Proyectos seleccionados" },
+      { value: 31, label: "Viviendas particulares" },
+      { value: 2, label: "Países: Venezuela y Nicaragua" },
+    ],
   },
   gallery: {
-    eyebrow: "Portafolio", title: "Proyectos seleccionados", description: "Una selección de nuestros proyectos residenciales en Venezuela, Aruba y Nicaragua.",
-    projects: [
-      {
-        id: "quarzo", eyebrow: "01 · Proyecto residencial", title: "Quarzo",
-        location: "Condominio residencial de lujo. Caracas, Venezuela.",
-        scope: "Vestiers · Clósets · Baños · Puertas internas · Puertas principales apt. · Cocina apt. modelo",
-        description: "Diseño e instalación de Vestiers, clósets y baños.\n\nDiseño e instalación de puertas principales de apartamentos con cerradura digital.\n\nDiseño e instalación de puertas internas de habitación.\n\nDiseño e instalación de cocina para apartamento modelo.", images: images("Quarzo", "quarzo"),
-      },
-      {
-        id: "botaniko", eyebrow: "02 · Proyecto residencial", title: "Botaniko",
-        location: "Condominio residencial de lujo. Caracas, Venezuela.", scope: "Clósets · Baños · Puertas internas · Cocina área Lounge",
-        description: "Diseño e instalación de mobiliario de clósets y baños.\n\nDiseño e instalación de puertas internas de habitación.", images: botanikoImages(),
-      },
-      {
-        id: "premier-terra", eyebrow: "03 · Proyecto residencial", title: "Premier Terra",
-        location: "Condominio residencial. Caracas, Venezuela.", scope: "Cocinas · Clósets · Puertas internas",
-        description: "Diseño e instalación de mobiliario de cocinas y clósets\n\nDiseño e instalación de puertas internas de habitación.", images: images("Premier Terra", "premier-terra"),
-      },
-      {
-        id: "premier-las-lomas", eyebrow: "04 · Proyecto residencial", title: "Premier Las Lomas",
-        location: "Condominio residencial. Caracas, Venezuela.", scope: "Cocinas · Topes",
-        description: "Diseño e instalación de mobiliario de cocinas.\n\nSuministro e instalación de topes de acrílico mineral en cocinas.", images: images("Premier Las Lomas", "premier-las-lomas"),
-      },
-      {
-        id: "premier-27", eyebrow: "05 · Proyecto residencial", title: "Premier 27",
-        location: "Condominio residencial de lujo. Caracas, Venezuela.", scope: "Cocinas · Topes · Interiorismo · Mobiliario",
-        description: "Diseño e instalación de mobiliario de cocinas.\n\nSuministro e instalación de topes de acrílico mineral en cocinas.\n\nInteriorismo y suministro de mobiliario de exteriores para áreas de piscinas y parrillera.", images: images("Premier 27", "premier-27"),
-      },
-      {
-        id: "costamar", eyebrow: "06 · Proyecto residencial", title: "Costamar",
-        location: "Condominio residencial Beach Front. Hacienda Iguana Golf and Beach Club, Nicaragua.", scope: "Cocinas · Clósets",
-        description: "Diseño e instalación de mobiliario de cocinas y clósets.", images: images("Costamar", "costamar"),
-      },
-      {
-        id: "arubas-life", eyebrow: "07 · Proyecto residencial", title: "Arubas Life",
-        location: "Condominio residencial. Noord, Aruba.", scope: "Cocinas · Baños · Clósets · Topes · Interiorismo · Mobiliario",
-        description: "Diseño e instalación de mobiliario de cocinas, baños y clósets.\n\nSuministro e instalación de topes de cuarzo en cocinas.\n\nInteriorismo y suministro de mobiliario en apartamento modelo.", images: images("Arubas Life", "arubas-life"),
-      },
-      {
-        id: "harbour-house", eyebrow: "08 · Proyecto residencial", title: "Harbour House",
-        location: "Condominio residencial y comercial de lujo. Oranjestad, Aruba.", scope: "Cocinas · Baños · Clósets · Topes · Interiorismo · Mobiliario",
-        description: "Diseño e instalación de mobiliario de cocinas, baños y clósets.\n\nSuministro e instalación de topes de cuarzo en cocinas.\n\nInteriorismo y suministro de mobiliario para Sale’s office.", images: images("Harbour House", "harbour-house"),
-      },
-      {
-        id: "azure", eyebrow: "09 · Proyecto residencial", title: "Azure",
-        location: "Condominio residencial Beach Front. Eagle Beach, Aruba.", scope: "Cocinas · Baños · Clósets · Topes · Interiorismo · Mobiliario",
-        description: "Diseño e instalación de mobiliario de cocinas, baños y clósets.\n\nSuministro e instalación de topes de cuarzo en cocinas.\n\nInteriorismo y suministro de mobiliario en Lobby y Owner’s Lounge.", images: images("Azure", "azure"),
-      },
-      {
-        id: "blue-residences", eyebrow: "10 · Proyecto residencial", title: "Blue Residences",
-        location: "Condominio residencial de lujo Beach Front. Eagle Beach, Aruba.", scope: "Cocinas · Baños · Clósets · Topes · Interiorismo · Mobiliario",
-        description: "Diseño e instalación de mobiliario de cocinas, baños y clósets.\n\nSuministro e instalación de topes de cuarzo en cocinas.\n\nInteriorismo y suministro de mobiliario en apartamentos.", images: images("Blue Residences", "blue-residences"),
-      },
-      {
-        id: "manantiales", eyebrow: "11 · Proyecto residencial", title: "Manantiales",
-        location: "Edificio residencial de lujo. Caracas, Venezuela.", scope: "Baños · Clósets",
-        description: "Diseño e instalación de mobiliario de baños y clósets.", images: images("Manantiales", "manantiales"),
-      },
-      {
-        id: "vista-frontera", eyebrow: "12 · Proyecto residencial", title: "Vista Frontera", locationLabel: "Ubicación",
-        location: "Caracas, Venezuela", scope: "Baños · Clósets",
-        description: "Diseño e instalación de mobiliario de baños y clósets.", images: images("Vista Frontera", "vista-frontera"),
-      },
-    ],
+    eyebrow: "Portafolio",
+    title: "Proyectos seleccionados",
+    description:
+      "Una selección de viviendas particulares en Venezuela y Nicaragua.",
+    projects: selectedProjects,
   },
 };
