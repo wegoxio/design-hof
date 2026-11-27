@@ -31,7 +31,7 @@ export function ProjectDetailHero({
       {/* Hero */}
       <section className="relative isolate min-h-[500px] overflow-hidden bg-[#1b1b1a] text-white max-[700px]:min-h-[420px]">
         <Image
-          className="-z-20 scale-100 transition-transform duration-[1500ms] starting:scale-[1.045]"
+          className="-z-20 object-cover object-center scale-100 transition-transform duration-[1500ms] starting:scale-[1.045]"
           src={content.hero.imageUrl}
           alt={`${content.hero.title} de Design HOF`}
           fill
