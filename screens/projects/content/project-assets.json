@@ -1,4 +1,9 @@
 {
+  "heroes": {
+    "gran-escala": "/projects/hero/grand-escala-hero.png",
+    "residencial": "/projects/hero/residenciales-hero.png",
+    "corporativo": "/projects/hero/corporativo-hero.png"
+  },
   "private-homes": {
     "apartamento-blick": {
       "images": [
@@ -225,7 +230,6 @@
       ]
     },
     "koncept": {
-      "hero": "/projects/hero/grand-escala-hero.png",
       "images": [
         "/projects/private-homes/projects/koncept/images/image-001.jpg",
         "/projects/private-homes/projects/koncept/images/image-002.jpg",
@@ -535,11 +539,13 @@
     },
     "manantiales": {
       "images": [
-        "/projects/residential/projects/manantiales/images/image-001.jpg",
+        "/projects/projects/manantial-01.png",
         "/projects/residential/projects/manantiales/images/image-002.jpg",
         "/projects/residential/projects/manantiales/images/image-003.jpg",
         "/projects/residential/projects/manantiales/images/image-004.jpg"
-      ]
+      ],
+      "thumbnail": "/projects/projects/manantial-01.png",
+      "logo": "/projects/residential/projects/manantiales/images/image-001.jpg"
     },
     "premier-27": {
       "images": [
