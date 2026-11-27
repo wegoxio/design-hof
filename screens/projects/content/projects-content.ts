@@ -258,7 +258,7 @@ export const projectsContent: ProjectsContent = {
     eyebrow: "Residencial",
     title: "Proyectos",
     description: "El hogar como obra de arte.",
-    imageUrl: "/projects/hero/projects-hero-01.png",
+    imageUrl: "/projects/hero/projects-hero-01.jpg",
   },
   introduction: {
     eyebrow: "Portafolio",
