@@ -46,7 +46,7 @@ export function ExplorationSection({
                   className="group flex h-24 items-center gap-4 border border-black/10 bg-white p-3 transition duration-300 hover:-translate-y-0.5 hover:border-black/30"
                 >
                   {item.imageUrl && (
-                    <div className="relative h-full w-28 shrink-0 overflow-hidden bg-black/5">
+                    <div className="relative h-full w-28 shrink-0 overflow-hidden">
                       <Image
                         src={item.imageUrl}
                         alt={item.label}
